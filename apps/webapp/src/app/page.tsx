@@ -181,12 +181,11 @@ export default function Home() {
 
         {/* Video */}
         <div className="col-span-1 overflow-hidden rounded-3xl bg-black">
-          <video muted className="h-full w-full object-cover">
-            <source
-              src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
-              type="video/mp4"
-            />
-          </video>
+          <video
+            src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+            muted
+            className="h-full w-full object-cover"
+          />
         </div>
 
         {/* Offers */}
