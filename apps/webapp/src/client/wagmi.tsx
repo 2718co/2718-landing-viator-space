@@ -1,11 +1,10 @@
 "use client";
 
 import type { Dispatch, PropsWithChildren, SetStateAction } from "react";
-import { useMemo } from "react";
-import { createContext, useState } from "react";
+import { createContext, useMemo, useState } from "react";
 
-import { WagmiConfig, createClient, configureChains } from "wagmi";
-import { mainnet, goerli } from "wagmi/chains";
+import { configureChains, createClient, WagmiConfig } from "wagmi";
+import { goerli, mainnet } from "wagmi/chains";
 
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
