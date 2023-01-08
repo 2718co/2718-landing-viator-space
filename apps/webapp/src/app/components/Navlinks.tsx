@@ -5,7 +5,7 @@ import MobileNavlinks from "./MobileNavlinks";
 const Navlinks = (): JSX.Element => {
   return (
     <>
-      <nav className="hidden flex-1 flex-row justify-start lg:block lg:flex">
+      <nav className="hidden flex-1 flex-row justify-start lg:flex">
         {navlinks.map(({ path, label }) => (
           <Link
             key={label}
