@@ -1,7 +1,6 @@
-"use client";
-
 import localFont from "@next/font/local";
 import type { PropsWithChildren } from "react";
+import { Suspense } from "react";
 
 import { ClientProvider } from "../client/trpc";
 import WagmiProvider from "../client/wagmi";
@@ -23,13 +22,15 @@ function RootLayout({
     <html lang="en" className={customFont.variable + " mono lg:p-6"}>
       {/* <html lang="en" className={customFont.className + " mono"}> */}
       <body className="mx-auto flex flex-col bg-dark-background px-3 pt-14 pb-20 lg:rounded-2xl lg:px-36">
-        <ClientProvider>
-          <WagmiProvider>
-            <Navbar />
-            <main className="flex-auto font-mono">{children}</main>
-            <Footer />
-          </WagmiProvider>
-        </ClientProvider>
+        <Suspense fallback={<div>Loading...</div>}>
+          <ClientProvider>
+            <WagmiProvider>
+              <Navbar />
+              <main className="flex-auto font-mono">{children}</main>
+              <Footer />
+            </WagmiProvider>
+          </ClientProvider>
+        </Suspense>
       </body>
     </html>
   );
