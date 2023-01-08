@@ -19,7 +19,7 @@ function RootLayout({
   children,
 }: PropsWithChildren) {
   return (
-    <html lang="en" className={customFont.variable + " mono lg:p-6"}>
+    <html lang="en" className={`${customFont.variable} mono font-mono lg:p-6`}>
       {/* <html lang="en" className={customFont.className + " mono"}> */}
       <body className="mx-auto flex flex-col bg-dark-background px-3 pt-14 pb-20 lg:rounded-2xl lg:px-36">
         <Suspense fallback={<div>Loading...</div>}>
