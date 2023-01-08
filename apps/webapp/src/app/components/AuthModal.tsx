@@ -68,8 +68,6 @@ const AuthModal = ({ open, setOpen }: IAuthModalProps): JSX.Element => {
                     </div>
                     <div className="mt-7 grid gap-1">
                       {connectors.map((connector) => {
-                        console.dir(connector);
-
                         return (
                           <AuthButton
                             key={connector.id}
