@@ -31,7 +31,10 @@ export default function Home() {
       <div className="grid grid-flow-row gap-x-10 gap-y-2 lg:grid-cols-2 lg:gap-y-8 ">
         {/* main */}
         <div className="col-span-1 flex flex-col overflow-hidden rounded-3xl bg-light-background lg:col-span-2">
-          <div id="gallery" className="relative flex max-h-[544px] flex-row">
+          <div
+            id="gallery"
+            className="relative flex max-h-[544px] cursor-pointer flex-row"
+          >
             {/* Main Image */}
             <div className="relative flex-[6]">
               <Image
