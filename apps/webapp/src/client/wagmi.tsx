@@ -4,12 +4,9 @@ import type { Dispatch, PropsWithChildren, SetStateAction } from "react";
 import { useMemo } from "react";
 import { createContext, useState } from "react";
 
-import {
-  WagmiConfig,
-  createClient,
-  defaultChains,
-  configureChains,
-} from "wagmi";
+import { WagmiConfig, createClient, configureChains } from "wagmi";
+import { mainnet, goerli } from "wagmi/chains";
+
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
 import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
@@ -20,6 +17,7 @@ import { MetaMaskConnector } from "wagmi/connectors/metaMask";
 import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
 import AuthModal from "../app/components/AuthModal";
 
+const defaultChains = [mainnet, goerli];
 const { chains, provider, webSocketProvider } = configureChains(defaultChains, [
   jsonRpcProvider({
     priority: 0,
