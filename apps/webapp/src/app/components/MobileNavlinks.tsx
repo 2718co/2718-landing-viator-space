@@ -27,7 +27,6 @@ const socialLinks = [
 ];
 
 const MobileNavlinks = (): JSX.Element => {
-  // const [drawerVisible, setDrawerVisible] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -65,7 +64,7 @@ const MobileNavlinks = (): JSX.Element => {
               <Dialog.Panel className={"h-screen w-screen "}>
                 <nav className="flex w-full flex-col items-center space-y-12">
                   {navlinks.map(({ path, label }, idx) => (
-                    <>
+                    <span key={path + idx}>
                       {idx > 0 && <SeparatorStar key={`separator${idx}`} />}
                       <Link
                         key={path}
@@ -74,7 +73,7 @@ const MobileNavlinks = (): JSX.Element => {
                       >
                         {label}
                       </Link>
-                    </>
+                    </span>
                   ))}
                 </nav>
 
