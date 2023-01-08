@@ -21,6 +21,7 @@
     "@wagmi/core": "^0.8.11",
     "@walletconnect/encoding": "^1.0.2",
     "decent": "workspace:*",
+    "encoding": "^0.1.13",
     "ethers": "^5.7.2",
     "lokijs": "^1.5.12",
     "next": "^13.1.1",
