@@ -17,7 +17,7 @@ const linksConfiguration = [
 
 const Footer = (): JSX.Element => {
   return (
-    <footer className="bottom-8 mt-32 flex flex-col items-center justify-end space-y-6 lg:bottom-0 lg:flex-row lg:space-y-0 lg:space-x-24">
+    <footer className="bottom-8 mb-12 mt-32 flex flex-col items-center justify-end space-y-6 lg:bottom-0 lg:mb-0 lg:flex-row lg:space-y-0 lg:space-x-24">
       {linksConfiguration.map(({ href, label }, i) => (
         <Link
           key={`footer-link-${i}`}
