@@ -7,16 +7,13 @@
 
 /** @type {import("next").NextConfig} */
 const config = {
+  basePath: "/",
   reactStrictMode: true,
   swcMinify: false,
   i18n: {
     locales: ["en"],
     defaultLocale: "en",
   },
-  // compiler: {
-  //   // Enables the styled-components SWC transform
-  //   styledComponents: true,
-  // },
   experimental: {
     appDir: true,
     // runtime: "experimental-edge",
