@@ -1,6 +1,5 @@
 "use client";
 
-// import Identicon from "@polkadot/react-identicon";
 import Image from "next/image";
 import { useContext } from "react";
 import {
