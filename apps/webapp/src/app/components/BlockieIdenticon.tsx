@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useRef, useState } from "react";
 import { renderIcon } from "@download/blockies";
 import Image from "next/image";
