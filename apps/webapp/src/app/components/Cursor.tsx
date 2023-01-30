@@ -1,6 +1,6 @@
 "use client";
 
-import * as framerMotion from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { useEffect, useState } from "react";
 
 const CURSOR_VARIANTS = ["default", "hover", "down"] as const;
@@ -44,7 +44,7 @@ const Cursor = () => {
     };
   }, []);
 
-  const variants: framerMotion.Variants = {
+  const variants: Variants = {
     default: {
       x: mousePosition.x - 17,
       y: mousePosition.y - 17,
@@ -56,7 +56,7 @@ const Cursor = () => {
     },
   };
 
-  const centerVariants: framerMotion.Variants = {
+  const centerVariants: Variants = {
     default: {
       r: 2,
     },
@@ -65,7 +65,7 @@ const Cursor = () => {
     },
   };
 
-  const innerVariants: framerMotion.Variants = {
+  const innerVariants: Variants = {
     default: {
       r: 6,
     },
@@ -75,7 +75,7 @@ const Cursor = () => {
   };
 
   return (
-    <framerMotion.motion.div
+    <motion.div
       className="pointer-events-none fixed top-0 left-0 z-50 h-[34px] w-[34px]"
       variants={variants}
       animate={cursorVariant}
@@ -85,7 +85,7 @@ const Cursor = () => {
       }}
       dragElastic={0}
     >
-      <framerMotion.motion.svg
+      <motion.svg
         xmlns="http://www.w3.org/2000/svg"
         width="34"
         height="34"
@@ -93,14 +93,14 @@ const Cursor = () => {
         viewBox="0 0 34 34"
       >
         {/* Outer */}
-        <framerMotion.motion.circle
+        <motion.circle
           cx="17"
           cy="17"
           r="15.5"
           stroke="#FF7218"
-        ></framerMotion.motion.circle>
+        ></motion.circle>
         {/* Center */}
-        <framerMotion.motion.circle
+        <motion.circle
           variants={centerVariants}
           animate={cursorVariant}
           transition={{
@@ -112,9 +112,9 @@ const Cursor = () => {
           cy="17"
           r="2"
           fill="#FF7218"
-        ></framerMotion.motion.circle>
+        ></motion.circle>
         {/* Inner */}
-        <framerMotion.motion.circle
+        <motion.circle
           variants={innerVariants}
           animate={cursorVariant}
           transition={{
@@ -126,15 +126,15 @@ const Cursor = () => {
           cy="17"
           r="6"
           stroke="#FF7218"
-        ></framerMotion.motion.circle>
+        ></motion.circle>
         {/* Cross */}
-        <framerMotion.motion.path
+        <motion.path
           stroke="#FF7218"
           strokeWidth="0.5"
           d="M0 17h34M17 0v34"
-        ></framerMotion.motion.path>
-      </framerMotion.motion.svg>
-    </framerMotion.motion.div>
+        ></motion.path>
+      </motion.svg>
+    </motion.div>
   );
 };
 
