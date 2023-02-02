@@ -14,11 +14,14 @@ const customFont = localFont({
   variable: "--font-abc",
 });
 
+console.log("General Root Layout RSC");
+
 function RootLayout({
   // Layouts must accept a children prop.
   // This will be populated with nested layouts or pages
   children,
 }: PropsWithChildren) {
+  console.log("Rendering Root Layout RSC");
   return (
     <html lang="en" className={`${customFont.variable} mono font-mono lg:p-6`}>
       {/* <html lang="en" className={customFont.className + " mono"}> */}

@@ -18,7 +18,10 @@ import MetamaskLogo from "./components/logos/metamask";
 import WalletConnectLogo from "./components/logos/walletConnect";
 import BidModal from "./components/BidModal";
 
+console.log("General Home Page Component");
+
 export default function Home() {
+  console.log("Rendering Home Page Component");
   const { isConnected } = useAccount();
   const [isBidModalOpen, setIsBidModalOpen] = useState(false);
 
