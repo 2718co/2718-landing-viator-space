@@ -9,11 +9,11 @@
 const config = {
   basePath: "",
   reactStrictMode: true,
-  swcMinify: false,
-  i18n: {
-    locales: ["en"],
-    defaultLocale: "en",
-  },
+  swcMinify: true,
+  // i18n: {
+  //   locales: ["en"],
+  //   defaultLocale: "en",
+  // },
   experimental: {
     appDir: true,
     // runtime: "experimental-edge",
