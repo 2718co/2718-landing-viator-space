@@ -1,4 +1,8 @@
 {
-  "references": [{ "path": "packages/decent" }, { "path": "apps/webapp" }],
+  "references": [
+    { "path": "packages/decent" },
+    { "path": "packages/subdomain-registrar" },
+    { "path": "apps/webapp" }
+  ],
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.cjs", "**/*.mjs", ".next/types/**/*.ts"]
 }
