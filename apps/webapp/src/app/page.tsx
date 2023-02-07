@@ -1,27 +1,25 @@
 "use client";
 
-import Link from "next/link";
-import ETHLogo from "./components/ETHLogo";
-import OffersTable from "./components/OffersTable";
 import Image from "next/image";
+import Link from "next/link";
+import { useContext, useState } from "react";
+import { createPortal } from "react-dom";
+import { useAccount } from "wagmi";
 import bigImage from "../../public/bigImage.png";
-import tallImage from "../../public/tallImage.png";
 import hangingImage from "../../public/hangingImage.png";
 import squareLeft from "../../public/squareLeft.png";
 import squareRight from "../../public/squareRight.png";
-import PillCounter from "./components/PillCounter";
-import Lightbox from "./components/Lightbox";
-import { useAccount } from "wagmi";
-import { useContext, useState } from "react";
+import tallImage from "../../public/tallImage.png";
 import { AuthContext } from "../client/wagmi";
+import BidModal from "./components/BidModal";
+import ETHLogo from "./components/ETHLogo";
+import Lightbox from "./components/Lightbox";
 import MetamaskLogo from "./components/logos/metamask";
 import WalletConnectLogo from "./components/logos/walletConnect";
-import BidModal from "./components/BidModal";
-
-console.log("General Home Page Component");
+import OffersTable from "./components/OffersTable";
+import PillCounter from "./components/PillCounter";
 
 export default function Home() {
-  console.log("Rendering Home Page Component");
   const { isConnected } = useAccount();
   const [isBidModalOpen, setIsBidModalOpen] = useState(false);
 
@@ -143,7 +141,8 @@ export default function Home() {
                   </span>
                   <span className="inline-flex items-baseline space-x-3">
                     <span className="font-mono text-title-1-size font-semibold text-dark-text lg:text-highlight-size">
-                      Ξ 7.334{" "}
+                      <span className="lg:hidden">Ξ </span>
+                      7.334{" "}
                     </span>
                     <span className="font-mono text-title-3-size leading-6 text-light-text lg:text-lg">
                       ($8,023.31)
@@ -163,12 +162,21 @@ export default function Home() {
               {/* Connect or Bid Button */}
               <div className="col-span-2">
                 {isConnected ? (
-                  <button
-                    onClick={() => setIsBidModalOpen(true)}
-                    className="h-full w-full rounded-2xl bg-highlight py-4 font-mono text-button-text-size font-semibold text-dark-text hover:bg-hover-button"
-                  >
-                    Place Bid
-                  </button>
+                  <>
+                    <button
+                      onClick={() => setIsBidModalOpen(true)}
+                      className="h-full w-full rounded-2xl bg-highlight py-4 font-mono text-button-text-size font-semibold text-dark-text hover:bg-hover-button"
+                    >
+                      Place Bid
+                    </button>
+                    {createPortal(
+                      <BidModal
+                        open={isBidModalOpen}
+                        setOpen={setIsBidModalOpen}
+                      />,
+                      document.body
+                    )}
+                  </>
                 ) : (
                   <button
                     onClick={() => openAuth(true)}
@@ -212,8 +220,6 @@ export default function Home() {
           </div>
         </div>
       )}
-
-      <BidModal open={isBidModalOpen} setOpen={setIsBidModalOpen} />
     </>
   );
 }
