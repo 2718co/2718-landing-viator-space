@@ -9,7 +9,7 @@ import RedeemModal from "./components/RedeemModal";
 import { useState } from "react";
 
 const GalleryPage = () => {
-  const [redeemModalOpen, setRedeemModalOpen] = useState(true);
+  const [redeemModalOpen, setRedeemModalOpen] = useState(false);
   return (
     <div className="flex flex-col justify-between px-1 lg:flex-row lg:space-x-8 lg:pl-6">
       <div className="w-full lg:w-96">
@@ -18,7 +18,9 @@ const GalleryPage = () => {
           alt="Decorative animated banner"
           placeholder={"blur"}
           blurDataURL="data:image/webp;base64,UklGRoQEAABXRUJQVlA4WAoAAAAgAAAA8AIAMwAASUNDUBgCAAAAAAIYAAAAAAQwAABtbnRyUkdCIFhZWiAAAAAAAAAAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAAHRyWFlaAAABZAAAABRnWFlaAAABeAAAABRiWFlaAAABjAAAABRyVFJDAAABoAAAAChnVFJDAAABoAAAAChiVFJDAAABoAAAACh3dHB0AAAByAAAABRjcHJ0AAAB3AAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAFgAAAAcAHMAUgBHAEIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFhZWiAAAAAAAABvogAAOPUAAAOQWFlaIAAAAAAAAGKZAAC3hQAAGNpYWVogAAAAAAAAJKAAAA+EAAC2z3BhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABYWVogAAAAAAAA9tYAAQAAAADTLW1sdWMAAAAAAAAAAQAAAAxlblVTAAAAIAAAABwARwBvAG8AZwBsAGUAIABJAG4AYwAuACAAMgAwADEANlZQOCBGAgAA0BkAnQEq8QI0AD8RfrZUP66rJCgUC6vwIglnbt7OH3/amgb1MDeszdBLs7UIAhyycJ9lZqOTg5lvdj5qK5jj6rEe2N44+qW+YaVfLvOXfQCjhSv7ejda5jj7ussRvl3ZZxTS/tVRbHJCwmHplTKhxTO7mb+YX1AiuI8ZkohqTwOMBaOMdn8a6SmPih1TzNzCdEWiFmDD63OtkC78Bx8O+ETb17h3w83oTk0qzxxdh8Ovl3oJQSaVxju0DNUsW3sHhYG8ephb3vDOGi8cedXDgu7bUoP9/hAA/uHr8iZRJ/VXdXN2hDvAtBlVI2qBLYQOyyMY03oHjiDeLFtw4v/9+VYle8NaAc6gnPBsEwD6YM22x7hcHylJRk+LStWEMBxiuXztRDrKitkEd60tzOqsnwHb0HFugia+WjyHb8WbBIlFiosuq1X7/j0JY+tPgIQAEJMYoEezCHqWzA0hc7owQtw4Ffofb3QVgaL/M9jwR4aqBfqZ5GIDTN7lqCA7zzzXUurDDGaSALlShbwAfuXchktWhYYQZAdwAULn8gKxoUv8vP7V0vGYNzLlCawkj4wfZwe/2WCYU0Z+tjGTudTNRuSmLiU2aPLz0imlnxRiymGVctv/Jrd6pqRGrA7xQaaRrxR1dTLT3jvYk7tnz+QNvWUHsV1y+6zgCuVIf+PP+Mou4ba/7MJSLK1gSZKEAJGQTyhwSx4QwtPFRP+TYYbIG441gxMPyDOZwPcfro0tIXBXGyQby7gZS+jsO3u+xppZTLETSEAA"
-          className="h-7 w-full lg:hidden"
+          draggable={false}
+          onDragStart={undefined}
+          className="h-7 w-full select-none lg:hidden"
         />
         <h3 className="mb-6 text-highlight-size text-white">Gallery</h3>
         <div className="mb-28 hidden lg:block">
@@ -27,6 +29,7 @@ const GalleryPage = () => {
             <input type={"checkbox"}></input>
           </div>
 
+          {/*
           <Disclosure as="div" className="mt-2">
             {({ open }) => (
               <>
@@ -90,6 +93,8 @@ const GalleryPage = () => {
               </>
             )}
           </Disclosure>
+
+          */}
         </div>
         <div className="mt-3 hidden flex-col text-text-size font-normal text-white lg:flex">
           <Image
@@ -114,13 +119,17 @@ const GalleryPage = () => {
           .fill(0)
           .map((card, index) => (
             <GalleryCard
-              key={card}
+              key={card + index}
               collection="2718 Genesis"
               imgUrl={bigImage}
               name="Framed Collectors Shirt"
               price={5.75746}
               serialNumber={index}
               total={23}
+              onClick={(e) => {
+                e.preventDefault();
+                setRedeemModalOpen(() => true);
+              }}
             />
           ))}
       </div>
