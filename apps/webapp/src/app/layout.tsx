@@ -14,18 +14,15 @@ const customFont = localFont({
   variable: "--font-abc",
 });
 
-console.log("General Root Layout RSC");
-
 function RootLayout({
   // Layouts must accept a children prop.
   // This will be populated with nested layouts or pages
   children,
 }: PropsWithChildren) {
-  console.log("Rendering Root Layout RSC");
   return (
     <html lang="en" className={`${customFont.variable} mono font-mono lg:p-6`}>
-      {/* <html lang="en" className={customFont.className + " mono"}> */}
-      <body className="relative mx-auto flex flex-col bg-dark-background px-3 pt-14 pb-20 lg:rounded-2xl lg:px-36">
+      <head />
+      <body className="relative flex w-full flex-col bg-dark-background px-3 pt-14 pb-20 lg:rounded-2xl lg:px-36">
         <Suspense fallback={<div>Loading...</div>}>
           <ClientProvider>
             <WagmiProvider>
