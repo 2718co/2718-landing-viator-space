@@ -11,12 +11,14 @@ interface IGalleryCardProps {
   price: number;
   serialNumber: number;
   total: number;
+  onClick?: any;
 }
 
 const GalleryCard = (props: IGalleryCardProps) => {
   return (
     <Link
-      href={"#"}
+      href={""}
+      onClick={props.onClick}
       className="w-full overflow-hidden rounded-3xl bg-light-background lg:w-[430px]"
     >
       <Image
