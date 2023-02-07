@@ -126,7 +126,7 @@ const GalleryPage = () => {
               price={5.75746}
               serialNumber={index}
               total={23}
-              onClick={(e) => {
+              onClick={(e: any) => {
                 e.preventDefault();
                 setRedeemModalOpen(() => true);
               }}
