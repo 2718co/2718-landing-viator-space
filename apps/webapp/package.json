@@ -6,7 +6,8 @@
     "build": "next build",
     "dev": "next dev",
     "lint": "next lint",
-    "start": "next start"
+    "start": "next start",
+    "format": "prettier --write \"**/*.{js,ts,tsx,md}\""
   },
   "dependencies": {
     "@download/blockies": "^1.0.3",
