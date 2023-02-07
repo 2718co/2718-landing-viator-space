@@ -27,7 +27,7 @@ const ClaimPage = () => {
                 className={({ selected }) =>
                   classNames(
                     "w-full flex-1 whitespace-nowrap rounded-full py-2 text-title-2-size font-bold leading-6 text-dark-text",
-                    "ring-highlight ring-opacity-60 ring-offset-2 ring-offset-highlight focus:outline-none focus:ring-2",
+                    "mono ring-highlight ring-opacity-60 ring-offset-2 ring-offset-highlight focus:outline-none focus:ring-2",
                     selected ? "bg-highlight" : "hover:bg-highlight/[0.12]"
                   )
                 }
@@ -39,7 +39,7 @@ const ClaimPage = () => {
           <Tab.Panels className="mt-2">
             <Tab.Panel
               className={classNames(
-                "flex h-96 flex-col rounded-3xl bg-light-background p-7",
+                "flex h-96 w-full flex-col rounded-3xl bg-light-background p-7",
                 "focus:outline-none"
               )}
             >
@@ -57,7 +57,7 @@ const ClaimPage = () => {
                     <div className="relative">
                       <div className="grid h-4 w-4 place-items-center rounded-full bg-highlight">
                         {currentClaimPage < ClaimProcess.Wait && (
-                          <div className="h-2 w-2 rounded-full bg-light-background"></div>
+                          <div className="h-2 w-2 rounded-full bg-light-background transition-opacity"></div>
                         )}
                       </div>
                       <div className="absolute -top-5 text-subtitle-2-size text-highlight">
@@ -96,7 +96,7 @@ const ClaimPage = () => {
                   <div className="">
                     <button
                       onClick={() => setCurrentClaimPage(ClaimProcess.Wait)}
-                      className="h-full w-full rounded-2xl bg-highlight py-4 font-mono text-button-text-size font-semibold text-dark-text hover:bg-hover-button"
+                      className="mono h-full w-full rounded-2xl bg-highlight py-4 font-mono text-button-text-size font-semibold text-dark-text hover:bg-hover-button"
                     >
                       Claim
                     </button>
@@ -200,12 +200,12 @@ const ClaimPage = () => {
                 across major web3 platforms.
               </span>
 
-              <ul className="mt-3 flex flex-auto list-none flex-col space-y-3 overflow-scroll">
+              <ul className="hide-scrollbar mt-3 flex flex-auto scroll-mb-8 list-none flex-col space-y-3 overflow-scroll">
                 {Array(7)
                   .fill(0)
                   .map((item, idx) => (
                     <li key={item}>
-                      <button className="w-full rounded-2xl bg-white px-4 py-6 text-left text-button-text-size text-dark-text">
+                      <button className="mono w-full rounded-2xl bg-white px-4 py-6 text-left text-button-text-size text-dark-text">
                         areo.2718.eth
                       </button>
                     </li>
