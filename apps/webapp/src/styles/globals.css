@@ -13,11 +13,15 @@ html {
 
 body {
   min-height: 100vh;
-  max-width: 1680px;
+  /* max-width: 1680px; */
 }
 
 @layer utilities {
   .mono {
     font-variation-settings: "MONO" 1;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
   }
 }
