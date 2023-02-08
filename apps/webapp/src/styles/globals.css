@@ -8,12 +8,11 @@ button {
 }
 
 html {
-  background-color: rgb(217, 217, 217);
+  background-color: #1a1a1a;
 }
 
 body {
   min-height: 100vh;
-  /* max-width: 1680px; */
 }
 
 @layer utilities {

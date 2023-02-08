@@ -20,19 +20,24 @@ function RootLayout({
   children,
 }: PropsWithChildren) {
   return (
-    <html lang="en" className={`${customFont.variable} mono font-mono lg:p-6`}>
+    <html
+      lang="en"
+      className={`${customFont.variable} mono bg-black font-mono`}
+    >
       <head />
-      <body className="relative flex w-full flex-col bg-dark-background px-3 pt-14 pb-20 lg:rounded-2xl lg:px-36">
-        <Suspense fallback={<div>Loading...</div>}>
-          <ClientProvider>
-            <WagmiProvider>
-              <Navbar />
-              <main className="flex-auto font-mono">{children}</main>
-              <Footer />
-            </WagmiProvider>
-          </ClientProvider>
-          <Cursor />
-        </Suspense>
+      <body className="rounded-3xl bg-[#D9D9D9] p-6">
+        <div className="relative flex w-full flex-col bg-dark-background px-3 pt-14 pb-20 lg:rounded-2xl lg:px-36">
+          <Suspense fallback={<div>Loading...</div>}>
+            <ClientProvider>
+              <WagmiProvider>
+                <Navbar />
+                <main className="flex-auto font-mono">{children}</main>
+                <Footer />
+              </WagmiProvider>
+            </ClientProvider>
+            <Cursor />
+          </Suspense>
+        </div>
       </body>
     </html>
   );
