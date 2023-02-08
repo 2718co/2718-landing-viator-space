@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
+import { createPortal } from "react-dom";
 import bigImage from "../../../public/bigImage.png";
 import funkyAnimated from "../assets/funky_dark.gif";
 import GalleryCard from "./components/GalleryCard";
@@ -67,7 +68,10 @@ const GalleryPage = () => {
             />
           ))}
       </div>
-      <RedeemModal open={redeemModalOpen} setOpen={setRedeemModalOpen} />
+      {createPortal(
+        <RedeemModal open={redeemModalOpen} setOpen={setRedeemModalOpen} />,
+        document.body
+      )}
     </div>
   );
 };

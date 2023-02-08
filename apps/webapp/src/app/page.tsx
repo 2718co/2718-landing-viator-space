@@ -45,18 +45,21 @@ export default function Home() {
                 alt="Hanging TShirt"
                 onClick={openLightbox}
               />
-              <Lightbox
-                open={lightboxOpen}
-                setOpen={setLightboxOpen}
-                imgUrls={[
-                  bigImage,
-                  tallImage,
-                  hangingImage,
-                  squareLeft,
-                  squareRight,
-                ]}
-              />
 
+              {createPortal(
+                <Lightbox
+                  open={lightboxOpen}
+                  setOpen={setLightboxOpen}
+                  imgUrls={[
+                    bigImage,
+                    tallImage,
+                    hangingImage,
+                    squareLeft,
+                    squareRight,
+                  ]}
+                />,
+                document.body
+              )}
               <div className="absolute top-4 left-5">
                 <PillCounter index={3} total={32} />
               </div>
