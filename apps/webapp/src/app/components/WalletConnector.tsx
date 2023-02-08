@@ -72,7 +72,7 @@ const WalletConnector = (): JSX.Element => {
     <>
       <button
         onClick={() => setModalOpen(true)}
-        className="mono rounded-2xl border-2 border-highlight py-4 px-8 font-mono text-white hover:bg-hover-rectangle"
+        className="mono rounded-2xl border-2 border-highlight py-4 px-8 font-mono text-2xl tracking-wide text-white hover:bg-hover-rectangle"
       >
         Connect Wallet
       </button>
