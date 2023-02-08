@@ -46,20 +46,21 @@ export default function Home() {
                 onClick={openLightbox}
               />
 
-              {createPortal(
-                <Lightbox
-                  open={lightboxOpen}
-                  setOpen={setLightboxOpen}
-                  imgUrls={[
-                    bigImage,
-                    tallImage,
-                    hangingImage,
-                    squareLeft,
-                    squareRight,
-                  ]}
-                />,
-                document.body
-              )}
+              {typeof window !== "undefined" &&
+                createPortal(
+                  <Lightbox
+                    open={lightboxOpen}
+                    setOpen={setLightboxOpen}
+                    imgUrls={[
+                      bigImage,
+                      tallImage,
+                      hangingImage,
+                      squareLeft,
+                      squareRight,
+                    ]}
+                  />,
+                  document.body
+                )}
               <div className="absolute top-4 left-5">
                 <PillCounter index={3} total={32} />
               </div>
@@ -172,13 +173,14 @@ export default function Home() {
                     >
                       Place Bid
                     </button>
-                    {createPortal(
-                      <BidModal
-                        open={isBidModalOpen}
-                        setOpen={setIsBidModalOpen}
-                      />,
-                      document.body
-                    )}
+                    {typeof window !== "undefined" &&
+                      createPortal(
+                        <BidModal
+                          open={isBidModalOpen}
+                          setOpen={setIsBidModalOpen}
+                        />,
+                        document.body
+                      )}
                   </>
                 ) : (
                   <button
@@ -195,11 +197,12 @@ export default function Home() {
 
         {/* Video */}
         <div className="col-span-1 overflow-hidden rounded-3xl bg-black">
-          {/* <video
-            src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+          <video
+            src="/ai-art.mp4"
+            autoPlay
             muted
             className="h-full w-full object-cover"
-          /> */}
+          />
         </div>
 
         {/* Offers */}

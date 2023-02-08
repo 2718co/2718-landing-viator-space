@@ -68,10 +68,11 @@ const GalleryPage = () => {
             />
           ))}
       </div>
-      {createPortal(
-        <RedeemModal open={redeemModalOpen} setOpen={setRedeemModalOpen} />,
-        document.body
-      )}
+      {typeof window !== "undefined" &&
+        createPortal(
+          <RedeemModal open={redeemModalOpen} setOpen={setRedeemModalOpen} />,
+          document.body
+        )}
     </div>
   );
 };
