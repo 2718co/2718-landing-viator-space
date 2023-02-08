@@ -10,7 +10,7 @@ const GalleryPage = () => {
   const [redeemModalOpen, setRedeemModalOpen] = useState(false);
   return (
     <div className="flex flex-col justify-between px-1 lg:flex-row lg:space-x-8 lg:pl-6">
-      <div className="w-full lg:w-96">
+      <div className="sticky top-0 h-screen w-full lg:w-96">
         <Image
           src={funkyAnimated}
           alt="Decorative animated banner"
@@ -24,7 +24,10 @@ const GalleryPage = () => {
         <div className="mb-28 hidden lg:block">
           <div className="flex w-full justify-between rounded-lg py-2 text-left text-sm font-medium text-white hover:opacity-80 focus:outline-none focus-visible:ring focus-visible:ring-highlight focus-visible:ring-opacity-75">
             <span>My NFTs</span>
-            <input type={"checkbox"}></input>
+            <input
+              type={"checkbox"}
+              className="h-5 w-5 rounded-md border-2 border-light-background accent-dark-background"
+            ></input>
           </div>
         </div>
         <div className="mt-3 hidden flex-col text-text-size font-normal text-white lg:flex">
