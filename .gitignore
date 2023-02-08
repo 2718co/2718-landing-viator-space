@@ -24,3 +24,5 @@ src/.DS_Store
 # Foundry
 foundry-out
 foundry-cache
+.vercel
+.turbo/
