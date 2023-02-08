@@ -1,12 +1,10 @@
 "use client";
-import GalleryCard from "./components/GalleryCard";
+import Image from "next/image";
+import { useState } from "react";
 import bigImage from "../../../public/bigImage.png";
 import funkyAnimated from "../assets/funky_dark.gif";
-import { Disclosure, Transition } from "@headlessui/react";
-import ChevronUpIcon from "./components/ChevronUpIcon";
-import Image from "next/image";
+import GalleryCard from "./components/GalleryCard";
 import RedeemModal from "./components/RedeemModal";
-import { useState } from "react";
 
 const GalleryPage = () => {
   const [redeemModalOpen, setRedeemModalOpen] = useState(false);
@@ -28,73 +26,6 @@ const GalleryPage = () => {
             <span>My NFTs</span>
             <input type={"checkbox"}></input>
           </div>
-
-          {/*
-          <Disclosure as="div" className="mt-2">
-            {({ open }) => (
-              <>
-                <Disclosure.Button className="flex w-full justify-between rounded-lg py-2 text-left text-sm font-medium text-white hover:opacity-80 focus:outline-none focus-visible:ring focus-visible:ring-highlight focus-visible:ring-opacity-75">
-                  <span>Collection</span>
-                  <ChevronUpIcon
-                    className={`${
-                      open ? "rotate-180 transform" : ""
-                    } h-5 w-5 text-white`}
-                  />
-                </Disclosure.Button>
-                <Transition
-                  enter="transition duration-100 ease-out"
-                  enterFrom="transform scale-95 opacity-0"
-                  enterTo="transform scale-100 opacity-100"
-                  leave="transition duration-75 ease-out"
-                  leaveFrom="transform scale-100 opacity-100"
-                  leaveTo="transform scale-95 opacity-0"
-                >
-                  <Disclosure.Panel className="pt-4 pb-2 text-sm text-gray-500">
-                    No.
-                    <hr className="mt-3 bg-light-text" />
-                  </Disclosure.Panel>
-                </Transition>
-              </>
-            )}
-          </Disclosure>
-          <Disclosure as="div" className="mt-2">
-            {({ open }) => (
-              <>
-                <Disclosure.Button className="flex w-full justify-between rounded-lg py-2 text-left text-sm font-medium text-white hover:opacity-80 focus:outline-none focus-visible:ring focus-visible:ring-highlight focus-visible:ring-opacity-75">
-                  <span>Year</span>
-                  <ChevronUpIcon
-                    className={`${
-                      open ? "rotate-180 transform" : ""
-                    } h-5 w-5 text-white`}
-                  />
-                </Disclosure.Button>
-                <Disclosure.Panel className="pt-4 pb-2 text-sm text-gray-500">
-                  No.
-                  <hr className="mt-3 bg-light-text" />
-                </Disclosure.Panel>
-              </>
-            )}
-          </Disclosure>
-          <Disclosure as="div" className="mt-2">
-            {({ open }) => (
-              <>
-                <Disclosure.Button className="flex w-full justify-between rounded-lg py-2 text-left text-sm font-medium text-white hover:opacity-80 focus:outline-none focus-visible:ring focus-visible:ring-highlight focus-visible:ring-opacity-75">
-                  <span>Category</span>
-                  <ChevronUpIcon
-                    className={`${
-                      open ? "rotate-180 transform" : ""
-                    } h-5 w-5 text-white`}
-                  />
-                </Disclosure.Button>
-                <Disclosure.Panel className="pt-4 pb-2 text-sm text-gray-500">
-                  No.
-                  <hr className="mt-3 bg-light-text" />
-                </Disclosure.Panel>
-              </>
-            )}
-          </Disclosure>
-
-          */}
         </div>
         <div className="mt-3 hidden flex-col text-text-size font-normal text-white lg:flex">
           <Image
