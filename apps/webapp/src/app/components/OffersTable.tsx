@@ -7,7 +7,7 @@ const OffersTable = (): JSX.Element => {
       <div className="flex flex-row items-center justify-between">
         <span className="font-mono text-title-1-size">Offers</span>
         <span className="hidden font-mono text-title-2-size font-medium text-light-text lg:block">
-          <button className="rounded-full p-2 hover:bg-dark-background">
+          <button className="rounded-full p-2 transition-all hover:bg-hover-light">
             <svg
               width="15"
               height="17"
