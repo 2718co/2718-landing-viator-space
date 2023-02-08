@@ -101,10 +101,10 @@ const RedeemModal = ({ open, setOpen }: IRedeemModalProps) => {
                               }
                               type="text"
                               placeholder="Full name"
-                              className="peer w-full rounded-xl bg-white px-4 py-6 placeholder-transparent"
+                              className="peer w-full rounded-xl bg-white px-4 pt-8 pb-4 placeholder-transparent placeholder-shown:pt-6 placeholder-shown:pb-6"
                             />
                             <label
-                              className="absolute left-4 top-0 text-light-text transition-all peer-placeholder-shown:top-6 peer-placeholder-shown:text-dark-text"
+                              className="absolute left-4 top-2 text-xs text-light-text transition-all peer-placeholder-shown:top-6 peer-placeholder-shown:text-lg peer-placeholder-shown:text-light-text"
                               htmlFor="name"
                             >
                               Full name
@@ -122,10 +122,10 @@ const RedeemModal = ({ open, setOpen }: IRedeemModalProps) => {
                               }
                               type="email"
                               placeholder="E-mail address"
-                              className="peer w-full rounded-xl bg-white px-4 py-6 placeholder-transparent"
+                              className="peer w-full rounded-xl bg-white px-4 pt-8 pb-4 placeholder-transparent placeholder-shown:pt-6 placeholder-shown:pb-6"
                             />
                             <label
-                              className="absolute left-4 top-0 text-light-text transition-all peer-placeholder-shown:top-6 peer-placeholder-shown:text-dark-text"
+                              className="absolute left-4 top-2 text-xs text-light-text transition-all peer-placeholder-shown:top-6 peer-placeholder-shown:text-lg peer-placeholder-shown:text-light-text"
                               htmlFor="email"
                             >
                               E-mail address
@@ -143,11 +143,11 @@ const RedeemModal = ({ open, setOpen }: IRedeemModalProps) => {
                               }
                               type="text"
                               placeholder="Street address and house number"
-                              className="peer w-full rounded-xl bg-white px-4 py-6 placeholder-transparent"
+                              className="peer w-full rounded-xl bg-white px-4 pt-8 pb-4 placeholder-transparent placeholder-shown:pt-6 placeholder-shown:pb-6"
                             />
 
                             <label
-                              className="absolute left-4 top-0 text-light-text transition-all peer-placeholder-shown:top-6 peer-placeholder-shown:text-dark-text"
+                              className="absolute left-4 top-2 text-xs text-light-text transition-all peer-placeholder-shown:top-6 peer-placeholder-shown:text-lg peer-placeholder-shown:text-light-text"
                               htmlFor="street"
                             >
                               Street address and house number
@@ -165,11 +165,11 @@ const RedeemModal = ({ open, setOpen }: IRedeemModalProps) => {
                               }
                               type="text"
                               placeholder="City"
-                              className="peer w-full rounded-xl bg-white px-4 py-6 placeholder-transparent"
+                              className="peer w-full rounded-xl bg-white px-4 pt-8 pb-4 placeholder-transparent placeholder-shown:pt-6 placeholder-shown:pb-6"
                             />
 
                             <label
-                              className="absolute left-4 top-0 text-light-text transition-all peer-placeholder-shown:top-6 peer-placeholder-shown:text-dark-text"
+                              className="absolute left-4 top-2 text-xs text-light-text transition-all peer-placeholder-shown:top-6 peer-placeholder-shown:text-lg peer-placeholder-shown:text-light-text"
                               htmlFor="city"
                             >
                               City
@@ -187,11 +187,11 @@ const RedeemModal = ({ open, setOpen }: IRedeemModalProps) => {
                               }
                               type="text"
                               placeholder="Province"
-                              className="peer w-full rounded-xl bg-white px-4 py-6 placeholder-transparent"
+                              className="peer w-full rounded-xl bg-white px-4 pt-8 pb-4 placeholder-transparent placeholder-shown:pt-6 placeholder-shown:pb-6"
                             />
 
                             <label
-                              className="absolute left-4 top-0 text-light-text transition-all peer-placeholder-shown:top-6 peer-placeholder-shown:text-dark-text"
+                              className="absolute left-4 top-2 text-xs text-light-text transition-all peer-placeholder-shown:top-6 peer-placeholder-shown:text-lg peer-placeholder-shown:text-light-text"
                               htmlFor="province"
                             >
                               Province
@@ -209,10 +209,10 @@ const RedeemModal = ({ open, setOpen }: IRedeemModalProps) => {
                               }
                               type="text"
                               placeholder="Zip Code"
-                              className="peer w-full rounded-xl bg-white px-4 py-6 placeholder-transparent"
+                              className="peer w-full rounded-xl bg-white px-4 pt-8 pb-4 placeholder-transparent placeholder-shown:pt-6 placeholder-shown:pb-6"
                             />
                             <label
-                              className="absolute left-4 top-0 text-light-text transition-all peer-placeholder-shown:top-6 peer-placeholder-shown:text-dark-text"
+                              className="absolute left-4 top-2 text-xs text-light-text transition-all peer-placeholder-shown:top-6 peer-placeholder-shown:text-lg peer-placeholder-shown:text-light-text"
                               htmlFor="zip"
                             >
                               Zip Code
@@ -230,11 +230,11 @@ const RedeemModal = ({ open, setOpen }: IRedeemModalProps) => {
                               }
                               type="text"
                               placeholder="Country"
-                              className="peer w-full rounded-xl bg-white px-4 py-6 placeholder-transparent"
+                              className="peer w-full rounded-xl bg-white px-4 pt-8 pb-4 placeholder-transparent placeholder-shown:pt-6 placeholder-shown:pb-6"
                             />
 
                             <label
-                              className="absolute left-4 top-0 text-light-text transition-all peer-placeholder-shown:top-6 peer-placeholder-shown:text-dark-text"
+                              className="absolute left-4 top-2 text-xs text-light-text transition-all peer-placeholder-shown:top-6 peer-placeholder-shown:text-lg peer-placeholder-shown:text-light-text"
                               htmlFor="country"
                             >
                               Country
