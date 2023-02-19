@@ -22,7 +22,7 @@ function RootLayout({
   return (
     <html
       lang="en"
-      className={`${customFont.variable} mono bg-black font-mono`}
+      className={`${customFont.variable} mono bg-dark-background font-mono`}
     >
       <head />
       <body className="rounded-3xl bg-[#D9D9D9] p-6">
