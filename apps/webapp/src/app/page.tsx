@@ -1,8 +1,8 @@
 "use client";
 
-import Image from "next/image";
+import { AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { useAccount } from "wagmi";
 import bigImage from "../../public/bigImage.png";
@@ -11,15 +11,23 @@ import squareLeft from "../../public/squareLeft.png";
 import squareRight from "../../public/squareRight.png";
 import tallImage from "../../public/tallImage.png";
 import { AuthContext } from "../client/wagmi";
+import usePrefersReducedMotion from "../utils/usePrefersReducedMotion";
 import BidModal from "./components/BidModal";
 import ETHLogo from "./components/ETHLogo";
+import HorizontalCarousel from "./components/HorizontalCarousel";
 import Lightbox from "./components/Lightbox";
 import MetamaskLogo from "./components/logos/metamask";
 import WalletConnectLogo from "./components/logos/walletConnect";
 import OffersTable from "./components/OffersTable";
 import PillCounter from "./components/PillCounter";
+import VerticalCarousel from "./components/VerticalCarousel";
+
+const images = [bigImage, hangingImage, squareLeft, squareRight, tallImage];
+
+const GALLERY_SLIDESHOW_INTERVAL = 4000;
 
 export default function Home() {
+  const prefersReducedMotion = usePrefersReducedMotion();
   const { isConnected } = useAccount();
   const [isBidModalOpen, setIsBidModalOpen] = useState(false);
 
@@ -27,79 +35,104 @@ export default function Home() {
 
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const openLightbox = () => setLightboxOpen(true);
+  const [currentIdx, setCurrentIdx] = useState(0);
+
+  useEffect(() => {
+    if (prefersReducedMotion) return;
+
+    const interval = setInterval(
+      () => setCurrentIdx((prev) => prev + 1),
+      GALLERY_SLIDESHOW_INTERVAL
+    );
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
   return (
     <>
       <div className="grid grid-flow-row gap-x-10 gap-y-2 lg:grid-cols-2 lg:gap-y-8 ">
         {/* main */}
         <div className="col-span-1 flex flex-col overflow-hidden rounded-3xl bg-light-background lg:col-span-2">
-          <div
-            id="gallery"
-            className="relative flex max-h-[544px] cursor-pointer flex-row"
-          >
-            {/* Main Image */}
-            <div className="relative flex-[6]">
-              <Image
-                src={bigImage}
-                priority
-                className="h-full w-full object-cover"
-                alt="Hanging TShirt"
-                onClick={openLightbox}
-              />
-
-              {typeof window !== "undefined" &&
-                createPortal(
-                  <Lightbox
-                    open={lightboxOpen}
-                    setOpen={setLightboxOpen}
-                    imgUrls={[
-                      bigImage,
-                      tallImage,
-                      hangingImage,
-                      squareLeft,
-                      squareRight,
-                    ]}
-                  />,
-                  document.body
-                )}
-              <div className="absolute top-4 left-5">
-                <PillCounter index={3} total={32} />
-              </div>
-            </div>
-
+          <AnimatePresence initial={false} mode="wait">
             <div
-              className="relative hidden flex-[4] grid-cols-3 grid-rows-4 lg:grid"
-              onClick={openLightbox}
+              id="gallery"
+              className="relative flex h-[544px] cursor-pointer flex-row"
             >
-              <Image
-                src={tallImage}
-                placeholder={"blur"}
-                alt="Tall Tshirt preview"
-                className="row-span-4 h-full w-full object-cover"
-              />
-              <Image
-                src={hangingImage}
-                placeholder={"blur"}
-                alt="Tall Tshirt preview"
-                className="col-span-2 row-span-3 h-full w-full object-cover"
-              />
-              <Image
-                src={squareLeft}
-                placeholder={"blur"}
-                alt="Tall Tshirt preview"
-                className="h-full w-full object-cover "
-              />
-              <Image
-                src={squareRight}
-                placeholder={"blur"}
-                alt="Tall Tshirt preview"
-                className="h-full w-full object-cover "
-              />
+              {/* Main Image */}
+              <div className="relative flex-[826]">
+                <HorizontalCarousel
+                  carouselId={`carousel1`}
+                  currentIdx={currentIdx}
+                  images={images}
+                  openLightbox={openLightbox}
+                />
 
-              <div className="absolute inset-0 bg-slate-500 opacity-60" />
+                {typeof window !== "undefined" &&
+                  createPortal(
+                    <Lightbox
+                      open={lightboxOpen}
+                      setOpen={setLightboxOpen}
+                      imgUrls={[
+                        bigImage,
+                        tallImage,
+                        hangingImage,
+                        squareLeft,
+                        squareRight,
+                      ]}
+                    />,
+                    document.body
+                  )}
+                <div className="absolute top-4 left-5">
+                  <PillCounter index={3} total={32} />
+                </div>
+              </div>
+
+              <div
+                className="relative hidden flex-[544] lg:flex" // grid-rows-4 grid-cols-3
+                onClick={openLightbox}
+              >
+                <HorizontalCarousel
+                  carouselId={`carousel2`}
+                  currentIdx={currentIdx + 1}
+                  images={images}
+                  className="flex-[15]"
+                />
+
+                <div className="flex h-full flex-[20] flex-col">
+                  <HorizontalCarousel
+                    carouselId={`carousel3`}
+                    currentIdx={currentIdx + 2}
+                    images={images}
+                    className="flex-[3]"
+                  />
+
+                  <div className="flex flex-row">
+                    <VerticalCarousel
+                      carouselId={`carousel4`}
+                      currentIdx={currentIdx + 3}
+                      images={images}
+                      className="aspect-square flex-1"
+                    />
+
+                    <HorizontalCarousel
+                      carouselId={`carousel5`}
+                      currentIdx={currentIdx + 4}
+                      images={images}
+                      className="aspect-square flex-1"
+                      reverse
+                    />
+                  </div>
+                </div>
+
+                <div className="absolute inset-0 z-10 bg-slate-500 opacity-60" />
+              </div>
+
+              <div className="absolute inset-x-0 bottom-0 z-20 h-1/3 bg-gradient-to-b from-transparent to-light-background"></div>
             </div>
+          </AnimatePresence>
 
-            <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-b from-transparent to-light-background"></div>
-          </div>
           <div className="flex flex-col bg-none pt-9 pb-2 lg:flex-row lg:px-5 lg:py-9">
             {/* Description */}
             <div className="flex flex-1 flex-col space-y-1 px-2 pb-2 lg:px-0 lg:pb-0">
