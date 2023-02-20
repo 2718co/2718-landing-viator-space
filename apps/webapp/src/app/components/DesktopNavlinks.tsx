@@ -69,6 +69,11 @@ const DesktopNavlinks = () => {
     >
       <motion.div
         className="absolute h-full rounded-2xl bg-hover-rectangle px-8"
+        initial={{
+          opacity: 0,
+          left: 0,
+          width: 0,
+        }}
         animate={{
           opacity: animateValues.opacity,
           left: animateValues.offsetLeft,
