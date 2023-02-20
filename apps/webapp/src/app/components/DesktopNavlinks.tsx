@@ -11,6 +11,8 @@ interface AnimateValues {
   opacity: number;
 }
 
+const MotionLink = motion(Link);
+
 export const DesktopNavlink = ({
   path,
   label,
@@ -22,9 +24,10 @@ export const DesktopNavlink = ({
 }) => {
   const self = useRef<HTMLDivElement>(null);
   return (
-    <motion.div
+    <MotionLink
       key={label}
       ref={self}
+      href={path}
       className="h-full py-4 px-8"
       onHoverStart={(e: PointerEvent, i) => {
         setAnimateValues?.((prev) => {
@@ -38,13 +41,12 @@ export const DesktopNavlink = ({
         });
       }}
     >
-      <Link
-        href={path}
+      <span
         className="box-border rounded-2xl font-mono text-highlight " //hover:bg-hover-rectangle
       >
         {label}
-      </Link>
-    </motion.div>
+      </span>
+    </MotionLink>
   );
 };
 
@@ -65,7 +67,7 @@ const DesktopNavlinks = () => {
       }}
     >
       <motion.div
-        className="absolute h-full rounded-2xl bg-hover-rectangle px-8"
+        className="pointer-events-none absolute h-full rounded-2xl bg-hover-rectangle px-8"
         initial={{
           opacity: 0,
           left: 0,
