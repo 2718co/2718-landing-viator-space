@@ -27,7 +27,6 @@ export const DesktopNavlink = ({
       ref={self}
       className="h-full py-4 px-8"
       onHoverStart={(e: PointerEvent, i) => {
-        console.log("onHoverStart", e, i);
         setAnimateValues?.((prev) => {
           const newVals = {
             ...prev,
@@ -35,7 +34,6 @@ export const DesktopNavlink = ({
             offsetLeft: self.current?.offsetLeft ?? 0,
             width: self.current?.offsetWidth ?? 1,
           };
-          console.log(newVals);
           return newVals;
         });
       }}
@@ -60,7 +58,6 @@ const DesktopNavlinks = () => {
     <motion.nav
       className="relative hidden flex-1 flex-row justify-start lg:flex"
       onHoverEnd={(e, i) => {
-        console.log("onHoverEnd", e, i);
         setAnimateValues?.((prev) => ({
           ...prev,
           opacity: 0,
