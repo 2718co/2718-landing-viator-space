@@ -5,12 +5,14 @@ const QUERY = "(prefers-reduced-motion: no-preference)";
 const usePrefersReducedMotion = () => {
   // Default to no-animations, since we don't know what the
   // user's preference is on the server.
-  const [prefersReducedMotion, setPrefersReducedMotion] = React.useState(true);
+  const [prefersReducedMotion, setPrefersReducedMotion] =
+    React.useState<boolean>();
 
   React.useEffect(() => {
     const mediaQueryList = window.matchMedia(QUERY);
     // Set the true initial value, now that we're on the client:
-    setPrefersReducedMotion(!window.matchMedia(QUERY).matches);
+    setPrefersReducedMotion(!mediaQueryList.matches);
+
     // Register our event listener
     const listener = (event: MediaQueryListEvent) => {
       setPrefersReducedMotion(!event.matches);

@@ -38,17 +38,19 @@ export default function Home() {
   const [currentIdx, setCurrentIdx] = useState(0);
 
   useEffect(() => {
-    if (prefersReducedMotion) return;
+    if (!prefersReducedMotion) {
+      const interval = setInterval(
+        () => setCurrentIdx((prev) => prev + 1),
+        GALLERY_SLIDESHOW_INTERVAL
+      );
 
-    const interval = setInterval(
-      () => setCurrentIdx((prev) => prev + 1),
-      GALLERY_SLIDESHOW_INTERVAL
-    );
-
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
+      return () => {
+        clearInterval(interval);
+      };
+    } else {
+      console.log("No animation since user prefers reduced motion");
+    }
+  }, [prefersReducedMotion]);
 
   return (
     <>
@@ -129,7 +131,7 @@ export default function Home() {
                 <div className="absolute inset-0 z-10 bg-slate-500 opacity-60" />
               </div>
 
-              <div className="absolute inset-x-0 bottom-0 z-20 h-1/3 bg-gradient-to-b from-transparent to-light-background"></div>
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-1/3 bg-gradient-to-b from-transparent to-light-background"></div>
             </div>
           </AnimatePresence>
 
