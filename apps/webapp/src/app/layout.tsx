@@ -1,17 +1,21 @@
 import localFont from "@next/font/local";
+import dynamic from "next/dynamic";
 import type { PropsWithChildren } from "react";
 import { Suspense } from "react";
 
 import { ClientProvider } from "../client/trpc";
 import WagmiProvider from "../client/wagmi";
 import "../styles/globals.css";
-import Cursor from "./components/Cursor";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 
 const customFont = localFont({
   src: "./assets/ABCDiatypePlusVariable.woff2",
   variable: "--font-abc",
+});
+
+const Cursor = dynamic(() => import("./components/Cursor"), {
+  ssr: true,
 });
 
 function RootLayout({

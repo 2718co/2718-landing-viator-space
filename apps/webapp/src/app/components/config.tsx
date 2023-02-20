@@ -1,8 +1,7 @@
-import Image from "next/image";
+import BraveLogo from "./logos/brave";
+import CoinbaseLogo from "./logos/coinbase";
 import MetamaskLogo from "./logos/metamask";
 import WalletConnectLogo from "./logos/walletConnect";
-import CoinbaseLogo from "../../../public/coinbaseCoinLogo.png";
-import BraveLogo from "../../../public/braveLogo.png";
 
 export type NavLink = {
   label: string;
@@ -51,15 +50,7 @@ export const PROVIDERS: Map<AuthProviders, AuthProvider> = new Map([
     "coinbaseWallet",
     {
       name: "Coinbase",
-      icon: (
-        <Image
-          src={CoinbaseLogo}
-          alt="Coinbase Logo"
-          height={48}
-          width={48}
-          placeholder={"blur"}
-        />
-      ),
+      icon: <CoinbaseLogo />,
     },
   ],
   [
@@ -73,15 +64,7 @@ export const PROVIDERS: Map<AuthProviders, AuthProvider> = new Map([
     "injected",
     {
       name: "Browser Wallet",
-      icon: (
-        <Image
-          src={BraveLogo}
-          alt="Brave Logo"
-          height={48}
-          width={48}
-          placeholder={"blur"}
-        />
-      ),
+      icon: <BraveLogo />,
     },
   ],
 ]);
