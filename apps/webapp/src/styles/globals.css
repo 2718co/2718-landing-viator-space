@@ -2,9 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-*,
-button {
-  cursor: none;
+@media (min-width: 768px) {
+  *,
+  button {
+    cursor: none;
+  }
 }
 
 body {
