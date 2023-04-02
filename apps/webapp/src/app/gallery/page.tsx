@@ -12,7 +12,7 @@ const GalleryPage = () => {
   const [redeemModalOpen, setRedeemModalOpen] = useState(false);
   return (
     <div className="flex flex-col justify-between px-1 lg:flex-row lg:space-x-8 lg:pl-6">
-      <div className="sticky top-0 h-screen w-full lg:w-96">
+      <div className="relative h-min w-full lg:sticky lg:top-0 lg:h-screen lg:w-96">
         <Image
           src={funkyAnimated}
           alt="Decorative animated banner"
