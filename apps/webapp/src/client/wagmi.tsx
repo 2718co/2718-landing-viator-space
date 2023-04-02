@@ -3,7 +3,7 @@
 import type { Dispatch, PropsWithChildren, SetStateAction } from "react";
 import { createContext, useMemo, useState } from "react";
 
-import { configureChains, createClient, WagmiConfig } from "wagmi";
+import { configureChains, createClient, useContract, WagmiConfig } from "wagmi";
 import { goerli, mainnet } from "wagmi/chains";
 
 import { alchemyProvider } from "wagmi/providers/alchemy";
@@ -14,7 +14,10 @@ import { CoinbaseWalletConnector } from "wagmi/connectors/coinbaseWallet";
 import { InjectedConnector } from "wagmi/connectors/injected";
 import { MetaMaskConnector } from "wagmi/connectors/metaMask";
 import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
+import { WalletConnectLegacyConnector } from "@wagmi/core/connectors/walletConnectLegacy";
+
 import AuthModal from "../app/components/AuthModal";
+import { Contract } from "ethers";
 
 const defaultChains = [mainnet, goerli];
 const { chains, provider, webSocketProvider } = configureChains(defaultChains, [
@@ -39,12 +42,19 @@ const client = createClient({
         appName: "wagmi",
       },
     }),
-    new WalletConnectConnector({
-      chains,
-      options: {
-        qrcode: true,
-      },
-    }),
+    // new WalletConnectLegacyConnector({
+    //   chains,
+    //   options: {
+    //     qrcode: true,
+    //   },
+    // }),
+    // new WalletConnectConnector({
+    //   chains,
+    //   options: {
+    //     projectId: "",
+    //     showQrModal: true,
+    //   },
+    // }),
     new InjectedConnector({
       chains,
       options: {
