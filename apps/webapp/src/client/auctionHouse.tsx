@@ -37,15 +37,22 @@ const AuctionHouseProvider = (props: PropsWithChildren) => {
 export const useAuctionHouse = () => {
   //   const auctionHouse = useContext(AuctionHouseContext);
 
+  const currentAuction = async () => {
+    const currentAuction = await contract.auction();
+    return currentAuction;
+  };
+
   const placeBid = async (amount: string) => {
     const { planetId } = await contract.auction();
     const options = { value: ethers.utils.parseEther(`${amount}`) };
     await contract.createBid(planetId, options);
   };
+
   const settleAuction = () => ({});
 
   return {
     placeBid,
+    currentAuction,
   };
 };
 
