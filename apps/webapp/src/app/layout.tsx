@@ -1,13 +1,15 @@
-import localFont from "@next/font/local";
+
 import dynamic from "next/dynamic";
 import type { PropsWithChildren } from "react";
 import { Suspense } from "react";
+import AuctionHouseProvider from "../client/auctionHouse";
 
 import { ClientProvider } from "../client/trpc";
 import WagmiProvider from "../client/wagmi";
 import "../styles/globals.css";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
+import localFont from "next/font/local";
 
 const customFont = localFont({
   src: "./assets/ABCDiatypePlusVariable.woff2",
@@ -34,9 +36,11 @@ function RootLayout({
           <Suspense fallback={<div>Loading...</div>}>
             <ClientProvider>
               <WagmiProvider>
-                <Navbar />
-                <main className="flex-auto font-mono">{children}</main>
-                <Footer />
+                <AuctionHouseProvider>
+                  <Navbar />
+                  <main className="flex-auto font-mono">{children}</main>
+                  <Footer />
+                </AuctionHouseProvider>
               </WagmiProvider>
             </ClientProvider>
             <Cursor />
