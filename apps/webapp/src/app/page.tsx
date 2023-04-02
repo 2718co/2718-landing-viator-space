@@ -171,7 +171,12 @@ export default function Home() {
             <div className="flex flex-1 flex-col space-y-4 rounded-b-md px-2 lg:grid lg:grid-cols-2 lg:grid-rows-1 lg:gap-4 lg:gap-y-8 lg:space-y-0 lg:px-0">
               {/* Top Bid */}
               <div className="flex flex-row lg:space-x-3">
-                <span className="hidden w-4 place-items-center lg:grid lg:w-8">
+                <span className="hidden w-4 place-items-center lg:grid lg:w-8 lg:gap-y-3">
+                  <div className="">
+                    <span className="font-mono text-title-3-size leading-6 text-light-text lg:text-lg">
+                      &nbsp;
+                    </span>
+                  </div>
                   <ETHLogo />
                 </span>
                 <span className="grid grid-flow-row gap-y-1 lg:gap-y-3">
