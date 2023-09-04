@@ -1,4 +1,5 @@
 'use client';
+
 import Image from 'next/image';
 import { useState } from 'react';
 import { createPortal } from 'react-dom';
@@ -65,8 +66,7 @@ const GalleryPage = () => {
                             price={5.75746}
                             serialNumber={index}
                             total={23}
-                            onClick={(e: MouseEvent) => {
-                                e.preventDefault();
+                            onClick={() => {
                                 setRedeemModalOpen(() => true);
                             }}
                         />

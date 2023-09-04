@@ -6,6 +6,14 @@ import React, { useState } from 'react';
 import { classNames } from '../../../utils/classnames';
 import Verified from './assets/Verified.svg';
 
+// TODO: this
+enum ClaimProcess {
+    Claim,
+    Wait,
+    Register,
+    Save
+}
+
 const ClaimPage = () => {
     const [currentClaimPage, setCurrentClaimPage] = useState(ClaimProcess.Claim);
 

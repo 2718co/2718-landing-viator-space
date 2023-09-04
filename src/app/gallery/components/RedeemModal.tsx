@@ -7,6 +7,13 @@ import { Fragment, useRef, useState, type Dispatch, type SetStateAction } from '
 import CloseIcon from '../../components/Close';
 import Pen from '../assets/Pen.svg';
 
+// TODO: this
+enum RedeemPage {
+    Form,
+    Verification,
+    Signing
+}
+
 interface IRedeemModalProps {
     open: boolean;
     setOpen: Dispatch<SetStateAction<boolean>>;

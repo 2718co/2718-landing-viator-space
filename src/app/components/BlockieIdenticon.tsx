@@ -1,6 +1,5 @@
 'use client';
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
+
 import { renderIcon } from '@download/blockies';
 import Image from 'next/image';
 import React, { useEffect, useRef, useState } from 'react';

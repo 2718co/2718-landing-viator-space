@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import React from 'react';
 import { useAccount, useBalance, useDisconnect, useEnsAvatar, useEnsName } from 'wagmi';
+import { formatBalance } from '../../utils';
 import { formatAddress } from '../../utils/formatAddress';
 import BlockieIdenticon from './BlockieIdenticon';
 import ExitIcon from './ExitIcon';
@@ -19,7 +20,7 @@ const Wallet = (): JSX.Element => {
         <div className="group relative box-border inline-flex h-12 overflow-ellipsis whitespace-nowrap rounded-2xl bg-highlight bg-opacity-20 outline outline-2 outline-highlight">
             {/* Balance */}
             <span className="hidden items-center py-4 pl-4 text-highlight lg:flex">
-                {!isBalanceLoading ? `${balance?.formatted} ${balance?.symbol}` : 'Loading...'}
+                {!isBalanceLoading ? `${balance ? formatBalance(balance, 2) : 0} ${balance?.symbol}` : 'Loading...'}
             </span>
             <div className="z-10 flex h-full flex-row items-center w-fit rounded-2xl bg-black p-4 outline outline-2 outline-highlight lg:ml-4">
                 {!isEnsAvatarLoading ? (
@@ -45,8 +46,9 @@ const Wallet = (): JSX.Element => {
                 <ExitIcon />
             </button>
         </div>
-    ) : (<WalletConnectButton className='text-white'/>);
+    ) : (
+        <WalletConnectButton className="text-white" />
+    );
 };
 
 export default Wallet;
-
