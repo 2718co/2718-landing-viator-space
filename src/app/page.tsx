@@ -16,11 +16,11 @@ import BidModal from './components/BidModal';
 import ETHLogo from './components/ETHLogo';
 import HorizontalCarousel from './components/HorizontalCarousel';
 import Lightbox from './components/Lightbox';
-import MetamaskLogo from './components/logos/metamask';
-import WalletConnectLogo from './components/logos/walletConnect';
 import OffersTable from './components/OffersTable';
 import PillCounter from './components/PillCounter';
 import VerticalCarousel from './components/VerticalCarousel';
+import MetamaskLogo from './components/logos/metamask';
+import WalletConnectLogo from './components/logos/walletConnect';
 
 const images = [bigImage, hangingImage, squareLeft, squareRight, tallImage];
 
@@ -59,7 +59,7 @@ export default function Home() {
                             {/* Main Image */}
                             <div className="relative flex-[826]">
                                 <HorizontalCarousel
-                                    carouselId={`carousel1`}
+                                    carouselId='carousel1'
                                     currentIdx={currentIdx}
                                     images={images}
                                     openLightbox={openLightbox}
@@ -84,7 +84,7 @@ export default function Home() {
                                 onClick={openLightbox}
                             >
                                 <HorizontalCarousel
-                                    carouselId={`carousel2`}
+                                    carouselId='carousel2'
                                     currentIdx={currentIdx + 1}
                                     images={images}
                                     className="flex-[15]"
@@ -92,7 +92,7 @@ export default function Home() {
 
                                 <div className="flex h-full flex-[20] flex-col">
                                     <HorizontalCarousel
-                                        carouselId={`carousel3`}
+                                        carouselId='carousel3'
                                         currentIdx={currentIdx + 2}
                                         images={images}
                                         className="flex-[3]"
@@ -100,14 +100,14 @@ export default function Home() {
 
                                     <div className="flex flex-row">
                                         <VerticalCarousel
-                                            carouselId={`carousel4`}
+                                            carouselId='carousel4'
                                             currentIdx={currentIdx + 3}
                                             images={images}
                                             className="aspect-square flex-1"
                                         />
 
                                         <HorizontalCarousel
-                                            carouselId={`carousel5`}
+                                            carouselId='carousel5'
                                             currentIdx={currentIdx + 4}
                                             images={images}
                                             className="aspect-square flex-1"

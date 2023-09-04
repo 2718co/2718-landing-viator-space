@@ -36,9 +36,9 @@ const Carousel = (props: ICarouselProps) => {
                 <motion.img
                     key={props.carouselId + props.images[props.currentIdx % props.images.length]?.src}
                     src={props.images[props.currentIdx % props.images.length]?.src}
-                    initial={`enter`}
-                    animate={`active`}
-                    exit={`exit`}
+                    initial='enter'
+                    animate='active'
+                    exit='exit'
                     custom={props.reverse}
                     variants={horizontalVariants}
                     className={clsx('h-full w-full object-cover')}

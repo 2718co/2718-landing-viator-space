@@ -6,13 +6,6 @@ import React, { useState } from 'react';
 import { classNames } from '../../../utils/classnames';
 import Verified from './assets/Verified.svg';
 
-enum ClaimProcess {
-    Claim,
-    Wait,
-    Register,
-    Save
-}
-
 const ClaimPage = () => {
     const [currentClaimPage, setCurrentClaimPage] = useState(ClaimProcess.Claim);
 
@@ -187,7 +180,7 @@ const ClaimPage = () => {
                             <ul className="hide-scrollbar mt-3 flex flex-auto scroll-mb-8 list-none flex-col space-y-3 overflow-scroll">
                                 {Array(7)
                                     .fill(0)
-                                    .map((item, idx) => (
+                                    .map((item) => (
                                         <li key={item}>
                                             <button className="mono w-full rounded-2xl bg-white px-4 py-6 text-left text-button-text-size text-dark-text">
                                                 areo.2718.eth

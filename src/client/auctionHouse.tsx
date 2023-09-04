@@ -2,10 +2,10 @@
 
 import { ethers } from 'ethers';
 import type { PropsWithChildren } from 'react';
-import { createContext, useContext, useMemo } from 'react';
+import { createContext, useMemo } from 'react';
+import { C2718AuctionHouse__factory } from '../generated/contract-types';
 // This was before a constant
 const C2718_AUCTION_HOUSE_CONTRACT_ADDRESS = '';
-import { C2718AuctionHouse__factory } from '../generated/contract-types';
 
 interface AuctionHouseInterface {
     contractAddress: string;
@@ -40,7 +40,7 @@ export const useAuctionHouse = () => {
         await contract.createBid(planetId, options);
     };
 
-    const settleAuction = () => ({});
+    // const settleAuction = () => ({});
 
     return {
         placeBid,

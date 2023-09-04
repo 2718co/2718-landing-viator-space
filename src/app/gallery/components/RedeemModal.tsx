@@ -12,12 +12,6 @@ interface IRedeemModalProps {
     setOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-enum RedeemPage {
-    Form,
-    Verification,
-    Signing
-}
-
 const RedeemModal = ({ open, setOpen }: IRedeemModalProps) => {
     const inputNameRef = useRef<HTMLInputElement | null>(null);
     const [currentPage, setCurrentPage] = useState(RedeemPage.Form);

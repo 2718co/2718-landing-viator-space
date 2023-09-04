@@ -16,7 +16,9 @@ const Cursor = () => {
     const [cursorVariant, setCursorVariant] = useState<CursorVariant>('default');
 
     useEffect(() => {
-        if (typeof window === 'undefined') return;
+        if (typeof window === 'undefined')  { 
+            return; 
+        }
 
         const handleMouseMove = (event: MouseEvent) => {
             setMousePosition(() => ({

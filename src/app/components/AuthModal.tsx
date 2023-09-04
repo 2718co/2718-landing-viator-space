@@ -15,7 +15,7 @@ interface IAuthModalProps {
 const AuthModal = ({ open, setOpen }: IAuthModalProps): JSX.Element => {
     const cancelButtonRef = useRef<HTMLButtonElement | null>(null);
 
-    const { connect, connectors, error, isLoading, pendingConnector } = useConnect();
+    const { connect, connectors } = useConnect();
 
     return (
         <Transition.Root show={open} as={Fragment}>

@@ -1,17 +1,16 @@
 'use client';
 
 import Image from 'next/image';
-import { useContext } from 'react';
+import React, { useContext } from 'react';
 import { useAccount, useBalance, useDisconnect, useEnsAvatar, useEnsName } from 'wagmi';
 import { AuthContext } from '../../client/wagmi';
 import { formatAddress } from '../../utils/formatAddress';
-import ExitIcon from './ExitIcon';
-import React from 'react';
 import BlockieIdenticon from './BlockieIdenticon';
+import ExitIcon from './ExitIcon';
 
 const WalletConnector = (): JSX.Element => {
     const { setModalOpen } = useContext(AuthContext);
-    const { address, connector, isConnected, isConnecting } = useAccount();
+    const { address, isConnected } = useAccount();
     const { data: balance, isLoading: isBalanceLoading } = useBalance({
         address: address
     });

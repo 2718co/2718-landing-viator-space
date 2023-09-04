@@ -1,7 +1,7 @@
-import React from 'react';
-import Image, { type StaticImageData } from 'next/image';
-import PillCounter from '../../components/PillCounter';
+import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
+import React from 'react';
+import PillCounter from '../../components/PillCounter';
 
 interface IGalleryCardProps {
     imgUrl: StaticImageData | string;
@@ -11,7 +11,7 @@ interface IGalleryCardProps {
     price: number;
     serialNumber: number;
     total: number;
-    onClick?: any;
+    onClick?: () => void;
 }
 
 const GalleryCard = (props: IGalleryCardProps) => {
@@ -21,6 +21,7 @@ const GalleryCard = (props: IGalleryCardProps) => {
             onClick={props.onClick}
             className="w-full overflow-hidden rounded-3xl bg-light-background lg:w-[430px]"
         >
+
             <Image
                 src={props.imgUrl}
                 alt={props.name}
@@ -32,7 +33,7 @@ const GalleryCard = (props: IGalleryCardProps) => {
                 <span className="text-highlight">{props.collection}</span>
                 <span className="mt-1 text-title-2-size text-black">{props.name}</span>
                 <span className="mt-5 text-subtitle-2-size text-light-text">
-                    Sold primarly for {props.price.toPrecision(2)} ETH
+                    Sold primarily for {props.price.toPrecision(2)} ETH
                 </span>
 
                 <span className="mt-5">

@@ -3,13 +3,12 @@ import { Dialog, Transition } from '@headlessui/react';
 import Image from 'next/image';
 
 import type { Dispatch, SetStateAction } from 'react';
-import { useState } from 'react';
-import { Fragment, useRef } from 'react';
+import { Fragment, useRef, useState } from 'react';
 import { useBalance } from 'wagmi';
+import { useAuctionHouse } from '../../client/auctionHouse';
+import funkyAnimated from '../assets/funky_dark.gif';
 import CloseIcon from './Close';
 import ETHLogo from './ETHLogo';
-import funkyAnimated from '../assets/funky_dark.gif';
-import { useAuctionHouse } from '../../client/auctionHouse';
 
 interface IBidModalProps {
     open: boolean;
@@ -20,7 +19,10 @@ const BidModal = ({ open, setOpen }: IBidModalProps) => {
     const bidInputRef = useRef<HTMLInputElement | null>(null);
     const [bidAmount, setBidAmount] = useState<string>('');
 
-    const [confirmingTransaction, setConfirmingTransaction] = useState(false);
+    const [
+        confirmingTransaction, 
+        // setConfirmingTransaction
+    ] = useState(false);
 
     const { placeBid } = useAuctionHouse();
 
