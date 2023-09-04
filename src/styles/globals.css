@@ -3,22 +3,22 @@
 @tailwind utilities;
 
 @media (min-width: 768px) {
-  *,
-  button {
-    cursor: none;
-  }
+    *,
+    button {
+        cursor: none;
+    }
 }
 
 body {
-  min-height: 100vh;
+    min-height: 100vh;
 }
 
 @layer utilities {
-  .mono {
-    font-variation-settings: "MONO" 1;
-  }
+    .mono {
+        font-variation-settings: 'MONO' 1;
+    }
 
-  .hide-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
+    .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
 }

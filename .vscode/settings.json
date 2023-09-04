@@ -1,4 +1,12 @@
 {
-  "typescript.tsdk": "../../node_modules/.pnpm/typescript@5.0.2/node_modules/typescript/lib",
-  "typescript.enablePromptUseWorkspaceTsdk": true
+    "typescript.tsdk": "../../node_modules/.pnpm/typescript@5.0.2/node_modules/typescript/lib",
+    "typescript.enablePromptUseWorkspaceTsdk": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true,
+        "source.sortImports": true
+    },
+    "typescript.tsserver.experimental.enableProjectDiagnostics": true,
+    "cSpell.words": ["rainbowkit", "wagmi"]
 }

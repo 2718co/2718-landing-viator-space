@@ -1,11 +1,28 @@
 {
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "project": "./tsconfig.json"
-  },
-  "plugins": ["@typescript-eslint"],
-  "extends": ["next/core-web-vitals", "plugin:@typescript-eslint/recommended"],
-  "rules": {
-    "@typescript-eslint/consistent-type-imports": "warn"
-  }
+    "parser": "@typescript-eslint/parser",
+    "plugins": ["@typescript-eslint"],
+    "extends": [
+        "next/core-web-vitals",
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "prettier/prettier"
+    ],
+    "rules": {
+        "no-console": "off",
+        "curly": "warn",
+        "no-unused-vars": "warn",
+        "no-dupe-else-if": "warn",
+        "no-import-assign": "warn",
+        "no-setter-return": "warn",
+        "require-await": "warn",
+        "quotes": ["warn", "single"],
+        "indent": [
+            "warn",
+            4,
+            {
+                "SwitchCase": 1
+            }
+        ],
+        "semi": ["warn", "always"]
+    }
 }

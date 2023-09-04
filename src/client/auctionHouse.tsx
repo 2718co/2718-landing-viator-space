@@ -1,59 +1,51 @@
-"use client";
+'use client';
 
-import { ethers } from "ethers";
-import type { PropsWithChildren } from "react";
-import { createContext, useContext, useMemo } from "react";
-import { C2718_AUCTION_HOUSE_CONTRACT_ADDRESS } from "../../constants";
-import { C2718AuctionHouse__factory } from "../generated/contract-types";
+import { ethers } from 'ethers';
+import type { PropsWithChildren } from 'react';
+import { createContext, useContext, useMemo } from 'react';
+// This was before a constant
+const C2718_AUCTION_HOUSE_CONTRACT_ADDRESS = '';
+import { C2718AuctionHouse__factory } from '../generated/contract-types';
 
 interface AuctionHouseInterface {
-  contractAddress: string;
+    contractAddress: string;
 }
 
-export const AuctionHouseContext = createContext<AuctionHouseInterface>(
-  undefined!
-);
+export const AuctionHouseContext = createContext<AuctionHouseInterface>(undefined!);
 
-const contract = C2718AuctionHouse__factory.connect(
-  C2718_AUCTION_HOUSE_CONTRACT_ADDRESS,
-  ethers.getDefaultProvider()
-);
+const contract = C2718AuctionHouse__factory.connect(C2718_AUCTION_HOUSE_CONTRACT_ADDRESS, ethers.getDefaultProvider());
 
 const AuctionHouseProvider = (props: PropsWithChildren) => {
-  const value = useMemo(
-    () => ({
-      contractAddress: C2718_AUCTION_HOUSE_CONTRACT_ADDRESS,
-    }),
-    []
-  );
+    const value = useMemo(
+        () => ({
+            contractAddress: C2718_AUCTION_HOUSE_CONTRACT_ADDRESS
+        }),
+        []
+    );
 
-  return (
-    <AuctionHouseContext.Provider value={value}>
-      {props.children}
-    </AuctionHouseContext.Provider>
-  );
+    return <AuctionHouseContext.Provider value={value}>{props.children}</AuctionHouseContext.Provider>;
 };
 
 export const useAuctionHouse = () => {
-  //   const auctionHouse = useContext(AuctionHouseContext);
+    //   const auctionHouse = useContext(AuctionHouseContext);
 
-  const currentAuction = async () => {
-    const currentAuction = await contract.auction();
-    return currentAuction;
-  };
+    const currentAuction = async () => {
+        const currentAuction = await contract.auction();
+        return currentAuction;
+    };
 
-  const placeBid = async (amount: string) => {
-    const { planetId } = await contract.auction();
-    const options = { value: ethers.utils.parseEther(`${amount}`) };
-    await contract.createBid(planetId, options);
-  };
+    const placeBid = async (amount: string) => {
+        const { planetId } = await contract.auction();
+        const options = { value: ethers.utils.parseEther(`${amount}`) };
+        await contract.createBid(planetId, options);
+    };
 
-  const settleAuction = () => ({});
+    const settleAuction = () => ({});
 
-  return {
-    placeBid,
-    currentAuction,
-  };
+    return {
+        placeBid,
+        currentAuction
+    };
 };
 
 export default AuctionHouseProvider;
