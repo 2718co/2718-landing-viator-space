@@ -3,8 +3,6 @@ import dynamic from "next/dynamic";
 import type { PropsWithChildren } from "react";
 import { Suspense } from "react";
 import AuctionHouseProvider from "../client/auctionHouse";
-
-import { ClientProvider } from "../client/trpc";
 import WagmiProvider from "../client/wagmi";
 import "../styles/globals.css";
 import Footer from "./components/Footer";
@@ -34,7 +32,6 @@ function RootLayout({
       <body className="rounded-3xl bg-[#D9D9D9] p-0 lg:p-6">
         <div className="relative flex w-full flex-col bg-dark-background px-3 pt-14 pb-20 lg:rounded-2xl lg:px-36">
           <Suspense fallback={<div>Loading...</div>}>
-            <ClientProvider>
               <WagmiProvider>
                 <AuctionHouseProvider>
                   <Navbar />
@@ -42,7 +39,6 @@ function RootLayout({
                   <Footer />
                 </AuctionHouseProvider>
               </WagmiProvider>
-            </ClientProvider>
             <Cursor />
           </Suspense>
         </div>
