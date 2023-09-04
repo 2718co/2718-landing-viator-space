@@ -1,6 +1,0 @@
-@solmate=lib/solmate/src/
-@std=lib/forge-std/src/
-@clones=lib/clones-with-immutable-args/src/
-forge-std/=lib/forge-std/src/
-@openzeppelin/=lib/openzeppelin-contracts/
-@openzeppelin-upgradeable/contracts-upgradeable/=lib/openzeppelin-contracts-upgradeable/contracts/
