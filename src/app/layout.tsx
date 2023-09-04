@@ -1,12 +1,13 @@
+import '@rainbow-me/rainbowkit/styles.css';
 import dynamic from 'next/dynamic';
+import localFont from 'next/font/local';
 import type { PropsWithChildren } from 'react';
 import { Suspense } from 'react';
 import AuctionHouseProvider from '../client/auctionHouse';
-import WagmiProvider from '../client/wagmi';
+import { Providers } from '../client/providers';
 import '../styles/globals.css';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
-import localFont from 'next/font/local';
 
 const customFont = localFont({
     src: './assets/ABCDiatypePlusVariable.woff2',
@@ -28,13 +29,13 @@ function RootLayout({
             <body className="rounded-3xl bg-[#D9D9D9] p-0 lg:p-6">
                 <div className="relative flex w-full flex-col bg-dark-background px-3 pb-20 pt-14 lg:rounded-2xl lg:px-36">
                     <Suspense fallback={<div>Loading...</div>}>
-                        <WagmiProvider>
+                        <Providers>
                             <AuctionHouseProvider>
                                 <Navbar />
                                 <main className="flex-auto font-mono">{children}</main>
                                 <Footer />
                             </AuctionHouseProvider>
-                        </WagmiProvider>
+                        </Providers>
                         <Cursor />
                     </Suspense>
                 </div>

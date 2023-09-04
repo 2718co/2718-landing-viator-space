@@ -1,25 +1,18 @@
 'use client';
 
 import Image from 'next/image';
-import React, { useContext } from 'react';
+import React from 'react';
 import { useAccount, useBalance, useDisconnect, useEnsAvatar, useEnsName } from 'wagmi';
-import { AuthContext } from '../../client/wagmi';
 import { formatAddress } from '../../utils/formatAddress';
 import BlockieIdenticon from './BlockieIdenticon';
 import ExitIcon from './ExitIcon';
+import WalletConnectButton from './WalletConnectButton';
 
-const WalletConnector = (): JSX.Element => {
-    const { setModalOpen } = useContext(AuthContext);
+const Wallet = (): JSX.Element => {
     const { address, isConnected } = useAccount();
-    const { data: balance, isLoading: isBalanceLoading } = useBalance({
-        address: address
-    });
-    const { data: ensAvatar, isLoading: isEnsAvatarLoading } = useEnsAvatar({
-        address
-    });
-    const { data: ensName, isLoading: isEnsNameLoading } = useEnsName({
-        address
-    });
+    const { data: balance, isLoading: isBalanceLoading } = useBalance({ address: address });
+    const { data: ensName, isLoading: isEnsNameLoading } = useEnsName({ address });
+    const { data: ensAvatar, isLoading: isEnsAvatarLoading } = useEnsAvatar({ name: ensName });
     const { disconnect } = useDisconnect();
 
     return isConnected ? (
@@ -28,8 +21,7 @@ const WalletConnector = (): JSX.Element => {
             <span className="hidden items-center py-4 pl-4 text-highlight lg:flex">
                 {!isBalanceLoading ? `${balance?.formatted} ${balance?.symbol}` : 'Loading...'}
             </span>
-            <div className="z-10 flex h-full w-min flex-row items-center space-x-7 rounded-2xl bg-black p-4 outline outline-2 outline-highlight lg:ml-4">
-                {/* PP */}
+            <div className="z-10 flex h-full flex-row items-center w-fit rounded-2xl bg-black p-4 outline outline-2 outline-highlight lg:ml-4">
                 {!isEnsAvatarLoading ? (
                     ensAvatar ? (
                         <Image src={ensAvatar} alt="ENS Avatar" />
@@ -37,32 +29,24 @@ const WalletConnector = (): JSX.Element => {
                         <BlockieIdenticon address={address!} diameter={28} borderRadius={'28px'} />
                     )
                 ) : (
-                    <div className="h-7 w-7 rounded-full bg-green-500"></div>
+                    <div className="h-7 w-7 rounded-full bg-green-500 m-0"></div>
                 )}
 
                 {/* Address */}
-                <span className="w-[12ch] text-white">
+                <span className="w-[12ch] text-white ml-[8px]">
                     {!isEnsNameLoading ? ensName ?? (address && formatAddress(address)) : 'Loading...'}
                 </span>
             </div>
             <button
                 onClick={() => disconnect()}
-                className="absolute right-0 top-4 z-0 flex w-full flex-row items-center justify-center space-x-4 rounded-b-lg bg-highlight px-5 text-black outline outline-2 outline-highlight transition-all hover:bg-hover-button hover:outline-hover-button group-hover:top-10 group-hover:pb-4 group-hover:pt-7 lg:w-min"
+                className="absolute right-0 top-4 z-0 flex w-fit flex-row items-center justify-center space-x-4 rounded-b-lg bg-highlight px-5 text-black outline outline-2 outline-highlight transition-all hover:bg-hover-button hover:outline-hover-button group-hover:top-10 group-hover:pb-4 group-hover:pt-7 lg:w-min"
             >
                 <span>Disconnect</span>
                 <ExitIcon />
             </button>
         </div>
-    ) : (
-        <>
-            <button
-                onClick={() => setModalOpen(true)}
-                className="mono rounded-2xl border-2 border-highlight px-8 py-4 font-mono text-2xl tracking-wide text-white hover:bg-hover-rectangle"
-            >
-                Connect Wallet
-            </button>
-        </>
-    );
+    ) : (<WalletConnectButton className='text-white'/>);
 };
 
-export default WalletConnector;
+export default Wallet;
+

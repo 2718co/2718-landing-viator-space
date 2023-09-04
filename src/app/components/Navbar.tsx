@@ -1,6 +1,6 @@
 import Logo from './Logo';
 import Navlinks from './Navlinks';
-import WalletConnector from './WalletConnector';
+import Wallet from './Wallet';
 
 const Navbar = (): JSX.Element => {
     return (
@@ -15,7 +15,7 @@ const Navbar = (): JSX.Element => {
                     </div>
                     <div className="flex w-1 flex-shrink flex-grow lg:hidden"></div>
                     <div className="hidden flex-shrink flex-grow basis-0 flex-row justify-start lg:flex lg:justify-end">
-                        <WalletConnector />
+                        <Wallet />
                     </div>
                 </div>
             </div>

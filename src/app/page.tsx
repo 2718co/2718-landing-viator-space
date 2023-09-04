@@ -2,7 +2,7 @@
 
 import { AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useAccount } from 'wagmi';
 import bigImage from '../../public/bigImage.png';
@@ -10,7 +10,6 @@ import hangingImage from '../../public/hangingImage.png';
 import squareLeft from '../../public/squareLeft.png';
 import squareRight from '../../public/squareRight.png';
 import tallImage from '../../public/tallImage.png';
-import { AuthContext } from '../client/wagmi';
 import usePrefersReducedMotion from '../utils/usePrefersReducedMotion';
 import BidModal from './components/BidModal';
 import ETHLogo from './components/ETHLogo';
@@ -19,8 +18,7 @@ import Lightbox from './components/Lightbox';
 import OffersTable from './components/OffersTable';
 import PillCounter from './components/PillCounter';
 import VerticalCarousel from './components/VerticalCarousel';
-import MetamaskLogo from './components/logos/metamask';
-import WalletConnectLogo from './components/logos/walletConnect';
+import WalletConnectButton from './components/WalletConnectButton';
 
 const images = [bigImage, hangingImage, squareLeft, squareRight, tallImage];
 
@@ -30,8 +28,6 @@ export default function Home() {
     const prefersReducedMotion = usePrefersReducedMotion();
     const { isConnected } = useAccount();
     const [isBidModalOpen, setIsBidModalOpen] = useState(false);
-
-    const { setModalOpen: openAuth } = useContext(AuthContext);
 
     const [lightboxOpen, setLightboxOpen] = useState(false);
     const openLightbox = () => setLightboxOpen(true);
@@ -203,12 +199,7 @@ export default function Home() {
                                             )}
                                     </>
                                 ) : (
-                                    <button
-                                        onClick={() => openAuth(true)}
-                                        className="h-full w-full rounded-2xl bg-highlight py-4 font-mono text-button-text-size font-semibold text-dark-text hover:bg-hover-button"
-                                    >
-                                        Connect Wallet
-                                    </button>
+                                    <WalletConnectButton className='bg-highlight text-dark-text'/>
                                 )}
                             </div>
                         </div>
@@ -225,20 +216,6 @@ export default function Home() {
                     <OffersTable />
                 </div>
             </div>
-
-            {!isConnected && (
-                <div
-                    className="fixed inset-x-0 bottom-0 flex flex-row items-center justify-between rounded-t-3xl bg-highlight/60 px-5 pb-8 pt-6 backdrop-blur lg:hidden"
-                    onClick={() => openAuth(true)}
-                >
-                    <span className="text-2xl font-semibold leading-6 text-gray-900">Connect Wallet</span>
-
-                    <div className="flex flex-row -space-x-2">
-                        <MetamaskLogo />
-                        <WalletConnectLogo />
-                    </div>
-                </div>
-            )}
         </>
     );
 }
