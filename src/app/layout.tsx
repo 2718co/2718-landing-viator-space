@@ -35,8 +35,8 @@ function RootLayout({
                                 <main className="flex-auto font-mono">{children}</main>
                                 <Footer />
                             </AuctionHouseProvider>
+                            <Cursor />
                         </Providers>
-                        <Cursor />
                     </Suspense>
                 </div>
             </body>

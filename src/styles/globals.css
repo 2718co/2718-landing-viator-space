@@ -2,13 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@media (min-width: 768px) {
-    *,
-    button {
-        cursor: none;
-    }
-}
-
 body {
     min-height: 100vh;
 }
