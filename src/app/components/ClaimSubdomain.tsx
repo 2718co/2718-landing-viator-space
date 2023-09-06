@@ -1,17 +1,7 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import React from 'react';
 import * as Yup from 'yup';
-
-interface ClaimSubdomainProps {
-    setCurrentClaimPage: (step: ClaimProcess) => void;
-}
-
-enum ClaimProcess {
-    Claim,
-    Wait,
-    Register,
-    Save
-}
+import { ClaimProcess, ClaimSubdomainProps } from '../../types';
 
 const validationSchema = Yup.object().shape({
     subdomain: Yup.string()

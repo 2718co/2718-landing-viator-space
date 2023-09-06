@@ -5,7 +5,6 @@ import Image from 'next/image';
 import type { Dispatch, SetStateAction } from 'react';
 import { Fragment, useRef, useState } from 'react';
 import { useBalance } from 'wagmi';
-import { useAuctionHouse } from '../../client/auctionHouse';
 import funkyAnimated from '../assets/funky_dark.gif';
 import CloseIcon from './Close';
 import ETHLogo from './ETHLogo';
@@ -17,14 +16,12 @@ interface IBidModalProps {
 
 const BidModal = ({ open, setOpen }: IBidModalProps) => {
     const bidInputRef = useRef<HTMLInputElement | null>(null);
-    const [bidAmount, setBidAmount] = useState<string>('');
+    // const [bidAmount, setBidAmount] = useState<string>('');
 
     const [
-        confirmingTransaction, 
+        confirmingTransaction
         // setConfirmingTransaction
     ] = useState(false);
-
-    const { placeBid } = useAuctionHouse();
 
     const { data: balance, isLoading: isLoadingBalance } = useBalance();
 
@@ -137,7 +134,7 @@ const BidModal = ({ open, setOpen }: IBidModalProps) => {
                                         </button>
                                     ) : (
                                         <button
-                                            onClick={() => placeBid(bidAmount)}
+                                            // onClick={() => placeBid(bidAmount)}
                                             className="h-full w-full rounded-2xl bg-highlight py-4 font-mono text-button-text-size font-semibold text-dark-text hover:bg-hover-button"
                                         >
                                             Place Bid

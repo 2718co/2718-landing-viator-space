@@ -3,17 +3,10 @@
 import { Tab } from '@headlessui/react';
 import Image from 'next/image';
 import React, { useState } from 'react';
+import { ClaimProcess } from '../../../types';
 import { classNames } from '../../../utils/classnames';
 import { ClaimSubdomain } from '../../components';
 import Verified from './assets/Verified.svg';
-
-// TODO: this
-enum ClaimProcess {
-    Claim,
-    Wait,
-    Register,
-    Save
-}
 
 const ClaimPage = () => {
     const [currentClaimPage, setCurrentClaimPage] = useState(ClaimProcess.Claim);

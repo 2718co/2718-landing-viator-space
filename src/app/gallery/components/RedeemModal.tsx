@@ -4,15 +4,9 @@ import { Dialog, Transition } from '@headlessui/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Fragment, useRef, useState, type Dispatch, type SetStateAction } from 'react';
+import { RedeemPage } from '../../../types';
 import CloseIcon from '../../components/Close';
 import Pen from '../assets/Pen.svg';
-
-// TODO: this
-enum RedeemPage {
-    Form,
-    Verification,
-    Signing
-}
 
 interface IRedeemModalProps {
     open: boolean;
