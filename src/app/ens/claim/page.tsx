@@ -4,6 +4,7 @@ import { Tab } from '@headlessui/react';
 import Image from 'next/image';
 import React, { useState } from 'react';
 import { classNames } from '../../../utils/classnames';
+import { ClaimSubdomain } from '../../components';
 import Verified from './assets/Verified.svg';
 
 // TODO: this
@@ -79,26 +80,7 @@ const ClaimPage = () => {
                                 </div>
                             </div>
                             {currentClaimPage === ClaimProcess.Claim && (
-                                <div className="flex flex-1 flex-col justify-between space-y-3">
-                                    <div className="">
-                                        <h1 className="text-title-1-size text-dark-text">
-                                            1. Claim your custom address
-                                        </h1>
-                                        <span className="text-text-size text-light-text">
-                                            Claim your custom 2718 address for no costs except network fees. Follow the
-                                            three steps to own your own piece of the 2718 journey.
-                                        </span>
-                                    </div>
-                                    <input type="text" className="rounded-xl bg-white px-4 py-6" />
-                                    <div className="">
-                                        <button
-                                            onClick={() => setCurrentClaimPage(ClaimProcess.Wait)}
-                                            className="mono h-full w-full rounded-2xl bg-highlight py-4 font-mono text-button-text-size font-semibold text-dark-text hover:bg-hover-button"
-                                        >
-                                            Claim
-                                        </button>
-                                    </div>
-                                </div>
+                                <ClaimSubdomain setCurrentClaimPage={setCurrentClaimPage} />
                             )}
                             {currentClaimPage === ClaimProcess.Wait && (
                                 <div className="flex flex-1 flex-col justify-between space-y-3">

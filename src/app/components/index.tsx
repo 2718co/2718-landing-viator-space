@@ -1,0 +1,1 @@
+export { ClaimSubdomain } from './ClaimSubdomain';

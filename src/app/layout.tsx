@@ -3,7 +3,6 @@ import dynamic from 'next/dynamic';
 import localFont from 'next/font/local';
 import type { PropsWithChildren } from 'react';
 import { Suspense } from 'react';
-import AuctionHouseProvider from '../client/auctionHouse';
 import { Providers } from '../client/providers';
 import '../styles/globals.css';
 import Footer from './components/Footer';
@@ -30,11 +29,9 @@ function RootLayout({
                 <div className="relative flex w-full flex-col bg-dark-background px-3 pb-20 pt-14 lg:rounded-2xl lg:px-36">
                     <Suspense fallback={<div>Loading...</div>}>
                         <Providers>
-                            <AuctionHouseProvider>
-                                <Navbar />
-                                <main className="flex-auto font-mono">{children}</main>
-                                <Footer />
-                            </AuctionHouseProvider>
+                            <Navbar />
+                            <main className="flex-auto font-mono">{children}</main>
+                            <Footer />
                             <Cursor />
                         </Providers>
                     </Suspense>
