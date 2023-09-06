@@ -25,7 +25,7 @@ const Wallet = (): JSX.Element => {
             <div className="z-10 flex h-full flex-row items-center w-fit rounded-2xl bg-black p-4 outline outline-2 outline-highlight lg:ml-4">
                 {!isEnsAvatarLoading ? (
                     ensAvatar ? (
-                        <Image src={ensAvatar} alt="ENS Avatar" />
+                        <Image src={ensAvatar} alt="ENS Avatar" width="28" height="28" className="rounded-full" />
                     ) : (
                         <BlockieIdenticon address={address!} diameter={28} borderRadius={'28px'} />
                     )
