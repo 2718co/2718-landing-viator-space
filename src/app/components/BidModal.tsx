@@ -107,7 +107,7 @@ const BidModal = ({ open, setOpen }: IBidModalProps) => {
                                                             inputMode="numeric"
                                                             name="bidValue"
                                                             placeholder="7.39"
-                                                            onChange={(e) => setBidAmount(e.currentTarget.value)}
+                                                            // onChange={(e) => setBidAmount(e.currentTarget.value)}
                                                             className="h-full rounded-xl px-4 text-button-text-size outline-none placeholder:text-light-text"
                                                         />
                                                         <span className="absolute bottom-4 right-3 text-xs text-highlight">
