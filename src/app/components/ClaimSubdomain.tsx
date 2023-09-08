@@ -82,16 +82,18 @@ export const ClaimSubdomain = ({ setCurrentClaimPage }: ClaimSubdomainProps) => 
                         ) : (
                             <>
                                 <div className="input-wrapper">
-                                    <Field
-                                        type="text"
-                                        name="subdomain"
-                                        className="rounded-xl bg-white px-4 py-6 w-full"
-                                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                                            setFieldValue('subdomain', e.target.value);
-                                            checkSubdomainExists(e.target.value);
-                                        }}
-                                        disabled={!isConnected}
-                                    />
+                                    <div className="flex border rounded-xl overflow-hidden">
+                                        <Field
+                                            type="text"
+                                            name="subdomain"
+                                            className="flex-1 bg-white px-4 py-6 focus:outline-none focus:ring-0"
+                                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                                                setFieldValue('subdomain', e.target.value);
+                                                checkSubdomainExists(e.target.value);
+                                            }}
+                                        />
+                                        <span className="bg-gray-100 border-l px-4 py-6">.2718.eth</span>
+                                    </div>
                                     {subdomainExists ? (
                                         <span className="text-red-500">This subdomain already exists</span>
                                     ) : (
