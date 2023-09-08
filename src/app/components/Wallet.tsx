@@ -7,7 +7,7 @@ import { formatBalance } from '../../utils';
 import { formatAddress } from '../../utils/formatAddress';
 import BlockieIdenticon from './BlockieIdenticon';
 import ExitIcon from './ExitIcon';
-import WalletConnectButton from './WalletConnectButton';
+import { WalletConnectButton } from './WalletConnectButton';
 
 const Wallet = (): JSX.Element => {
     const { address, isConnected } = useAccount();

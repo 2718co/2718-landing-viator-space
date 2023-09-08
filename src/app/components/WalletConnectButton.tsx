@@ -7,7 +7,7 @@ interface IWalletConnectButtonProps {
     className?: string;
 }
 
-const WalletConnectButton = (props: IWalletConnectButtonProps): JSX.Element => {
+export const WalletConnectButton = (props: IWalletConnectButtonProps): JSX.Element => {
     const { openConnectModal } = useConnectModal();
 
     if (!openConnectModal) {
@@ -27,5 +27,3 @@ const WalletConnectButton = (props: IWalletConnectButtonProps): JSX.Element => {
         </button>
     );
 };
-
-export default WalletConnectButton;

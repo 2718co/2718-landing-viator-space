@@ -8,6 +8,7 @@ import NameWrapperABI from '../../shared/abi/NameWrapper.json';
 import NameWrapperProxyABI from '../../shared/abi/NameWrapperProxy.json';
 import { ClaimProcess, ClaimSubdomainProps } from '../../types';
 import { getNode, getParentNode } from '../../utils';
+import { WalletConnectButton } from '../components';
 import { Loading } from './loading';
 
 const validationSchema = Yup.object().shape({
@@ -21,7 +22,7 @@ const validationSchema = Yup.object().shape({
 export const ClaimSubdomain = ({ setCurrentClaimPage }: ClaimSubdomainProps) => {
     const [subdomainExists, setSubdomainExists] = useState(false);
     const [loading, setLoading] = useState(false);
-    const { address } = useAccount();
+    const { address, isConnected } = useAccount();
     const domain = useDomain();
     const parentNode = getParentNode(domain);
     const nameWrapperContract = useNameWrapperContract();
@@ -89,6 +90,7 @@ export const ClaimSubdomain = ({ setCurrentClaimPage }: ClaimSubdomainProps) => 
                                             setFieldValue('subdomain', e.target.value);
                                             checkSubdomainExists(e.target.value);
                                         }}
+                                        disabled={!isConnected}
                                     />
                                     {subdomainExists ? (
                                         <span className="text-red-500">This subdomain already exists</span>
@@ -97,12 +99,16 @@ export const ClaimSubdomain = ({ setCurrentClaimPage }: ClaimSubdomainProps) => 
                                     )}
                                 </div>
                                 <div>
-                                    <button
-                                        type="submit"
-                                        className="mono h-full w-full rounded-2xl bg-highlight py-4 font-mono text-button-text-size font-semibold text-dark-text hover:bg-hover-button"
-                                    >
-                                        Claim
-                                    </button>
+                                    {isConnected ? (
+                                        <button
+                                            type="submit"
+                                            className="mono h-full w-full rounded-2xl bg-highlight py-4 font-mono text-button-text-size font-semibold text-dark-text hover:bg-hover-button"
+                                        >
+                                            Claim
+                                        </button>
+                                    ) : (
+                                        <WalletConnectButton className="bg-highlight text-dark-text w-full" />
+                                    )}
                                 </div>
                             </>
                         )}
