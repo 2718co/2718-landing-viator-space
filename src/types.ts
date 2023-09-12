@@ -12,5 +12,6 @@ export enum ClaimProcess {
 }
 
 export interface ClaimSubdomainProps {
+    setClaimedSubdomain: (value: string) => void;
     setCurrentClaimPage: (value: ClaimProcess) => void;
 }

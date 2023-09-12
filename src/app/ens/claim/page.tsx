@@ -5,11 +5,13 @@ import Image from 'next/image';
 import React, { useState } from 'react';
 import { ClaimProcess } from '../../../types';
 import { classNames } from '../../../utils/classnames';
+import Verified from '../../assets/Verified.svg';
 import { ClaimSubdomain, UserDomains } from '../../components';
-import Verified from './assets/Verified.svg';
 
 const ClaimPage = () => {
     const [currentClaimPage, setCurrentClaimPage] = useState(ClaimProcess.Claim);
+    const [claimedSubdomain, setClaimedSubdomain] = useState('');
+
 
     return (
         <div className="grid place-items-center pb-72 pt-40">
@@ -39,12 +41,15 @@ const ClaimPage = () => {
                             )}
                         >
                             {currentClaimPage === ClaimProcess.Claim && (
-                                <ClaimSubdomain setCurrentClaimPage={setCurrentClaimPage} />
+                                <ClaimSubdomain 
+                                    setClaimedSubdomain={setClaimedSubdomain} 
+                                    setCurrentClaimPage={setCurrentClaimPage} 
+                                />
                             )}
                             {currentClaimPage === ClaimProcess.Save && (
                                 <div className="flex flex-1 flex-col justify-between space-y-3">
                                     <div className="">
-                                        <h1 className="text-title-1-size text-dark-text">Welcome, Aero</h1>
+                                        <h1 className="text-title-1-size text-dark-text">Welcome, {claimedSubdomain}</h1>
                                         <span className="text-text-size text-light-text">
                                             Save your new ENS domain as your primary ENS name to represent your Ethereum
                                             account and act as your cross-platform web3 username and profile. You can
@@ -54,7 +59,7 @@ const ClaimPage = () => {
                                     </div>
                                     <div className="flex flex-row space-x-3 rounded-xl bg-white px-4 py-6 text-button-text-size font-semibold text-dark-text">
                                         <Image alt="Verified badge" src={Verified} width={20} height={20} />
-                                        <span>aero.2718.eth</span>
+                                        <span>{claimedSubdomain}.2718.eth</span>
                                     </div>
                                     <div className="grid grid-flow-col gap-5">
                                         <button

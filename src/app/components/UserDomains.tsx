@@ -1,6 +1,8 @@
+import Image from 'next/image';
 import React from 'react';
 import { useAccount, useEnsName } from 'wagmi';
 import { useGetUserDomains } from '../../hooks';
+import Verified from '../assets/Verified.svg';
 import { WalletConnectButton } from '../components';
 
 
@@ -41,7 +43,16 @@ export const UserDomains = () => {
                     return (
                         <li key={i}>
                             <button className="mono w-full rounded-2xl bg-white px-4 py-6 text-left text-button-text-size text-dark-text">
-                                {ensName === name ? `check ${name}`: name}
+                                {ensName === name 
+                                    && <Image 
+                                        alt="Verified badge" 
+                                        src={Verified} 
+                                        width={20} 
+                                        height={20} 
+                                        className="inline mr-2"
+                                    />
+                                }
+                                {name}
                             </button>
                         </li>
                     );
