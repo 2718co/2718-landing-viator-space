@@ -4,6 +4,7 @@ import localFont from 'next/font/local';
 import type { PropsWithChildren } from 'react';
 import { Suspense } from 'react';
 import { Providers } from '../client/providers';
+import { ReactQuery } from '../contexts';
 import '../styles/globals.css';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
@@ -28,12 +29,14 @@ function RootLayout({
             <body className="rounded-3xl bg-[#D9D9D9] p-0 lg:p-6">
                 <div className="relative flex w-full flex-col bg-dark-background px-3 pb-20 pt-14 lg:rounded-2xl lg:px-36">
                     <Suspense fallback={<div>Loading...</div>}>
-                        <Providers>
-                            <Navbar />
-                            <main className="flex-auto font-mono">{children}</main>
-                            <Footer />
-                            <Cursor />
-                        </Providers>
+                        <ReactQuery>
+                            <Providers>
+                                <Navbar />
+                                <main className="flex-auto font-mono">{children}</main>
+                                <Footer />
+                                <Cursor />
+                            </Providers>
+                        </ReactQuery>
                     </Suspense>
                 </div>
             </body>
