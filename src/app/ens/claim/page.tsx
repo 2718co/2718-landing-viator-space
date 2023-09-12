@@ -34,89 +34,12 @@ const ClaimPage = () => {
                     <Tab.Panels className="mt-2">
                         <Tab.Panel
                             className={classNames(
-                                'flex h-96 w-full flex-col rounded-3xl bg-light-background p-7',
+                                'flex h-96 w-full flex-col justify-center rounded-3xl bg-light-background p-7',
                                 'focus:outline-none'
                             )}
                         >
-                            <div className="relative mb-6 h-10 w-full">
-                                {/* Bg line */}
-                                <div className="absolute inset-x-0 top-1/2 h-[5px] w-full rounded-full bg-highlight">
-                                    {/* Steps */}
-                                    <div className="absolute inset-0 -top-1.5 flex w-full flex-row items-start justify-between">
-                                        <div className="relative">
-                                            <div className="grid h-4 w-4 place-items-center rounded-full bg-highlight"></div>
-                                            <div className="absolute -top-5 left-0 text-subtitle-2-size text-highlight">
-                                                Claim
-                                            </div>
-                                        </div>
-                                        <div className="relative">
-                                            <div className="grid h-4 w-4 place-items-center rounded-full bg-highlight">
-                                                {currentClaimPage < ClaimProcess.Wait && (
-                                                    <div className="h-2 w-2 rounded-full bg-light-background transition-opacity"></div>
-                                                )}
-                                            </div>
-                                            <div className="absolute -top-5 text-subtitle-2-size text-highlight">
-                                                Wait
-                                            </div>
-                                        </div>
-                                        <div className="relative">
-                                            <div className="grid h-4 w-4 place-items-center rounded-full bg-highlight">
-                                                {currentClaimPage < ClaimProcess.Register && (
-                                                    <div className="h-2 w-2 rounded-full bg-light-background"></div>
-                                                )}
-                                            </div>
-                                            <div className="absolute -top-5 right-0 text-subtitle-2-size text-highlight">
-                                                Register
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             {currentClaimPage === ClaimProcess.Claim && (
                                 <ClaimSubdomain setCurrentClaimPage={setCurrentClaimPage} />
-                            )}
-                            {currentClaimPage === ClaimProcess.Wait && (
-                                <div className="flex flex-1 flex-col justify-between space-y-3">
-                                    <div className="">
-                                        <h1 className="text-title-1-size text-dark-text">2. Wait for 1 min</h1>
-                                        <span className="text-text-size text-light-text">
-                                            Hang on for one minute while we ensure no other person has tried to register
-                                            the same name and while we try to reserve your claim.
-                                        </span>
-                                    </div>
-                                    <div className="">
-                                        <button
-                                            onClick={() => setCurrentClaimPage(ClaimProcess.Register)}
-                                            className="h-full w-full rounded-2xl bg-highlight py-4 font-mono text-button-text-size font-semibold text-dark-text hover:bg-hover-button"
-                                        >
-                                            Wait
-                                        </button>
-                                    </div>
-                                </div>
-                            )}
-                            {currentClaimPage === ClaimProcess.Register && (
-                                <div className="flex flex-1 flex-col justify-between space-y-3">
-                                    <div className="">
-                                        <h1 className="text-title-1-size text-dark-text">
-                                            3. Let&apos;s make it official
-                                        </h1>
-                                        <span className="text-text-size text-light-text">
-                                            Sign the second and last transaction to register and make the domain name
-                                            yours.{' '}
-                                        </span>
-                                    </div>
-                                    <div className="rounded-xl bg-white px-4 py-6 text-button-text-size font-semibold text-dark-text">
-                                        aero.2718.eth
-                                    </div>
-                                    <div className="">
-                                        <button
-                                            onClick={() => setCurrentClaimPage(ClaimProcess.Save)}
-                                            className="h-full w-full rounded-2xl bg-highlight py-4 font-mono text-button-text-size font-semibold text-dark-text hover:bg-hover-button"
-                                        >
-                                            Register
-                                        </button>
-                                    </div>
-                                </div>
                             )}
                             {currentClaimPage === ClaimProcess.Save && (
                                 <div className="flex flex-1 flex-col justify-between space-y-3">

@@ -71,7 +71,9 @@ export const ClaimSubdomain = ({ setCurrentClaimPage }: ClaimSubdomainProps) => 
                 <Form>
                     <div className="flex flex-1 flex-col justify-between space-y-3">
                         <div className="">
-                            <h1 className="text-title-1-size text-dark-text">1. Claim your custom address</h1>
+                            <h1 className="text-title-1-size text-dark-text">
+                                {!loading ? '1. Claim your custom address' : '2. Waiting for your transaction'}
+                            </h1>
                             <span className="text-text-size text-light-text">
                                 Claim your custom 2718 address for no costs except network fees. Follow the three steps
                                 to own your own piece of the 2718 journey.

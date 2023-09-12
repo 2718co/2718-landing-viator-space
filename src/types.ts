@@ -8,8 +8,6 @@ export enum RedeemPage {
 
 export enum ClaimProcess {
     Claim,
-    Wait,
-    Register,
     Save
 }
 
