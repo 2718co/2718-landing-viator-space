@@ -48,8 +48,7 @@ export const UserDomains = () => {
                                         alt="Verified badge" 
                                         src={Verified} 
                                         width={20} 
-                                        height={20} 
-                                        className="inline mr-2"
+                                        className="inline mr-2 h-auto"
                                     />
                                 }
                                 {name}

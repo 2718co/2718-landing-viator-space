@@ -37,3 +37,7 @@ export function getParentNode(domain: string): string {
         [subnode, keccak256(toHex(domain))]
     ));
 }
+
+export function delay(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}

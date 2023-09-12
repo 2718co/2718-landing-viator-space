@@ -3,14 +3,50 @@
 import { Tab } from '@headlessui/react';
 import Image from 'next/image';
 import React, { useState } from 'react';
+import { useAccount, useContractWrite } from 'wagmi';
+import { waitForTransaction } from 'wagmi/actions';
+import { useDomain, usePublicResolverContract, useReverseRegistrarContract } from '../../../hooks';
+import PublicResolverABI from '../../../shared/abi/PublicResolver.json';
+import ReverseRegistrarABI from '../../../shared/abi/ReverseRegistrar.json';
 import { ClaimProcess } from '../../../types';
+import { delay, getNode, getParentNode } from '../../../utils';
 import { classNames } from '../../../utils/classnames';
 import Verified from '../../assets/Verified.svg';
 import { ClaimSubdomain, UserDomains } from '../../components';
 
+
 const ClaimPage = () => {
+    const { address } = useAccount();
     const [currentClaimPage, setCurrentClaimPage] = useState(ClaimProcess.Claim);
     const [claimedSubdomain, setClaimedSubdomain] = useState('');
+    const publicResolverContract = usePublicResolverContract();
+    const reverseRegistrarContrac = useReverseRegistrarContract();
+    const domain = useDomain();
+    const parentNode = getParentNode(domain) as `0x${string}`;
+    const node = getNode(claimedSubdomain, parentNode);
+
+    const { writeAsync: setAddr } = useContractWrite({
+        address: publicResolverContract,
+        abi: PublicResolverABI,
+        functionName: 'setAddr',
+        args: [node, address]
+    });
+
+    const { writeAsync: setName } = useContractWrite({
+        address: reverseRegistrarContrac,
+        abi: ReverseRegistrarABI,
+        functionName: 'setName',
+        args: [`${claimedSubdomain}.${domain}.eth`]
+    });
+
+    async function setPrimaryName() {
+        const txSetAddr = await setAddr();
+        await waitForTransaction({ hash: txSetAddr.hash });
+        await delay(2000);
+        const txSetName = await setName();
+        await waitForTransaction({ hash: txSetName.hash });
+        setCurrentClaimPage(ClaimProcess.Claim);
+    }
 
 
     return (
@@ -58,7 +94,7 @@ const ClaimPage = () => {
                                         </span>
                                     </div>
                                     <div className="flex flex-row space-x-3 rounded-xl bg-white px-4 py-6 text-button-text-size font-semibold text-dark-text">
-                                        <Image alt="Verified badge" src={Verified} width={20} height={20} />
+                                        <Image alt="Verified badge" src={Verified} width={20} className='h-auto' />
                                         <span>{claimedSubdomain}.2718.eth</span>
                                     </div>
                                     <div className="grid grid-flow-col gap-5">
@@ -69,7 +105,7 @@ const ClaimPage = () => {
                                             Cancel
                                         </button>
                                         <button
-                                            onClick={() => setCurrentClaimPage(ClaimProcess.Claim)}
+                                            onClick={() => setPrimaryName()}
                                             className="h-full w-full rounded-2xl bg-highlight py-4 font-mono text-button-text-size font-semibold text-dark-text hover:bg-hover-button"
                                         >
                                             Save
