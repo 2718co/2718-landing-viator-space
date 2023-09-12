@@ -10,7 +10,6 @@ import BlockieIdenticon from './BlockieIdenticon';
 import ExitIcon from './ExitIcon';
 import { WalletConnectButton } from './WalletConnectButton';
 
-
 const Wallet = (): JSX.Element => {
     const { refreshWallet } = useContext(AppContext);
     const { address, isConnected } = useAccount();

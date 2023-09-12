@@ -21,7 +21,6 @@ const GalleryCard = (props: IGalleryCardProps) => {
             onClick={props.onClick}
             className="w-full overflow-hidden rounded-3xl bg-light-background lg:w-[430px]"
         >
-
             <Image
                 src={props.imgUrl}
                 alt={props.name}

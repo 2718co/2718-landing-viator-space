@@ -9,7 +9,6 @@ import '../styles/globals.css';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 
-
 const customFont = localFont({
     src: './assets/ABCDiatypePlusVariable.woff2',
     variable: '--font-abc'

@@ -65,9 +65,7 @@ const getUserDomains = gql`
     }
 `;
 
-
 const queryUserDomains = async (client: ApolloClient<NormalizedCacheObject>, address: `0x${string}` | undefined) => {
-
     function oneYearFromNowTimestamp() {
         const currentDate = new Date();
         currentDate.setFullYear(currentDate.getFullYear() + 1);
@@ -79,7 +77,7 @@ const queryUserDomains = async (client: ApolloClient<NormalizedCacheObject>, add
         variables: {
             id: address?.toLowerCase(),
             expiryDate: oneYearFromNowTimestamp()
-        },
+        }
     });
 
     return data;

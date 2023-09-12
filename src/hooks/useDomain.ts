@@ -15,5 +15,4 @@ export function useDomain(): string {
     };
 
     return chain?.id ? domains[chain.id] : domain2718;
-
 }

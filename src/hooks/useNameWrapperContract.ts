@@ -14,5 +14,5 @@ export function useNameWrapperContract(): `0x${string}` | undefined {
 
     const contractAddress = chain?.id ? nameWrapperContract[chain.id] : undefined;
 
-    return contractAddress ? contractAddress as `0x${string}` : undefined;
+    return contractAddress ? (contractAddress as `0x${string}`) : undefined;
 }

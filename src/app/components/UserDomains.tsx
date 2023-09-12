@@ -5,7 +5,6 @@ import { useGetUserDomains } from '../../hooks';
 import Verified from '../assets/Verified.svg';
 import { WalletConnectButton } from '../components';
 
-
 type WrappedDomainItem = {
     expiryDate: string;
     fuses: number;
@@ -43,14 +42,14 @@ export const UserDomains = () => {
                     return (
                         <li key={i}>
                             <button className="mono w-full rounded-2xl bg-white px-4 py-6 text-left text-button-text-size text-dark-text">
-                                {ensName === name 
-                                    && <Image 
-                                        alt="Verified badge" 
-                                        src={Verified} 
-                                        width={20} 
+                                {ensName === name && (
+                                    <Image
+                                        alt="Verified badge"
+                                        src={Verified}
+                                        width={20}
                                         className="inline mr-2 h-auto"
                                     />
-                                }
+                                )}
                                 {name}
                             </button>
                         </li>
