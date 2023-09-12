@@ -2,20 +2,23 @@
 
 import { Tab } from '@headlessui/react';
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useAccount, useContractWrite } from 'wagmi';
 import { waitForTransaction } from 'wagmi/actions';
+import { AppContext } from '../../../contexts';
 import { useDomain, usePublicResolverContract, useReverseRegistrarContract } from '../../../hooks';
 import PublicResolverABI from '../../../shared/abi/PublicResolver.json';
 import ReverseRegistrarABI from '../../../shared/abi/ReverseRegistrar.json';
 import { ClaimProcess } from '../../../types';
-import { delay, getNode, getParentNode } from '../../../utils';
+import { getNode, getParentNode } from '../../../utils';
 import { classNames } from '../../../utils/classnames';
 import Verified from '../../assets/Verified.svg';
-import { ClaimSubdomain, UserDomains } from '../../components';
+import { ClaimSubdomain, Loading, UserDomains } from '../../components';
 
 
 const ClaimPage = () => {
+    const [loading, setLoading] = useState(false);
+    const { refreshWallet, setRefreshWallet } = useContext(AppContext);
     const { address } = useAccount();
     const [currentClaimPage, setCurrentClaimPage] = useState(ClaimProcess.Claim);
     const [claimedSubdomain, setClaimedSubdomain] = useState('');
@@ -40,12 +43,14 @@ const ClaimPage = () => {
     });
 
     async function setPrimaryName() {
+        setLoading(true);
         const txSetAddr = await setAddr();
         await waitForTransaction({ hash: txSetAddr.hash });
-        await delay(2000);
         const txSetName = await setName();
         await waitForTransaction({ hash: txSetName.hash });
         setCurrentClaimPage(ClaimProcess.Claim);
+        setLoading(false);
+        setRefreshWallet(!refreshWallet);
     }
 
 
@@ -97,6 +102,7 @@ const ClaimPage = () => {
                                         <Image alt="Verified badge" src={Verified} width={20} className='h-auto' />
                                         <span>{claimedSubdomain}.2718.eth</span>
                                     </div>
+                                    {loading && (<Loading width="w-16" />)}
                                     <div className="grid grid-flow-col gap-5">
                                         <button
                                             onClick={() => setCurrentClaimPage(ClaimProcess.Claim)}

@@ -4,10 +4,11 @@ import localFont from 'next/font/local';
 import type { PropsWithChildren } from 'react';
 import { Suspense } from 'react';
 import { Providers } from '../client/providers';
-import { ReactQuery } from '../contexts';
+import { AppContextProvider, ReactQuery } from '../contexts';
 import '../styles/globals.css';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
+
 
 const customFont = localFont({
     src: './assets/ABCDiatypePlusVariable.woff2',
@@ -31,10 +32,12 @@ function RootLayout({
                     <Suspense fallback={<div>Loading...</div>}>
                         <ReactQuery>
                             <Providers>
-                                <Navbar />
-                                <main className="flex-auto font-mono">{children}</main>
-                                <Footer />
-                                <Cursor />
+                                <AppContextProvider>
+                                    <Navbar />
+                                    <main className="flex-auto font-mono">{children}</main>
+                                    <Footer />
+                                    <Cursor />
+                                </AppContextProvider>
                             </Providers>
                         </ReactQuery>
                     </Suspense>

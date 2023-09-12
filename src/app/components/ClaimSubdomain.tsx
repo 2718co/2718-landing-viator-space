@@ -7,9 +7,8 @@ import { useDomain, useNameWrapperContract, useNameWrapperProxyContract, usePubl
 import NameWrapperABI from '../../shared/abi/NameWrapper.json';
 import NameWrapperProxyABI from '../../shared/abi/NameWrapperProxy.json';
 import { ClaimProcess, ClaimSubdomainProps } from '../../types';
-import { delay, getNode, getParentNode } from '../../utils';
-import { WalletConnectButton } from '../components';
-import { Loading } from './loading';
+import { getNode, getParentNode } from '../../utils';
+import { Loading, WalletConnectButton } from '../components';
 
 const validationSchema = Yup.object().shape({
     subdomain: Yup.string()
@@ -56,7 +55,6 @@ export const ClaimSubdomain = ({ setClaimedSubdomain, setCurrentClaimPage }: Cla
             });
             setLoading(true);
             await waitForTransaction({ hash: tx.hash });
-            await delay(2000);
             setLoading(false);
             setClaimedSubdomain(values.subdomain);
             setCurrentClaimPage(ClaimProcess.Save);

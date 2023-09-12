@@ -1,20 +1,27 @@
 'use client';
 
 import Image from 'next/image';
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useAccount, useBalance, useDisconnect, useEnsAvatar, useEnsName } from 'wagmi';
+import { AppContext } from '../../contexts';
 import { formatBalance } from '../../utils';
 import { formatAddress } from '../../utils/formatAddress';
 import BlockieIdenticon from './BlockieIdenticon';
 import ExitIcon from './ExitIcon';
 import { WalletConnectButton } from './WalletConnectButton';
 
+
 const Wallet = (): JSX.Element => {
+    const { refreshWallet } = useContext(AppContext);
     const { address, isConnected } = useAccount();
     const { data: balance, isLoading: isBalanceLoading } = useBalance({ address: address });
-    const { data: ensName, isLoading: isEnsNameLoading } = useEnsName({ address });
+    const { data: ensName, isLoading: isEnsNameLoading, refetch } = useEnsName({ address, staleTime: 2_000 });
     const { data: ensAvatar, isLoading: isEnsAvatarLoading } = useEnsAvatar({ name: ensName });
     const { disconnect } = useDisconnect();
+
+    useEffect(() => {
+        refetch();
+    }, [refetch, refreshWallet]);
 
     return isConnected ? (
         <div className="group relative box-border inline-flex h-12 overflow-ellipsis whitespace-nowrap rounded-2xl bg-highlight bg-opacity-20 outline outline-2 outline-highlight">
