@@ -34,7 +34,7 @@ const Wallet = (): JSX.Element => {
                 )}
 
                 {/* Address */}
-                <span className="w-[12ch] text-white ml-[8px]">
+                <span className="min-w-[12ch] w-auto text-white ml-[8px]">
                     {!isEnsNameLoading ? ensName ?? (address && formatAddress(address)) : 'Loading...'}
                 </span>
             </div>

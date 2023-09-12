@@ -1,5 +1,8 @@
 import React from 'react';
+import { useAccount, useEnsName } from 'wagmi';
 import { useGetUserDomains } from '../../hooks';
+import { WalletConnectButton } from '../components';
+
 
 type WrappedDomainItem = {
     expiryDate: string;
@@ -24,6 +27,8 @@ type WrappedDomainItem = {
 
 export const UserDomains = () => {
     const { data } = useGetUserDomains();
+    const { address, isConnected } = useAccount();
+    const { data: ensName } = useEnsName({ address });
 
     return (
         <>
@@ -36,12 +41,13 @@ export const UserDomains = () => {
                     return (
                         <li key={i}>
                             <button className="mono w-full rounded-2xl bg-white px-4 py-6 text-left text-button-text-size text-dark-text">
-                                {name}
+                                {ensName === name ? `check ${name}`: name}
                             </button>
                         </li>
                     );
                 })}
             </ul>
+            {!isConnected && <WalletConnectButton className="bg-highlight text-dark-text w-full" />}
         </>
     );
 };
