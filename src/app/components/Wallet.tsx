@@ -1,5 +1,6 @@
 'use client';
 
+import { clsx } from 'clsx';
 import Image from 'next/image';
 import React, { useContext, useEffect } from 'react';
 import { useAccount, useBalance, useDisconnect, useEnsAvatar, useEnsName } from 'wagmi';
@@ -10,7 +11,17 @@ import BlockieIdenticon from './BlockieIdenticon';
 import ExitIcon from './ExitIcon';
 import { WalletConnectButton } from './WalletConnectButton';
 
-const Wallet = (): JSX.Element => {
+interface IWalletConnectButtonProps {
+    className?: string;
+    connectText?: string;
+    overrideStyles?: string;
+}
+
+const Wallet = ({
+    connectText = 'Connect Wallet',
+    className,
+    overrideStyles
+}: IWalletConnectButtonProps): JSX.Element => {
     const { refreshWallet } = useContext(AppContext);
     const { address, isConnected } = useAccount();
     const { data: balance, isLoading: isBalanceLoading } = useBalance({ address: address });
@@ -53,7 +64,11 @@ const Wallet = (): JSX.Element => {
             </button>
         </div>
     ) : (
-        <WalletConnectButton className="text-white" />
+        <WalletConnectButton
+            className={clsx('text-white', className)}
+            connectText={connectText}
+            overrideStyles={overrideStyles}
+        />
     );
 };
 

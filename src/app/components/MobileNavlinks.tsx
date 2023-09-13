@@ -3,10 +3,10 @@
 import { Dialog, Transition } from '@headlessui/react';
 import Link from 'next/link';
 import { Fragment, useState } from 'react';
-import { navlinks } from './config';
 import Hamburger from './Hamburger';
-import TwitterLogo from './logos/twitter';
 import SeparatorStar from './SeparatorStar';
+import { navlinks } from './config';
+import TwitterLogo from './logos/twitter';
 
 const socialLinks = [
     {
@@ -31,11 +31,10 @@ const MobileNavlinks = (): JSX.Element => {
 
     return (
         <>
-            <div className="flex h-full w-full items-center justify-end lg:hidden">
+            <div className="flex h-full w-full items-center flex-start lg:hidden">
                 <Hamburger
                     open={menuOpen}
                     onClick={() => {
-                        console.log('Open Mobile menu');
                         setMenuOpen(!menuOpen);
                     }}
                 />
@@ -45,7 +44,6 @@ const MobileNavlinks = (): JSX.Element => {
                 <Dialog
                     as="div"
                     onClose={() => {
-                        console.log('Closing Mobile Menu Dialog');
                         setMenuOpen(false);
                     }}
                     className="relative top-32 z-50 lg:hidden"

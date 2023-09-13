@@ -5,9 +5,15 @@ import { clsx } from 'clsx';
 import React from 'react';
 interface IWalletConnectButtonProps {
     className?: string;
+    connectText?: string;
+    overrideStyles?: string;
 }
 
-export const WalletConnectButton = (props: IWalletConnectButtonProps): JSX.Element => {
+export const WalletConnectButton = ({
+    connectText = 'Connect Wallet',
+    className,
+    overrideStyles = 'px-8 py-4'
+}: IWalletConnectButtonProps): JSX.Element => {
     const { openConnectModal } = useConnectModal();
 
     if (!openConnectModal) {
@@ -19,11 +25,12 @@ export const WalletConnectButton = (props: IWalletConnectButtonProps): JSX.Eleme
             onClick={openConnectModal}
             type="button"
             className={clsx(
-                'mono rounded-2xl border-2 border-highlight px-8 py-4 font-mono text-2xl tracking-wide justify-center flex hover:bg-hover-rectangle',
-                props.className
+                'mono rounded-2xl border-2 border-highlight font-mono text-2xl tracking-wide justify-center flex hover:bg-hover-rectangle',
+                overrideStyles,
+                className
             )}
         >
-            Connect Wallet
+            {connectText}
         </button>
     );
 };
