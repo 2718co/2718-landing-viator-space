@@ -56,7 +56,7 @@ const ClaimPage = () => {
         <div className="grid place-items-center pb-72 pt-40">
             <div className="max-w-2xl">
                 <Tab.Group>
-                    <Tab.List className="flex space-x-1 rounded-full bg-light-background p-2">
+                    <Tab.List className="flex space-x-1 rounded-full bg-light-background p-2 mx-2 max-w-90vw">
                         {['Claim', 'Your Domains'].map((category) => (
                             <Tab
                                 key={category}
@@ -75,7 +75,7 @@ const ClaimPage = () => {
                     <Tab.Panels className="mt-2">
                         <Tab.Panel
                             className={classNames(
-                                'flex h-96 w-full flex-col justify-center rounded-3xl bg-light-background p-7',
+                                'flex h-96 mx-2 max-w-90vw flex-col justify-center rounded-3xl bg-light-background p-7',
                                 'focus:outline-none'
                             )}
                         >
@@ -122,7 +122,7 @@ const ClaimPage = () => {
                         </Tab.Panel>
                         <Tab.Panel
                             className={classNames(
-                                'flex h-96 flex-col rounded-3xl bg-light-background p-7',
+                                'flex h-96 mx-2 max-w-90vw flex-col rounded-3xl bg-light-background p-7',
                                 'focus:outline-none'
                             )}
                         >

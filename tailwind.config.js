@@ -31,6 +31,9 @@ module.exports = {
                 'highlight-color-size': ['16px', { lineHeight: '20px' }],
                 'button-text-size': ['24px', { lineHeight: '30px' }],
                 'title-3-size': ['16px', { lineHeight: '20px' }]
+            },
+            maxWidth: {
+                '90vw': '90vw'
             }
         }
     },
