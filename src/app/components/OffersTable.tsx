@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { formatAddress } from '../../utils/formatAddress';
+import { formatAddress } from '../../utils';
 
 const OffersTable = (): JSX.Element => {
     return (

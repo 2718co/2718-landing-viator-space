@@ -30,3 +30,9 @@ export function getParentNode(domain: string): string {
 export function delay(ms: number) {
     return new Promise((resolve) => setTimeout(resolve, ms));
 }
+
+export const formatAddress = (address: `0x${string}`): string =>
+    `${address.slice(0, 5)}...${address.slice(address.length - 4)}`;
+
+export const formatENSName = (ensName: string): string =>
+    `${ensName.slice(0, 2)}...${ensName.slice(ensName.length - 8)}`;
