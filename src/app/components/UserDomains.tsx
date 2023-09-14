@@ -36,7 +36,7 @@ export const UserDomains = () => {
             <span className="text-text-size text-light-text">
                 Select a domain to make it your primary ENS name to be used across major web3 platforms.
             </span>
-            <ul className="hide-scrollbar mt-3 flex flex-auto scroll-mb-8 list-none flex-col space-y-3 overflow-scroll">
+            <ul className="hide-scrollbar mt-3 flex flex-auto scroll-mb-8 list-none flex-col space-y-3 overflow-y-scroll overflow-x-hidden">
                 {data?.account?.wrappedDomains.map((item: WrappedDomainItem, i: number) => {
                     const { name } = item.domain;
                     return (

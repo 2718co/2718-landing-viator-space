@@ -68,6 +68,7 @@ const MobileNavlinks = (): JSX.Element => {
                                                 key={path}
                                                 href={path}
                                                 className="rounded-2xl px-8 py-4 text-highlight hover:bg-hover-rectangle"
+                                                onClick={() => setMenuOpen(false)}
                                             >
                                                 {label}
                                             </Link>

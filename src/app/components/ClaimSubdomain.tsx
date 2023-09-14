@@ -84,11 +84,11 @@ export const ClaimSubdomain = ({ setClaimedSubdomain, setCurrentClaimPage }: Cla
                         ) : (
                             <>
                                 <div className="input-wrapper">
-                                    <div className="flex border rounded-xl overflow-hidden">
+                                    <div className="flex border rounded-xl">
                                         <Field
                                             type="text"
                                             name="subdomain"
-                                            className="flex-1 bg-white px-4 py-6 focus:outline-none focus:ring-0"
+                                            className="flex-1 w-full bg-white px-4 py-6 focus:outline-none focus:ring-0"
                                             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                                                 setFieldValue('subdomain', e.target.value);
                                                 checkSubdomainExists(e.target.value);
