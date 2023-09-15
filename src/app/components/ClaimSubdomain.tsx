@@ -23,7 +23,7 @@ export const ClaimSubdomain = ({ setSubdomain, setCurrentClaimPage }: ClaimSubdo
     const [loading, setLoading] = useState(false);
     const { address, isConnected } = useAccount();
     const domain = useDomain();
-    const parentNode = getParentNode(domain);
+    const parentNode = getParentNode(domain) as `0x${string}`;
     const nameWrapperContract = useNameWrapperContract();
     const nameWrapperProxyContract = useNameWrapperProxyContract();
     const publicResolverContract = usePublicResolverContract();
@@ -36,7 +36,6 @@ export const ClaimSubdomain = ({ setSubdomain, setCurrentClaimPage }: ClaimSubdo
     });
 
     const checkSubdomainExists = async (subdomain: string): Promise<void> => {
-        const parentNode = getParentNode(domain) as `0x${string}`;
         const node = getNode(subdomain, parentNode);
 
         const data = await publicClient.readContract({
@@ -56,7 +55,13 @@ export const ClaimSubdomain = ({ setSubdomain, setCurrentClaimPage }: ClaimSubdo
             setLoading(true);
             await waitForTransaction({ hash: tx.hash });
             setLoading(false);
-            setSubdomain?.(values.subdomain);
+            const node = getNode(values.subdomain, parentNode);
+            setSubdomain?.({
+                label: values.subdomain,
+                name: `${values.subdomain}.${domain}.eth`,
+                node,
+                parentNode
+            });
             setCurrentClaimPage(ClaimProcess.Save);
         }
     };
@@ -94,7 +99,7 @@ export const ClaimSubdomain = ({ setSubdomain, setCurrentClaimPage }: ClaimSubdo
                                                 checkSubdomainExists(e.target.value);
                                             }}
                                         />
-                                        <span className="bg-gray-100 border-l px-4 py-6">.2718.eth</span>
+                                        <span className="bg-gray-100 border-l px-4 py-6">.{domain}.eth</span>
                                     </div>
                                     {subdomainExists ? (
                                         <span className="text-red-500">This subdomain already exists</span>

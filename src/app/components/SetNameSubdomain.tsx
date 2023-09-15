@@ -4,24 +4,23 @@ import React, { useContext, useState } from 'react';
 import { useAccount, useContractWrite } from 'wagmi';
 import { waitForTransaction } from 'wagmi/actions';
 import { AppContext } from '../../contexts';
-import { useDomain, useReverseRegistrarContract } from '../../hooks';
+import { useReverseRegistrarContract } from '../../hooks';
 import ReverseRegistrarABI from '../../shared/abi/ReverseRegistrar.json';
 import { ClaimProcess, ClaimSubdomainProps } from '../../types';
 import { formatAddress } from '../../utils';
 import { Loading } from '../components';
 
-export const SetNameSubdomain = ({ subdomain = '', setCurrentClaimPage }: ClaimSubdomainProps) => {
+export const SetNameSubdomain = ({ subdomain, setCurrentClaimPage }: ClaimSubdomainProps) => {
     const [loading, setLoading] = useState(false);
     const { refreshWallet, setRefreshWallet } = useContext(AppContext);
     const { address } = useAccount();
     const reverseRegistrarContrac = useReverseRegistrarContract();
-    const domain = useDomain();
 
     const { writeAsync } = useContractWrite({
         address: reverseRegistrarContrac,
         abi: ReverseRegistrarABI,
         functionName: 'setName',
-        args: [`${subdomain}.${domain}.eth`]
+        args: [subdomain?.name]
     });
 
     async function setName() {
@@ -50,7 +49,7 @@ export const SetNameSubdomain = ({ subdomain = '', setCurrentClaimPage }: ClaimS
                 <>
                     <div className="flex text-text-size sm:text-base flex-row justify-between space-x-3 rounded-xl bg-white px-4 py-6 font-semibold text-dark-text">
                         <span className="text-light-text font-normal">Name</span>
-                        <span className="text-right">{subdomain}</span>
+                        <span className="text-right">{subdomain?.name}</span>
                     </div>
                     <div className="flex text-text-size sm:text-base flex-row justify-between space-x-3 rounded-xl bg-white px-4 py-6 font-semibold text-dark-text">
                         <span className="text-light-text font-normal">Info</span>

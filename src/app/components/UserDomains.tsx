@@ -2,7 +2,7 @@ import Image from 'next/image';
 import React from 'react';
 import { useAccount, useEnsName } from 'wagmi';
 import { useGetUserDomains } from '../../hooks';
-import { ClaimProcess, ClaimSubdomainProps } from '../../types';
+import { ClaimProcess, ClaimSubdomainProps, subdomainObj } from '../../types';
 import { WalletConnectButton } from '../components';
 
 type WrappedDomainItem = {
@@ -24,6 +24,10 @@ type WrappedDomainItem = {
             expiryDate: string;
         };
     };
+    parent: {
+        id: string;
+        name: string;
+    };
 };
 
 export const UserDomains = ({ setCurrentClaimPage, setSubdomain, setSelectedTabIndex }: ClaimSubdomainProps) => {
@@ -31,9 +35,9 @@ export const UserDomains = ({ setCurrentClaimPage, setSubdomain, setSelectedTabI
     const { address, isConnected } = useAccount();
     const { data: ensName } = useEnsName({ address });
 
-    function setPrimaryName(name: string) {
+    function setPrimaryName(subdomain: subdomainObj) {
         setSelectedTabIndex?.(0);
-        setSubdomain?.(name);
+        setSubdomain?.(subdomain);
         setCurrentClaimPage(ClaimProcess.SetAddr);
     }
 
@@ -44,12 +48,20 @@ export const UserDomains = ({ setCurrentClaimPage, setSubdomain, setSelectedTabI
             </span>
             <ul className="hide-scrollbar mt-3 flex flex-auto scroll-mb-8 list-none flex-col space-y-3 overflow-y-scroll overflow-x-hidden">
                 {data?.account?.wrappedDomains.map((item: WrappedDomainItem, i: number) => {
-                    const { name, labelName } = item.domain;
+                    const { name, labelName, id } = item.domain;
                     return (
                         <li key={i}>
                             <button
                                 className="mono w-full rounded-2xl bg-white px-4 py-6 text-left text-base md:text-button-text-size text-dark-text overflow-x-hidden"
-                                onClick={() => ensName !== name && setPrimaryName(labelName)}
+                                onClick={() =>
+                                    ensName !== name &&
+                                    setPrimaryName({
+                                        name,
+                                        label: labelName,
+                                        parentNode: item?.parent?.id,
+                                        node: id
+                                    })
+                                }
                             >
                                 {ensName === name && (
                                     <Image

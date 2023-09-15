@@ -8,7 +8,12 @@ import { ClaimSubdomain, SaveSubdomain, SetAddrSubdomain, SetNameSubdomain, User
 
 const ClaimPage = () => {
     const [currentClaimPage, setCurrentClaimPage] = useState(ClaimProcess.Claim);
-    const [subdomain, setSubdomain] = useState('');
+    const [subdomain, setSubdomain] = useState({
+        label: '',
+        name: '',
+        node: '',
+        parentNode: ''
+    });
     const [selectedTabIndex, setSelectedTabIndex] = useState(0); // 0 for 'Claim', 1 for 'Your Domains'
 
     return (

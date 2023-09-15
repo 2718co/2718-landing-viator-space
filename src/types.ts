@@ -13,9 +13,16 @@ export enum ClaimProcess {
     SetName
 }
 
+export type subdomainObj = {
+    label: string;
+    name: string;
+    node: string;
+    parentNode: string;
+}
+
 export interface ClaimSubdomainProps {
-    subdomain?: string;
-    setSubdomain?: (value: string) => void;
+    subdomain?: subdomainObj;
+    setSubdomain?: (subdomain: subdomainObj) => void;
     setCurrentClaimPage: (value: ClaimProcess) => void;
     setSelectedTabIndex?: (value: number) => void;
 }

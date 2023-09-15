@@ -3,25 +3,22 @@
 import React, { useState } from 'react';
 import { useAccount, useContractWrite } from 'wagmi';
 import { waitForTransaction } from 'wagmi/actions';
-import { useDomain, usePublicResolverContract } from '../../hooks';
+import { usePublicResolverContract } from '../../hooks';
 import PublicResolverABI from '../../shared/abi/PublicResolver.json';
 import { ClaimProcess, ClaimSubdomainProps } from '../../types';
-import { formatAddress, getNode, getParentNode } from '../../utils';
+import { formatAddress } from '../../utils';
 import { Loading } from '../components';
 
-export const SetAddrSubdomain = ({ subdomain = '', setCurrentClaimPage }: ClaimSubdomainProps) => {
+export const SetAddrSubdomain = ({ subdomain, setCurrentClaimPage }: ClaimSubdomainProps) => {
     const [loading, setLoading] = useState(false);
     const { address } = useAccount();
     const publicResolverContract = usePublicResolverContract();
-    const domain = useDomain();
-    const parentNode = getParentNode(domain) as `0x${string}`;
-    const node = getNode(subdomain, parentNode);
 
     const { writeAsync } = useContractWrite({
         address: publicResolverContract,
         abi: PublicResolverABI,
         functionName: 'setAddr',
-        args: [node, address]
+        args: [subdomain?.node, address]
     });
 
     async function setAddr() {
@@ -50,7 +47,7 @@ export const SetAddrSubdomain = ({ subdomain = '', setCurrentClaimPage }: ClaimS
                 <>
                     <div className="flex text-text-size sm:text-base flex-row justify-between space-x-3 rounded-xl bg-white px-4 py-6 font-semibold text-dark-text">
                         <span className="text-light-text font-normal">Name</span>
-                        <span className="text-right">{subdomain}</span>
+                        <span className="text-right">{subdomain?.name}</span>
                     </div>
                     <div className="flex text-text-size sm:text-base flex-row justify-between space-x-3 rounded-xl bg-white px-4 py-6 font-semibold text-dark-text">
                         <span className="text-light-text font-normal">Info</span>
