@@ -5,7 +5,6 @@ import Image from 'next/image';
 import type { Dispatch, SetStateAction } from 'react';
 import { Fragment, useRef, useState } from 'react';
 import { useBalance } from 'wagmi';
-import funkyAnimated from '../assets/funky_dark.gif';
 import CloseIcon from './Close';
 import ETHLogo from './ETHLogo';
 
@@ -69,7 +68,7 @@ const BidModal = ({ open, setOpen }: IBidModalProps) => {
                                         {confirmingTransaction ? (
                                             <>
                                                 <Image
-                                                    src={funkyAnimated}
+                                                    src="/funky_dark.gif"
                                                     alt="Decorative animated banner"
                                                     placeholder={'blur'}
                                                     blurDataURL="data:image/webp;base64,UklGRoQEAABXRUJQVlA4WAoAAAAgAAAA8AIAMwAASUNDUBgCAAAAAAIYAAAAAAQwAABtbnRyUkdCIFhZWiAAAAAAAAAAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAAHRyWFlaAAABZAAAABRnWFlaAAABeAAAABRiWFlaAAABjAAAABRyVFJDAAABoAAAAChnVFJDAAABoAAAAChiVFJDAAABoAAAACh3dHB0AAAByAAAABRjcHJ0AAAB3AAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAFgAAAAcAHMAUgBHAEIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFhZWiAAAAAAAABvogAAOPUAAAOQWFlaIAAAAAAAAGKZAAC3hQAAGNpYWVogAAAAAAAAJKAAAA+EAAC2z3BhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABYWVogAAAAAAAA9tYAAQAAAADTLW1sdWMAAAAAAAAAAQAAAAxlblVTAAAAIAAAABwARwBvAG8AZwBsAGUAIABJAG4AYwAuACAAMgAwADEANlZQOCBGAgAA0BkAnQEq8QI0AD8RfrZUP66rJCgUC6vwIglnbt7OH3/amgb1MDeszdBLs7UIAhyycJ9lZqOTg5lvdj5qK5jj6rEe2N44+qW+YaVfLvOXfQCjhSv7ejda5jj7ussRvl3ZZxTS/tVRbHJCwmHplTKhxTO7mb+YX1AiuI8ZkohqTwOMBaOMdn8a6SmPih1TzNzCdEWiFmDD63OtkC78Bx8O+ETb17h3w83oTk0qzxxdh8Ovl3oJQSaVxju0DNUsW3sHhYG8ephb3vDOGi8cedXDgu7bUoP9/hAA/uHr8iZRJ/VXdXN2hDvAtBlVI2qBLYQOyyMY03oHjiDeLFtw4v/9+VYle8NaAc6gnPBsEwD6YM22x7hcHylJRk+LStWEMBxiuXztRDrKitkEd60tzOqsnwHb0HFugia+WjyHb8WbBIlFiosuq1X7/j0JY+tPgIQAEJMYoEezCHqWzA0hc7owQtw4Ffofb3QVgaL/M9jwR4aqBfqZ5GIDTN7lqCA7zzzXUurDDGaSALlShbwAfuXchktWhYYQZAdwAULn8gKxoUv8vP7V0vGYNzLlCawkj4wfZwe/2WCYU0Z+tjGTudTNRuSmLiU2aPLz0imlnxRiymGVctv/Jrd6pqRGrA7xQaaRrxR1dTLT3jvYk7tnz+QNvWUHsV1y+6zgCuVIf+PP+Mou4ba/7MJSLK1gSZKEAJGQTyhwSx4QwtPFRP+TYYbIG441gxMPyDOZwPcfro0tIXBXGyQby7gZS+jsO3u+xppZTLETSEAA"
