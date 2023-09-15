@@ -34,7 +34,11 @@ module.exports = {
             },
             maxWidth: {
                 '90vw': '90vw'
-            }
+            },
+            minWidth: {
+                '656': '656px',
+            },
+
         }
     },
     plugins: [require('@headlessui/tailwindcss')]

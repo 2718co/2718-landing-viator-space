@@ -8,10 +8,14 @@ export enum RedeemPage {
 
 export enum ClaimProcess {
     Claim,
-    Save
+    Save,
+    SetAddr,
+    SetName
 }
 
 export interface ClaimSubdomainProps {
-    setClaimedSubdomain: (value: string) => void;
+    subdomain?: string;
+    setSubdomain?: (value: string) => void;
     setCurrentClaimPage: (value: ClaimProcess) => void;
+    setSelectedTabIndex?: (value: number) => void;
 }

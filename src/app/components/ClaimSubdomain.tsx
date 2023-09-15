@@ -18,7 +18,7 @@ const validationSchema = Yup.object().shape({
         .matches(/^\S*$/, 'Subdomain should not contain spaces')
 });
 
-export const ClaimSubdomain = ({ setClaimedSubdomain, setCurrentClaimPage }: ClaimSubdomainProps) => {
+export const ClaimSubdomain = ({ setSubdomain, setCurrentClaimPage }: ClaimSubdomainProps) => {
     const [subdomainExists, setSubdomainExists] = useState(false);
     const [loading, setLoading] = useState(false);
     const { address, isConnected } = useAccount();
@@ -56,7 +56,7 @@ export const ClaimSubdomain = ({ setClaimedSubdomain, setCurrentClaimPage }: Cla
             setLoading(true);
             await waitForTransaction({ hash: tx.hash });
             setLoading(false);
-            setClaimedSubdomain(values.subdomain);
+            setSubdomain?.(values.subdomain);
             setCurrentClaimPage(ClaimProcess.Save);
         }
     };

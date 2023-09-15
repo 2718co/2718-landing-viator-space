@@ -2,7 +2,7 @@ import Image from 'next/image';
 import React from 'react';
 import { useAccount, useEnsName } from 'wagmi';
 import { useGetUserDomains } from '../../hooks';
-import Verified from '../assets/Verified.svg';
+import { ClaimProcess, ClaimSubdomainProps } from '../../types';
 import { WalletConnectButton } from '../components';
 
 type WrappedDomainItem = {
@@ -26,10 +26,16 @@ type WrappedDomainItem = {
     };
 };
 
-export const UserDomains = () => {
+export const UserDomains = ({ setCurrentClaimPage, setSubdomain, setSelectedTabIndex }: ClaimSubdomainProps) => {
     const { data } = useGetUserDomains();
     const { address, isConnected } = useAccount();
     const { data: ensName } = useEnsName({ address });
+
+    function setPrimaryName(name: string) {
+        setSelectedTabIndex?.(0);
+        setSubdomain?.(name);
+        setCurrentClaimPage(ClaimProcess.SetAddr);
+    }
 
     return (
         <>
@@ -38,15 +44,19 @@ export const UserDomains = () => {
             </span>
             <ul className="hide-scrollbar mt-3 flex flex-auto scroll-mb-8 list-none flex-col space-y-3 overflow-y-scroll overflow-x-hidden">
                 {data?.account?.wrappedDomains.map((item: WrappedDomainItem, i: number) => {
-                    const { name } = item.domain;
+                    const { name, labelName } = item.domain;
                     return (
                         <li key={i}>
-                            <button className="mono w-full rounded-2xl bg-white px-4 py-6 text-left text-button-text-size text-dark-text">
+                            <button
+                                className="mono w-full rounded-2xl bg-white px-4 py-6 text-left text-base md:text-button-text-size text-dark-text overflow-x-hidden"
+                                onClick={() => ensName !== name && setPrimaryName(labelName)}
+                            >
                                 {ensName === name && (
                                     <Image
                                         alt="Verified badge"
-                                        src={Verified}
-                                        width={20}
+                                        src="/verified.svg"
+                                        width="20"
+                                        height="20"
                                         className="inline mr-2 h-auto"
                                     />
                                 )}
