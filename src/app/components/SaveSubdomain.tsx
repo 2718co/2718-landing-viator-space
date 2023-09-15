@@ -24,7 +24,7 @@ export const SaveSubdomain = ({ subdomain, setCurrentClaimPage }: ClaimSubdomain
                     Cancel
                 </button>
                 <button
-                    onClick={() => setCurrentClaimPage(ClaimProcess.SetAddr)}
+                    onClick={() => setCurrentClaimPage(ClaimProcess.TwoSteps)}
                     className="h-full w-full rounded-2xl bg-highlight py-4 font-mono text-button-text-size font-semibold text-dark-text hover:bg-hover-button"
                 >
                     Save

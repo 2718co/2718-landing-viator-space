@@ -4,7 +4,14 @@ import { Tab } from '@headlessui/react';
 import React, { useState } from 'react';
 import { ClaimProcess } from '../../../types';
 import { classNames } from '../../../utils/classnames';
-import { ClaimSubdomain, SaveSubdomain, SetAddrSubdomain, SetNameSubdomain, UserDomains } from '../../components';
+import {
+    ClaimSubdomain,
+    SaveSubdomain,
+    SetAddrSubdomain,
+    SetNameSubdomain,
+    SubdomainTwoSteps,
+    UserDomains
+} from '../../components';
 
 const ClaimPage = () => {
     const [currentClaimPage, setCurrentClaimPage] = useState(ClaimProcess.Claim);
@@ -49,6 +56,9 @@ const ClaimPage = () => {
                             )}
                             {currentClaimPage === ClaimProcess.Save && (
                                 <SaveSubdomain subdomain={subdomain} setCurrentClaimPage={setCurrentClaimPage} />
+                            )}
+                            {currentClaimPage === ClaimProcess.TwoSteps && (
+                                <SubdomainTwoSteps setCurrentClaimPage={setCurrentClaimPage} />
                             )}
                             {currentClaimPage === ClaimProcess.SetAddr && (
                                 <SetAddrSubdomain subdomain={subdomain} setCurrentClaimPage={setCurrentClaimPage} />

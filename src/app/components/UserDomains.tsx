@@ -1,7 +1,8 @@
 import Image from 'next/image';
 import React from 'react';
-import { useAccount, useEnsName } from 'wagmi';
-import { useGetUserDomains } from '../../hooks';
+import { useAccount, useEnsName, usePublicClient } from 'wagmi';
+import { useGetUserDomains, usePublicResolverContract } from '../../hooks';
+import PublicResolverABI from '../../shared/abi/PublicResolver.json';
 import { ClaimProcess, ClaimSubdomainProps, subdomainObj } from '../../types';
 import { WalletConnectButton } from '../components';
 
@@ -31,14 +32,22 @@ type WrappedDomainItem = {
 };
 
 export const UserDomains = ({ setCurrentClaimPage, setSubdomain, setSelectedTabIndex }: ClaimSubdomainProps) => {
+    const publicClient = usePublicClient();
     const { data } = useGetUserDomains();
     const { address, isConnected } = useAccount();
     const { data: ensName } = useEnsName({ address });
+    const publicResolverContract = usePublicResolverContract();
 
-    function setPrimaryName(subdomain: subdomainObj) {
+    async function setPrimaryName(subdomain: subdomainObj) {
+        const data = await publicClient.readContract({
+            address: publicResolverContract as `0x${string}`,
+            abi: PublicResolverABI,
+            functionName: 'addr',
+            args: [subdomain?.node]
+        });
         setSelectedTabIndex?.(0);
         setSubdomain?.(subdomain);
-        setCurrentClaimPage(ClaimProcess.SetAddr);
+        setCurrentClaimPage(data === address ? ClaimProcess.SetName : ClaimProcess.TwoSteps);
     }
 
     return (

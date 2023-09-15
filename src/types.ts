@@ -10,7 +10,8 @@ export enum ClaimProcess {
     Claim,
     Save,
     SetAddr,
-    SetName
+    SetName,
+    TwoSteps
 }
 
 export type subdomainObj = {

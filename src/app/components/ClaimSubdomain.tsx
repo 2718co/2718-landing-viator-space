@@ -35,7 +35,7 @@ export const ClaimSubdomain = ({ setSubdomain, setCurrentClaimPage }: ClaimSubdo
         functionName: 'setSubnodeRecord'
     });
 
-    const checkSubdomainExists = async (subdomain: string): Promise<void> => {
+    const checkSubdomainExists = async (subdomain: string): Promise<boolean> => {
         const node = getNode(subdomain, parentNode);
 
         const data = await publicClient.readContract({
@@ -45,10 +45,13 @@ export const ClaimSubdomain = ({ setSubdomain, setCurrentClaimPage }: ClaimSubdo
             args: [node]
         });
         setSubdomainExists(!(data === '0x'));
+        return !(data === '0x');
     };
 
     const handleSubmit = async (values: { subdomain: string }) => {
-        if (values?.subdomain && parentNode && address && publicResolverContract && !subdomainExists) {
+        // Note: we have to wait to check subdomain before submitting
+        const _subdomainExists = await checkSubdomainExists(values?.subdomain);
+        if (values?.subdomain && parentNode && address && publicResolverContract && !_subdomainExists) {
             const tx = await writeAsync({
                 args: [parentNode, values.subdomain, address, publicResolverContract, 0, 0, 0]
             });
