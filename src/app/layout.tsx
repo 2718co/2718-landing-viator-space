@@ -7,7 +7,7 @@ import { Providers } from '../client/providers';
 import { AppContextProvider, ReactQuery } from '../contexts';
 import '../styles/globals.css';
 import { Toast } from './components';
-import Footer from './components/Footer';
+// import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 
 const customFont = localFont({
