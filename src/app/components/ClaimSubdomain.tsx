@@ -1,8 +1,11 @@
+'use client';
+
 import { ErrorMessage, Field, Form, Formik } from 'formik';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useAccount, useContractWrite, usePublicClient } from 'wagmi';
 import { waitForTransaction } from 'wagmi/actions';
 import * as Yup from 'yup';
+import { AppContext } from '../../contexts';
 import { useDomain, useNameWrapperContract, useNameWrapperProxyContract, usePublicResolverContract } from '../../hooks';
 import NameWrapperABI from '../../shared/abi/NameWrapper.json';
 import NameWrapperProxyABI from '../../shared/abi/NameWrapperProxy.json';
@@ -28,6 +31,7 @@ export const ClaimSubdomain = ({ setSubdomain, setCurrentClaimPage }: ClaimSubdo
     const nameWrapperProxyContract = useNameWrapperProxyContract();
     const publicResolverContract = usePublicResolverContract();
     const publicClient = usePublicClient();
+    const { setToast } = useContext(AppContext);
 
     const { writeAsync } = useContractWrite({
         address: nameWrapperProxyContract,
@@ -58,6 +62,10 @@ export const ClaimSubdomain = ({ setSubdomain, setCurrentClaimPage }: ClaimSubdo
             setLoading(true);
             await waitForTransaction({ hash: tx.hash });
             setLoading(false);
+            setToast({
+                txHash: tx.hash,
+                message: 'Your “Claim name” transaction was successful'
+            });
             const node = getNode(values.subdomain, parentNode);
             setSubdomain?.({
                 label: values.subdomain,

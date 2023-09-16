@@ -27,3 +27,8 @@ export interface ClaimSubdomainProps {
     setCurrentClaimPage: (value: ClaimProcess) => void;
     setSelectedTabIndex?: (value: number) => void;
 }
+
+export type Toast = {
+    message: string;
+    txHash: string;
+};

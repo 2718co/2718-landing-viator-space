@@ -6,6 +6,7 @@ import { Suspense } from 'react';
 import { Providers } from '../client/providers';
 import { AppContextProvider, ReactQuery } from '../contexts';
 import '../styles/globals.css';
+import { Toast } from './components';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 
@@ -33,6 +34,7 @@ function RootLayout({
                             <Providers>
                                 <AppContextProvider>
                                     <Navbar />
+                                    <Toast />
                                     <main className="flex-auto font-mono">{children}</main>
                                     <Footer />
                                     <Cursor />

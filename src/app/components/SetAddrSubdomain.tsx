@@ -1,8 +1,9 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useAccount, useContractWrite } from 'wagmi';
 import { waitForTransaction } from 'wagmi/actions';
+import { AppContext } from '../../contexts';
 import { usePublicResolverContract } from '../../hooks';
 import PublicResolverABI from '../../shared/abi/PublicResolver.json';
 import { ClaimProcess, ClaimSubdomainProps } from '../../types';
@@ -13,6 +14,7 @@ export const SetAddrSubdomain = ({ subdomain, setCurrentClaimPage }: ClaimSubdom
     const [loading, setLoading] = useState(false);
     const { address } = useAccount();
     const publicResolverContract = usePublicResolverContract();
+    const { setToast } = useContext(AppContext);
 
     const { writeAsync } = useContractWrite({
         address: publicResolverContract,
@@ -27,6 +29,10 @@ export const SetAddrSubdomain = ({ subdomain, setCurrentClaimPage }: ClaimSubdom
         await waitForTransaction({ hash: tx.hash });
         setCurrentClaimPage(ClaimProcess.SetName);
         setLoading(false);
+        setToast({
+            txHash: tx.hash,
+            message: '"Update ETH address to this address" transaction was successful'
+        });
     }
 
     return (

@@ -15,6 +15,7 @@ export const SetNameSubdomain = ({ subdomain, setCurrentClaimPage }: ClaimSubdom
     const { refreshWallet, setRefreshWallet } = useContext(AppContext);
     const { address } = useAccount();
     const reverseRegistrarContrac = useReverseRegistrarContract();
+    const { setToast } = useContext(AppContext);
 
     const { writeAsync } = useContractWrite({
         address: reverseRegistrarContrac,
@@ -29,6 +30,10 @@ export const SetNameSubdomain = ({ subdomain, setCurrentClaimPage }: ClaimSubdom
         await waitForTransaction({ hash: tx.hash });
         setCurrentClaimPage(ClaimProcess.Claim);
         setLoading(false);
+        setToast({
+            txHash: tx.hash,
+            message: 'Your Set primary name” transaction was successful'
+        });
         setRefreshWallet(!refreshWallet);
     }
     return (
