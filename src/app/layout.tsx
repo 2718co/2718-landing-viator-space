@@ -36,7 +36,7 @@ function RootLayout({
                                     <Navbar />
                                     <Toast />
                                     <main className="flex-auto font-mono">{children}</main>
-                                    <Footer />
+                                    {/* <Footer /> */}
                                     <Cursor />
                                 </AppContextProvider>
                             </Providers>

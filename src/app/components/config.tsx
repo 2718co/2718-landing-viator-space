@@ -12,12 +12,12 @@ export const navlinks: NavLink[] = [
         label: 'Manifesto',
         path: '/manifesto'
     },
-    {
-        label: 'Gallery',
-        path: '/gallery'
-    },
+    // {
+    //     label: 'Gallery',
+    //     path: '/gallery'
+    // },
     {
         label: 'Domain',
-        path: '/ens/claim'
+        path: '/'
     }
 ];
