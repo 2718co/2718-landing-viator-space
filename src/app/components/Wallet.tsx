@@ -38,7 +38,7 @@ const Wallet = ({
             <span className="hidden items-center py-4 pl-4 text-highlight lg:flex">
                 {!isBalanceLoading ? `${balance ? formatBalance(balance, 2) : 0} ${balance?.symbol}` : 'Loading...'}
             </span>
-            <div className="z-10 flex h-full flex-row items-center w-fit rounded-2xl bg-black p-2 sm:p-4 outline outline-2 outline-highlight lg:ml-4">
+            <div className="z-10 flex h-full flex-row items-center w-fit rounded-2xl bg-dark-background p-2 sm:p-4 outline outline-2 outline-highlight lg:ml-4">
                 {!isEnsAvatarLoading ? (
                     ensAvatar ? (
                         <>
@@ -88,7 +88,7 @@ const Wallet = ({
             </div>
             <button
                 onClick={() => disconnect()}
-                className="absolute right-0 top-4 z-0 flex w-fit flex-row items-center justify-center space-x-4 rounded-b-lg bg-highlight px-5 text-black outline outline-2 outline-highlight transition-all hover:bg-hover-button hover:outline-hover-button group-hover:top-10 group-hover:pb-4 group-hover:pt-7 lg:w-min"
+                className="absolute right-0 top-3 z-0 flex w-fit flex-row items-center justify-center space-x-4 rounded-b-lg bg-highlight px-5 text-black outline outline-2 outline-transparent transition-all group-hover:outline-highlight hover:bg-hover-button hover:outline-hover-button group-hover:top-8 group-hover:pb-4 group-hover:pt-7 lg:w-min"
             >
                 <span className="hidden sm:block">Disconnect</span>
                 <ExitIcon />
