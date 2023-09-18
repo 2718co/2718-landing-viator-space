@@ -38,10 +38,10 @@ export const Toast = () => {
                 {/* Enterfrom and leaveto should have the same value and it is the inital value */}
                 <Transition.Child
                     as={Fragment}
-                    enter="ease-out duration-500"
+                    enter="ease-out duration-1000"
                     enterFrom="opacity-0 translate-x-0"
                     enterTo="opacity-100 -translate-x-36"
-                    leave="ease-in duration-500"
+                    leave="ease-in duration-1000"
                     leaveFrom="opacity-0 -translate-x-36"
                     leaveTo="opacity-100 translate-x-0"
                 >
@@ -52,10 +52,10 @@ export const Toast = () => {
                     <div className="flex min-h-full items-start justify-end p-4 text-center">
                         <Transition.Child
                             as={Fragment}
-                            enter="transform transition ease-in-out duration-500"
+                            enter="transform transition ease-in-out duration-1000"
                             enterFrom="opacity-0 translate-x-0"
                             enterTo="opacity-100 -translate-x-36"
-                            leave="transform transition ease-in-out duration-500"
+                            leave="transform transition ease-in-out duration-1000"
                             leaveFrom="opacity-0 -translate-x-36"
                             leaveTo="opacity-100 translate-x-0"
                         >
