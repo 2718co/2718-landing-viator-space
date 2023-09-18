@@ -1,6 +1,7 @@
 'use client';
 
 import { Tab } from '@headlessui/react';
+import Image from 'next/image';
 import React, { useState } from 'react';
 import { ClaimProcess } from '../../../types';
 import { classNames } from '../../../utils/classnames';
@@ -25,6 +26,13 @@ const ClaimPage = () => {
 
     return (
         <div className="grid place-items-center">
+            <Image
+                alt="Viator passenger"
+                src="/viator-passenger.svg"
+                width="20"
+                height="20"
+                className="w-1/5 h-auto hidden lg:block mb-8"
+            />
             <div className="max-w-2xl">
                 <Tab.Group selectedIndex={selectedTabIndex}>
                     <Tab.List className="flex space-x-1 rounded-full bg-light-background p-2 mx-2 max-w-90vw">

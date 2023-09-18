@@ -5,7 +5,7 @@ import Wallet from './Wallet';
 const Navbar = (): JSX.Element => {
     return (
         <>
-            <div className="relative mb-20">
+            <div className="relative mb-8">
                 <div className="z-10 flex w-full flex-row items-center justify-between lg:flex-row">
                     <div className="w-2/5 flex-shrink flex-grow basis-0">
                         <Navlinks />
