@@ -75,7 +75,7 @@ export const UserDomains = ({ setCurrentClaimPage, setSubdomain, setSelectedTabI
                                 {ensName === name && (
                                     <Image
                                         alt="Verified badge"
-                                        src="/verified.svg"
+                                        src="/verified-icon.svg"
                                         width="20"
                                         height="20"
                                         className="inline mr-2 h-auto"

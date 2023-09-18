@@ -13,7 +13,7 @@ export const SaveSubdomain = ({ subdomain, setCurrentClaimPage }: ClaimSubdomain
                 </span>
             </div>
             <div className="flex flex-row space-x-3 rounded-xl bg-white px-4 py-6 text-button-text-size font-semibold text-dark-text">
-                <Image alt="Verified badge" src="/verified.svg" width="20" height="20" className="h-auto" />
+                <Image alt="Verified badge" src="/verified-icon.svg" width="20" height="20" className="h-auto" />
                 <span>{subdomain?.name}</span>
             </div>
             <div className="grid grid-flow-col gap-5">
