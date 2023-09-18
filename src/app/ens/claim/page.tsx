@@ -24,7 +24,7 @@ const ClaimPage = () => {
     const [selectedTabIndex, setSelectedTabIndex] = useState(0); // 0 for 'Claim', 1 for 'Your Domains'
 
     return (
-        <div className="grid place-items-center pb-72 pt-40">
+        <div className="grid place-items-center">
             <div className="max-w-2xl">
                 <Tab.Group selectedIndex={selectedTabIndex}>
                     <Tab.List className="flex space-x-1 rounded-full bg-light-background p-2 mx-2 max-w-90vw">

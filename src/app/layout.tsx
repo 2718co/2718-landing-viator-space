@@ -27,21 +27,23 @@ function RootLayout({
     return (
         <html lang="en" className={`${customFont.variable} mono bg-dark-background font-mono`}>
             <head />
-            <body className="rounded-3xl bg-[#D9D9D9] p-0 lg:p-6">
-                <div className="relative flex w-full flex-col bg-dark-background px-3 pb-20 pt-14 lg:rounded-2xl lg:px-36">
-                    <Suspense fallback={<div>Loading...</div>}>
-                        <ReactQuery>
-                            <Providers>
-                                <AppContextProvider>
-                                    <Navbar />
-                                    <Toast />
-                                    <main className="flex-auto font-mono">{children}</main>
-                                    {/* <Footer /> */}
-                                    <Cursor />
-                                </AppContextProvider>
-                            </Providers>
-                        </ReactQuery>
-                    </Suspense>
+            <body>
+                <div className="fixed inset-0 lg:border-24 lg:bg-[#D9D9D9] lg:rounded-3xl">
+                    <div className="relative flex w-full h-full overflow-y-auto flex-col bg-dark-background px-3 pb-20 pt-14 lg:rounded-2xl lg:px-36">
+                        <Suspense fallback={<div>Loading...</div>}>
+                            <ReactQuery>
+                                <Providers>
+                                    <AppContextProvider>
+                                        <Navbar />
+                                        <Toast />
+                                        <main className="flex-auto font-mono">{children}</main>
+                                        {/* <Footer /> */}
+                                        <Cursor />
+                                    </AppContextProvider>
+                                </Providers>
+                            </ReactQuery>
+                        </Suspense>
+                    </div>
                 </div>
             </body>
         </html>
