@@ -8,4 +8,5 @@ export { Toast } from './Toast';
 export { UserDomains } from './UserDomains';
 export { WalletConnectButton } from './WalletConnectButton';
 export { WalletDetails } from './WalletDetails';
+export { WrongChain } from './WrongChain';
 

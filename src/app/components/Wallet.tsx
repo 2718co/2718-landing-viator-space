@@ -1,8 +1,8 @@
 'use client';
 
 import { clsx } from 'clsx';
-import { useAccount, useDisconnect } from 'wagmi';
-import { WalletConnectButton, WalletDetails } from '../components';
+import { useAccount, useDisconnect, useNetwork } from 'wagmi';
+import { WalletConnectButton, WalletDetails, WrongChain } from '../components';
 import ExitIcon from './ExitIcon';
 
 interface IWalletConnectButtonProps {
@@ -18,6 +18,12 @@ const Wallet = ({
 }: IWalletConnectButtonProps): JSX.Element => {
     const { address, isConnected } = useAccount();
     const { disconnect } = useDisconnect();
+    const { chain, chains } = useNetwork();
+    const correctNetwork = chains.find((c) => c.id === chain?.id);
+
+    if (!correctNetwork) {
+        return <WrongChain className={clsx('text-white', className)} overrideStyles={overrideStyles} />;
+    }
 
     return isConnected && address ? (
         <div className="group relative box-border inline-flex h-12 overflow-ellipsis whitespace-nowrap rounded-2xl bg-highlight bg-opacity-20 outline outline-2 outline-highlight">
