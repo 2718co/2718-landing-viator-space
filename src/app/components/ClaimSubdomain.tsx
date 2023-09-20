@@ -102,12 +102,14 @@ export const ClaimSubdomain = ({ setSubdomain, setCurrentClaimPage }: ClaimSubdo
                                 <div className="input-wrapper">
                                     <div className="flex border rounded-2xl">
                                         <Field
+                                            disabled={!isConnected}
                                             type="text"
                                             name="subdomain"
                                             className="flex-1 w-full bg-white px-4 py-6 focus:outline-none focus:ring-0 rounded-tl-2xl rounded-bl-2xl"
                                             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                                                setFieldValue('subdomain', e.target.value);
-                                                checkSubdomainExists(e.target.value);
+                                                const lowercaseValue = e.target.value.toLowerCase();
+                                                setFieldValue('subdomain', lowercaseValue);
+                                                checkSubdomainExists(lowercaseValue);
                                             }}
                                         />
                                         <span className="bg-gray-100 border-l px-4 py-6 rounded-tr-2xl rounded-br-2xl">
