@@ -1,6 +1,6 @@
 'use client';
 
-import { useConnectModal } from '@rainbow-me/rainbowkit';
+import { useChainModal, useConnectModal } from '@rainbow-me/rainbowkit';
 import { motion, type Variants } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 
@@ -11,6 +11,7 @@ type CursorVariant = (typeof CURSOR_VARIANTS)[number];
 const Cursor = () => {
     // Check if rainbow modal is open or not for cursor
     const { connectModalOpen } = useConnectModal();
+    const { chainModalOpen } = useChainModal();
     const styleRef = useRef<HTMLStyleElement | null>(null);
 
     const [mousePosition, setMousePosition] = useState({
@@ -133,7 +134,7 @@ const Cursor = () => {
     };
 
     return (
-        !connectModalOpen && (
+        (!connectModalOpen || !chainModalOpen) && (
             <motion.div
                 className="pointer-events-none fixed left-0 top-0 z-50 hidden h-[34px] w-[34px] md:block"
                 variants={variants}

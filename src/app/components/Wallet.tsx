@@ -21,7 +21,7 @@ const Wallet = ({
     const { chain, chains } = useNetwork();
     const correctNetwork = chains.find((c) => c.id === chain?.id);
 
-    if (!correctNetwork) {
+    if (isConnected && !correctNetwork) {
         return <WrongChain className={clsx('text-white', className)} overrideStyles={overrideStyles} />;
     }
 
