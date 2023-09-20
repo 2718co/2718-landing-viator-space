@@ -63,7 +63,11 @@ const ClaimPage = () => {
                                 <ClaimSubdomain setSubdomain={setSubdomain} setCurrentClaimPage={setCurrentClaimPage} />
                             )}
                             {currentClaimPage === ClaimProcess.Save && (
-                                <SaveSubdomain subdomain={subdomain} setCurrentClaimPage={setCurrentClaimPage} />
+                                <SaveSubdomain
+                                    subdomain={subdomain}
+                                    setCurrentClaimPage={setCurrentClaimPage}
+                                    setSelectedTabIndex={setSelectedTabIndex}
+                                />
                             )}
                             {currentClaimPage === ClaimProcess.TwoSteps && (
                                 <SubdomainTwoSteps setCurrentClaimPage={setCurrentClaimPage} />

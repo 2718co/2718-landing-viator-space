@@ -1,7 +1,11 @@
 import Image from 'next/image';
 import { ClaimProcess, ClaimSubdomainProps } from '../../types';
 
-export const SaveSubdomain = ({ subdomain, setCurrentClaimPage }: ClaimSubdomainProps) => {
+export const SaveSubdomain = ({ subdomain, setCurrentClaimPage, setSelectedTabIndex }: ClaimSubdomainProps) => {
+    function skip() {
+        setSelectedTabIndex?.(1);
+        setCurrentClaimPage(ClaimProcess.Claim);
+    }
     return (
         <div className="flex flex-1 flex-col justify-between space-y-3">
             <div className="">
@@ -12,22 +16,22 @@ export const SaveSubdomain = ({ subdomain, setCurrentClaimPage }: ClaimSubdomain
                     any previous name is overwritten.
                 </span>
             </div>
-            <div className="flex flex-row space-x-3 rounded-xl bg-white px-4 py-6 text-button-text-size font-semibold text-dark-text">
+            <div className="flex flex-row space-x-3 rounded-xl bg-white px-4 py-6 lg:text-button-text-size font-semibold text-dark-text">
                 <Image alt="Verified badge" src="/verified-icon.svg" width="20" height="20" className="h-auto" />
-                <span>{subdomain?.name}</span>
+                <span className="overflow-x-hidden">{subdomain?.name}</span>
             </div>
             <div className="grid grid-flow-col gap-5">
                 <button
-                    onClick={() => setCurrentClaimPage(ClaimProcess.Claim)}
-                    className="h-full w-full rounded-2xl border-2 border-highlight py-4 font-mono text-button-text-size font-semibold text-dark-text hover:bg-hover-button"
+                    onClick={skip}
+                    className="h-full w-full rounded-2xl border-2 border-highlight py-4 font-mono lg:text-button-text-size font-semibold text-dark-text hover:bg-hover-button"
                 >
-                    Cancel
+                    Skip
                 </button>
                 <button
                     onClick={() => setCurrentClaimPage(ClaimProcess.TwoSteps)}
-                    className="h-full w-full rounded-2xl bg-highlight py-4 font-mono text-button-text-size font-semibold text-dark-text hover:bg-hover-button"
+                    className="h-full w-full rounded-2xl bg-highlight py-4 font-mono lg:text-button-text-size font-semibold text-dark-text hover:bg-hover-button"
                 >
-                    Save
+                    Save as Primary
                 </button>
             </div>
         </div>
