@@ -36,11 +36,11 @@ module.exports = {
                 '90vw': '90vw'
             },
             minWidth: {
-                '656': '656px'
+                656: '656px'
             },
             borderWidth: {
-                '24': '24px'
-            },
+                24: '24px'
+            }
         }
     },
     plugins: [require('@headlessui/tailwindcss')]

@@ -19,7 +19,7 @@ export type subdomainObj = {
     name: string;
     node: string;
     parentNode: string;
-}
+};
 
 export interface ClaimSubdomainProps {
     subdomain?: subdomainObj;
