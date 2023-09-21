@@ -1,10 +1,17 @@
 @tailwind base;
+/* Add default styles that precede tailwind https://tailwindcss.com/docs/adding-custom-styles#using-css-and-layer */
+@layer components {
+    body {
+        min-height: 100vh;
+    }
+    
+    *,
+    button {
+        cursor: none !important;
+    }
+}
 @tailwind components;
 @tailwind utilities;
-
-body {
-    min-height: 100vh;
-}
 
 @layer utilities {
     .mono {
