@@ -26,24 +26,26 @@ const Spacecraft = ({ ...props }) => {
         }
     }));
 
-    useEffect(() => {
-        const handleMouseMove = (ev: MouseEvent) => {
-            set({
-                position: {
-                    x: position.x + -1 * X_MVMT_FACTOR * (ev.clientX - window.screen.width * 0.5),
-                    y: position.y + 1 * Y_MVMT_FACTOR * (ev.clientY - window.screen.height * 0.5),
-                    z: position.z
-                }
-            });
-        };
+    const handleMouseMove = (ev: MouseEvent) => {
+        set({
+            position: {
+                x: position.x + -1 * X_MVMT_FACTOR * (ev.clientX - window.screen.width * 0.5),
+                y: position.y + 1 * Y_MVMT_FACTOR * (ev.clientY - window.screen.height * 0.5),
+                z: position.z
+            }
+        });
+    };
 
+    useEffect(() => {
         // const handleMouseMove = (ev) => console.log(ev);
         window.addEventListener('mousemove', handleMouseMove);
 
         return () => {
             window.removeEventListener('mousemove', handleMouseMove);
         };
-    }, [position.x, position.y, position.z, set]);
+        // Do not include handleMouseMove there, otherwise it would not work
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     useFrame(
         (
