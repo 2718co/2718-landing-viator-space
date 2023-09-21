@@ -20,7 +20,7 @@ function Loader() {
 const Scene = ({ ...props }: Props) => {
     // Everything defined in here will persist between route changes, only children are swapped
     return (
-        <Canvas {...props} style={{ width: '50vw', height: '50vh' }}>
+        <Canvas {...props} style={{ width: '50vw', height: '70vh' }}>
             <directionalLight intensity={0.75} />
             <ambientLight intensity={0.75} />
             {process.env.NODE_ENV === 'development' && <primitive object={new THREE.AxesHelper(20)} />}

@@ -19,12 +19,12 @@ const Spacecraft = ({ ...props }) => {
 
     const [{ position, orientation }, set] = useControls(() => ({
         position: {
-            value: { x: -1, y: 2, z: 0.5 },
-            render: () => false
+            value: { x: -1, y: 2, z: 0 },
+            render: () => process.env.NODE_ENV === 'development'
         },
         orientation: {
-            value: { x: (0.23 + 0.1) / 2.0, y: (0.15 + 0.25) / 2.0, z: 0 },
-            render: () => false
+            value: { x: 0.23, y: (0.15 + 0.25) / 2.0, z: 0 },
+            render: () => process.env.NODE_ENV === 'development'
         }
     }));
 
@@ -71,7 +71,7 @@ const Spacecraft = ({ ...props }) => {
                 ref={spacecraftRef}
                 rotation={[Math.PI * orientation.x, Math.PI * orientation.y, Math.PI * orientation.z]}
                 position={[position.x, position.y, position.z]}
-                scale={0.5}
+                scale={0.35}
             >
                 <primitive object={fbx} />
                 <meshStandardMaterial />
