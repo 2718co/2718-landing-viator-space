@@ -23,13 +23,13 @@ const Scene = ({ ...props }: Props) => {
         <Canvas {...props} style={{ width: '50vw', height: '70vh' }}>
             <directionalLight intensity={0.75} />
             <ambientLight intensity={0.75} />
-            {process.env.NODE_ENV === 'development' && <primitive object={new THREE.AxesHelper(20)} />}
+            {process.env.NEXT_PUBLIC_CONTROLS && <primitive object={new THREE.AxesHelper(20)} />}
             {/* {children} */}
             <Suspense fallback={<Loader />}>
                 <Spacecraft />
             </Suspense>
             <Preload all />
-            {process.env.NODE_ENV === 'development' && <OrbitControls />}
+            {process.env.NEXT_PUBLIC_CONTROLS && <OrbitControls />}
         </Canvas>
     );
 };

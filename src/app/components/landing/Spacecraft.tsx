@@ -20,11 +20,11 @@ const Spacecraft = ({ ...props }) => {
     const [{ position, orientation }, set] = useControls(() => ({
         position: {
             value: { x: -1, y: 2, z: 0 },
-            render: () => process.env.NODE_ENV === 'development'
+            render: () => process.env.NEXT_PUBLIC_CONTROLS ? true : false
         },
         orientation: {
             value: { x: 0.23, y: (0.15 + 0.25) / 2.0, z: 0 },
-            render: () => process.env.NODE_ENV === 'development'
+            render: () => process.env.NEXT_PUBLIC_CONTROLS ? true : false
         }
     }));
 
