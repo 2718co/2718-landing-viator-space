@@ -9,7 +9,7 @@ const X_MVMT_FACTOR = 0.001;
 const Y_MVMT_FACTOR = 0.002;
 
 // TODO: remove this once project is complete
-const Spacecraft = ({ ...props }) => {
+const SpacecraftMobile = ({ ...props }) => {
     // const router = useRouter();
     const mesh = useRef<THREE.Group>(null);
 
@@ -71,7 +71,7 @@ const Spacecraft = ({ ...props }) => {
                 ref={spacecraftRef}
                 rotation={[Math.PI * orientation.x, Math.PI * orientation.y, Math.PI * orientation.z]}
                 position={[position.x, position.y, position.z]}
-                scale={0.35}
+                scale={0.5}
             >
                 <primitive object={fbx} />
                 <meshStandardMaterial />
@@ -81,4 +81,4 @@ const Spacecraft = ({ ...props }) => {
     );
 };
 
-export default Spacecraft;
+export default SpacecraftMobile;

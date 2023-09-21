@@ -1,15 +1,19 @@
 'use client';
 
 import dynamic from 'next/dynamic';
+import Image from 'next/image';
 import Logo from './components/Logo';
 import Countdown from './components/landing/Countdown';
 import GlowButton from './components/landing/GlowButton';
 import LandingPageBackground from './components/landing/LandingPageBackground';
 import Logo2718 from './components/landing/Logo2718';
 import ViatorInline from './components/landing/ViatorInline';
-import ViatorLogo from './components/landing/ViatorLogo';
 
-const Scene = dynamic(() => import('./components/landing/Scene'), {
+
+const SceneDesktop = dynamic(() => import('./components/landing/SceneDesktop'), {
+    ssr: true
+});
+const SceneMobile = dynamic(() => import('./components/landing/SceneMobile'), {
     ssr: true
 });
 // TODO: frh -> remove this once project is complete
@@ -34,8 +38,11 @@ const HomePage = () => {
                         <span>VIATOR PROGRAM</span>
                     </div>
                     <div className=""></div>
-                    <div className="h-full w-full overflow-visible">
-                        <Scene className="w-screen"></Scene>
+                    <div className="lg:hidden h-full w-full overflow-visible">
+                        <SceneMobile className="w-screen"></SceneMobile>
+                    </div>
+                    <div className="hidden lg:block h-full w-full overflow-visible">
+                        <SceneDesktop className="w-screen"></SceneDesktop>
                     </div>
                     <div className="absolute -left-32 bottom-4 flex flex-col text-[6px] text-white">
                         <span>RA: 23h 06m 29.368s</span>
@@ -46,7 +53,13 @@ const HomePage = () => {
                         <span>AND TO INSPIRE</span>
                     </div>
                 </div>
-                <ViatorLogo />
+                <Image
+                    src='/viator-logo.svg'
+                    alt='Viator Logo'
+                    height="46"
+                    width="432"
+                    className='px-8 w-full'
+                />
                 <div className="flex flex-col items-center gap-8 text-xs uppercase text-white">
                     <span className="inline-flex items-baseline">
                         Welcome to the <ViatorInline /> Space program
