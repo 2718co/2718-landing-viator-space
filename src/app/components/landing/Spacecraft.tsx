@@ -6,7 +6,7 @@ import type * as THREE from 'three';
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader';
 
 const X_MVMT_FACTOR = 0.001;
-const Y_MVMT_FACTOR = 0.001;
+const Y_MVMT_FACTOR = 0.002;
 
 // TODO: remove this once project is complete
 const Spacecraft = ({ ...props }) => {
@@ -19,10 +19,12 @@ const Spacecraft = ({ ...props }) => {
 
     const [{ position, orientation }, set] = useControls(() => ({
         position: {
-            value: { x: -1, y: 2, z: 0.5 }
+            value: { x: -1, y: 2, z: 0.5 },
+            render: () => false
         },
         orientation: {
-            value: { x: (0.23 + 0.1) / 2.0, y: (0.15 + 0.25) / 2.0, z: 0 }
+            value: { x: (0.23 + 0.1) / 2.0, y: (0.15 + 0.25) / 2.0, z: 0 },
+            render: () => false
         }
     }));
 
