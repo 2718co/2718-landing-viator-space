@@ -15,15 +15,8 @@ const SceneDesktop = dynamic(() => import('./components/landing/SceneDesktop'), 
 const SceneMobile = dynamic(() => import('./components/landing/SceneMobile'), {
     ssr: true
 });
-// TODO: frh -> remove this once project is complete
-// import Scene from "./components/landing/Scene";
-
-// const Spacecraft = dynamic(() => import("./components/landing/Spacecraft"), {
-//   ssr: false,
-// });
 
 const HomePage = () => {
-    // const eventSourceRef = useRef<HTMLCanvasElement>();
     return (
         <main className="relative flex max-h-screen h-screen flex-col py-12">
             <LandingPageBackground />

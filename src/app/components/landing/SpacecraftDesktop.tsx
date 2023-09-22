@@ -8,9 +8,7 @@ import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader';
 const X_MVMT_FACTOR = 0.001;
 const Y_MVMT_FACTOR = 0.002;
 
-// TODO: remove this once project is complete
 const SpacecraftDesktop = ({ ...props }) => {
-    // const router = useRouter();
     const mesh = useRef<THREE.Group>(null);
 
     const fbx = useLoader(FBXLoader, '/spacecraftYellowCenter.fbx');
@@ -20,11 +18,11 @@ const SpacecraftDesktop = ({ ...props }) => {
     const [{ position, orientation }, set] = useControls(() => ({
         position: {
             value: { x: -1, y: 2, z: 0 },
-            render: () => process.env.NEXT_PUBLIC_CONTROLS ? true : false
+            render: () => (process.env.NEXT_PUBLIC_CONTROLS ? true : false)
         },
         orientation: {
             value: { x: 0.23, y: (0.15 + 0.25) / 2.0, z: 0 },
-            render: () => process.env.NEXT_PUBLIC_CONTROLS ? true : false
+            render: () => (process.env.NEXT_PUBLIC_CONTROLS ? true : false)
         }
     }));
 
@@ -39,7 +37,6 @@ const SpacecraftDesktop = ({ ...props }) => {
     };
 
     useEffect(() => {
-        // const handleMouseMove = (ev) => console.log(ev);
         window.addEventListener('mousemove', handleMouseMove);
 
         return () => {
@@ -49,21 +46,13 @@ const SpacecraftDesktop = ({ ...props }) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    useFrame(
-        (
-            state
-            // delta
-        ) => {
-            const t = state.clock.getElapsedTime();
-            if (spacecraftRef?.current?.position) {
-                spacecraftRef.current.position.y = position.y + Math.sin(t) * (Math.PI / 8);
-                spacecraftRef.current.position.x = position.x + Math.cos(t) * (Math.PI / 8);
-                // spacecraftRef.current.rotation.x = orientation.x + Math.cos(t) * (0.23 - 0.1)
-                // spacecraftRef.current.rotation.y = orientation.y + Math.cos(t) * (0.1)
-                // spacecraftRef.current.rotation.z -= delta / 4;
-            }
+    useFrame((state) => {
+        const t = state.clock.getElapsedTime();
+        if (spacecraftRef?.current?.position) {
+            spacecraftRef.current.position.y = position.y + Math.sin(t) * (Math.PI / 8);
+            spacecraftRef.current.position.x = position.x + Math.cos(t) * (Math.PI / 8);
         }
-    );
+    });
 
     return (
         <group ref={mesh} {...props}>
