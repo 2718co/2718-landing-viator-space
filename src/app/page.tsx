@@ -84,7 +84,7 @@ const HomePage = () => {
                         <span className="text-center">Do not fear the unknown. Explore.</span>
                     </div>
                     <Logo2718 />
-                    <CountdownMobile />
+                    {/* <CountdownMobile /> */}
                 </div>
             </div>
             <GlowButton />

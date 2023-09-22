@@ -17,8 +17,8 @@ declare global {
 }
 const X_MVMT_FACTOR_MOUSE = 0.001;
 const Y_MVMT_FACTOR_MOUSE = 0.002;
-const X_MVMT_FACTOR_ORIENTATION = 0.03;
-const Y_MVMT_FACTOR_ORIENTATION = 0.03;
+// const X_MVMT_FACTOR_ORIENTATION = 0.03;
+// const Y_MVMT_FACTOR_ORIENTATION = 0.03;
 
 const SpacecraftMobile = ({ ...props }) => {
     const mesh = useRef<THREE.Group>(null);
@@ -48,43 +48,43 @@ const SpacecraftMobile = ({ ...props }) => {
         });
     };
 
-    const handleDeviceOrientation = (ev: DeviceOrientationEvent) => {
-        if (ev.beta !== null && ev.gamma !== null) {
-            set({
-                position: {
-                    x: position.x + ev.gamma * X_MVMT_FACTOR_ORIENTATION, // gamma is the left-to-right tilt
-                    y: position.y + ev.beta * Y_MVMT_FACTOR_ORIENTATION, // beta is the front-to-back tilt
-                    z: position.z
-                }
-            });
-        }
-    };
+    // const handleDeviceOrientation = (ev: DeviceOrientationEvent) => {
+    //     if (ev.beta !== null && ev.gamma !== null) {
+    //         set({
+    //             position: {
+    //                 x: position.x + ev.gamma * X_MVMT_FACTOR_ORIENTATION, // gamma is the left-to-right tilt
+    //                 y: position.y + ev.beta * Y_MVMT_FACTOR_ORIENTATION, // beta is the front-to-back tilt
+    //                 z: position.z
+    //             }
+    //         });
+    //     }
+    // };
 
     useEffect(() => {
-        const initOrientationEvent = () => {
-            window.addEventListener('deviceorientation', handleDeviceOrientation);
-        };
+        // const initOrientationEvent = () => {
+        //     window.addEventListener('deviceorientation', handleDeviceOrientation);
+        // };
 
-        if (
-            typeof DeviceOrientationEvent !== 'undefined' &&
-            typeof (DeviceOrientationEvent as unknown as DeviceOrientationEventStatic).requestPermission === 'function'
-        ) {
-            (DeviceOrientationEvent as unknown as DeviceOrientationEventStatic)
-                .requestPermission()
-                .then((permissionState) => {
-                    if (permissionState === 'granted') {
-                        initOrientationEvent();
-                    }
-                })
-                .catch(console.error);
-        } else {
-            initOrientationEvent();
-        }
+        // if (
+        //     typeof DeviceOrientationEvent !== 'undefined' &&
+        //     typeof (DeviceOrientationEvent as unknown as DeviceOrientationEventStatic).requestPermission === 'function'
+        // ) {
+        //     (DeviceOrientationEvent as unknown as DeviceOrientationEventStatic)
+        //         .requestPermission()
+        //         .then((permissionState) => {
+        //             if (permissionState === 'granted') {
+        //                 initOrientationEvent();
+        //             }
+        //         })
+        //         .catch(console.error);
+        // } else {
+        //     initOrientationEvent();
+        // }
 
         window.addEventListener('mousemove', handleMouseMove);
 
         return () => {
-            window.removeEventListener('deviceorientation', handleDeviceOrientation);
+            // window.removeEventListener('deviceorientation', handleDeviceOrientation);
             window.removeEventListener('mousemove', handleMouseMove);
         };
         // eslint-disable-next-line react-hooks/exhaustive-deps

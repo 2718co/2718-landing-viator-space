@@ -18,36 +18,37 @@ const BracketsBackground = () => (
             </svg>
         </div>
 
-        <div className="w-full justify-start"></div>
-        {/* Bottom Left */}
-        <svg
-            className="hidden lg:block"
-            xmlns="http://www.w3.org/2000/svg"
-            width="44"
-            height="62"
-            fill="none"
-            viewBox="0 0 44 62"
-        >
-            <path
-                fill="#fff"
-                d="M0 .01v52.31l9.67 9.67h33.34v-2h-21.1L2.01 40.08V0h-2L0 .01zM2 51.5v-8.58L19.08 60H10.5L2 51.5z"
-            ></path>
-        </svg>
+        <div className="sm:flex w-full lg:justify-start sm:justify-between">
+            {/* Bottom Left */}
+            <svg
+                className="hidden sm:block"
+                xmlns="http://www.w3.org/2000/svg"
+                width="44"
+                height="62"
+                fill="none"
+                viewBox="0 0 44 62"
+            >
+                <path
+                    fill="#fff"
+                    d="M0 .01v52.31l9.67 9.67h33.34v-2h-21.1L2.01 40.08V0h-2L0 .01zM2 51.5v-8.58L19.08 60H10.5L2 51.5z"
+                ></path>
+            </svg>
 
-        {/* Bottom Right */}
-        <svg
-            className="hidden md:block lg:hidden"
-            xmlns="http://www.w3.org/2000/svg"
-            width="43"
-            height="62"
-            fill="none"
-            viewBox="0 0 43 62"
-        >
-            <path
-                fill="#fff"
-                d="M41 0v40.07L21.1 59.98H0v2h33.33L43 52.31V0h-2zm-8.5 59.98h-8.58L41 42.9v8.58l-8.5 8.5z"
-            ></path>
-        </svg>
+            {/* Bottom Right */}
+            <svg
+                className="hidden sm:block lg:hidden"
+                xmlns="http://www.w3.org/2000/svg"
+                width="43"
+                height="62"
+                fill="none"
+                viewBox="0 0 43 62"
+            >
+                <path
+                    fill="#fff"
+                    d="M41 0v40.07L21.1 59.98H0v2h33.33L43 52.31V0h-2zm-8.5 59.98h-8.58L41 42.9v8.58l-8.5 8.5z"
+                ></path>
+            </svg>
+        </div>
     </div>
 );
 
