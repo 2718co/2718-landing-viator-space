@@ -1,6 +1,7 @@
 @tailwind base;
 /* Add default styles that precede tailwind https://tailwindcss.com/docs/adding-custom-styles#using-css-and-layer */
 @layer components {
+    html,
     body {
         overflow: hidden;
         z-index: -20;

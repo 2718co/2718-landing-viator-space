@@ -4,7 +4,6 @@ import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Logo from './components/Logo';
 import CountdownDesktop from './components/landing/CountdownDesktop';
-import CountdownIpad from './components/landing/CountdownIpad';
 import GlowButton from './components/landing/GlowButton';
 import LandingPageBackground from './components/landing/LandingPageBackground';
 import Logo2718 from './components/landing/Logo2718';
@@ -23,8 +22,8 @@ const HomePage = () => {
             <LandingPageBackground />
             <div className="relative m-auto flex max-w-2xl flex-1 flex-col items-center justify-between">
                 <Logo />
-                <div className="relative sm:h-72 w-full overflow-visible">
-                    <div className="absolute left-6 sm:-left-36 top-3 sm:top-4 flex flex-col text-[6px] text-white">
+                <div className="relative lg:h-72 w-full overflow-visible">
+                    <div className="absolute left-6 lg:-left-36 top-3 lg:top-4 flex flex-col text-[6px] text-white">
                         <span>Location: TRAPPIST Solar System</span>
                         <span>Edl COORDINATES *ACQUIRED*</span>
                         <span>2718 OPERATED</span>
@@ -37,7 +36,7 @@ const HomePage = () => {
                     <div className="hidden lg:block h-full w-full overflow-visible">
                         <SceneDesktop className="w-screen"></SceneDesktop>
                     </div>
-                    <div className="absolute right-6 -z-10 sm:-left-32 top-8 sm:bottom-4 flex flex-col text-[6px] text-white">
+                    <div className="absolute right-6 -z-10 lg:-left-32 top-8 lg:bottom-4 flex flex-col text-[6px] text-white">
                         <span>RA: 23h 06m 29.368s</span>
                         <span>DEC: -05° 02&apos; 29.04&quote;</span>
                         <span>m: 18.798 ± 0.082</span>
@@ -46,12 +45,18 @@ const HomePage = () => {
                         <span>AND TO INSPIRE</span>
                     </div>
                 </div>
-                <Image src="/viator-logo.svg" alt="Viator Logo" height="46" width="432" className="px-8 w-full" />
-                <div className="flex flex-col items-center mb-[15vh] sm:mb-auto sm:gap-8 sm:mt-8 text-xs uppercase text-white">
+                <Image
+                    src="/viator-logo.svg"
+                    alt="Viator Logo"
+                    height="46"
+                    width="432"
+                    className="px-8 w-full max-h-9 "
+                />
+                <div className="flex flex-col items-center mb-[15vh] lg:mb-auto lg:gap-8 lg:mt-8 text-xs uppercase text-white">
                     <span className="inline-flex items-baseline">
                         Welcome to the <ViatorInline /> Space program
                     </span>
-                    <div className="block px-4 text-center sm:hidden mt-4 sm:mt-auto">
+                    <div className="block px-4 text-center lg:hidden mt-4 lg:mt-auto">
                         <span>
                             The Viator program, also known as project Viator, is the first human spaceflight program
                             carried out by the 2718 Collective. Working to reach the trappist solar system, our plan is
@@ -63,7 +68,7 @@ const HomePage = () => {
                         <br></br>
                         <br></br>
                     </div>
-                    <div className="hidden sm:flex flex-col items-center">
+                    <div className="hidden lg:flex flex-col items-center">
                         <span className="flex flex-col items-center">
                             <span className="inline-flex items-baseline text-center">
                                 The <ViatorInline /> program, also known as project <ViatorInline />, is the first human
@@ -84,7 +89,6 @@ const HomePage = () => {
                         <span className="text-center">Do not fear the unknown. Explore.</span>
                     </div>
                     <Logo2718 />
-                    <CountdownIpad />
                 </div>
             </div>
             <GlowButton />
