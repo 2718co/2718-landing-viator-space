@@ -3,7 +3,8 @@
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Logo from './components/Logo';
-import Countdown from './components/landing/Countdown';
+import CountdownDesktop from './components/landing/CountdownDesktop';
+import CountdownMobile from './components/landing/CountdownMobile';
 import GlowButton from './components/landing/GlowButton';
 import LandingPageBackground from './components/landing/LandingPageBackground';
 import Logo2718 from './components/landing/Logo2718';
@@ -83,6 +84,7 @@ const HomePage = () => {
                         <span className="text-center">Do not fear the unknown. Explore.</span>
                     </div>
                     <Logo2718 />
+                    <CountdownMobile />
                 </div>
             </div>
             <GlowButton />
@@ -90,7 +92,7 @@ const HomePage = () => {
                 <div className="flex-1"></div>
                 <div className="flex-shrink flex-grow-0"></div>
                 <div className="flex flex-1 justify-end">
-                    <Countdown />
+                    <CountdownDesktop />
                 </div>
             </div>
         </main>
