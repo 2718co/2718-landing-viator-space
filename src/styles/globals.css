@@ -2,9 +2,10 @@
 /* Add default styles that precede tailwind https://tailwindcss.com/docs/adding-custom-styles#using-css-and-layer */
 @layer components {
     body {
-        min-height: 100vh;
+        overflow: hidden;
+        z-index: -20;
     }
-    
+
     *,
     button {
         cursor: none !important;

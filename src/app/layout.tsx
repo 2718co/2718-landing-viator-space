@@ -16,7 +16,7 @@ const Cursor = dynamic(() => import('./components/Cursor'), {
 function RootLayout({ children }: PropsWithChildren) {
     return (
         <html lang="en" className={`${customFont.variable} mono bg-dark-background font-mono`}>
-            <body>
+            <body className="absolute inset-0 bg-no-repeat bg-bottom bg-cover bg-[url('/background.svg')]">
                 <main>{children}</main>
                 <Cursor />
             </body>
