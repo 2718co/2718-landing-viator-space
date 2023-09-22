@@ -36,7 +36,7 @@ const HomePage = () => {
                     <div className="hidden lg:block h-full w-full overflow-visible">
                         <SceneDesktop className="w-screen"></SceneDesktop>
                     </div>
-                    <div className="absolute right-6 -z-10 lg:-left-32 top-8 lg:bottom-4 flex flex-col text-[6px] text-white">
+                    <div className="absolute right-6 -z-10 lg:-left-32 top-8 lg:top-32 flex flex-col text-[6px] text-white">
                         <span>RA: 23h 06m 29.368s</span>
                         <span>DEC: -05° 02&apos; 29.04&quote;</span>
                         <span>m: 18.798 ± 0.082</span>
@@ -52,7 +52,7 @@ const HomePage = () => {
                     width="432"
                     className="px-8 w-full max-h-9 "
                 />
-                <div className="flex flex-col items-center mb-[15vh] lg:mb-auto lg:gap-8 lg:mt-8 text-xs uppercase text-white">
+                <div className="flex flex-col items-center mb-[15vh] lg:mb-auto xl:gap-8 xl:mt-8 text-xs uppercase text-white">
                     <span className="inline-flex items-baseline">
                         Welcome to the <ViatorInline /> Space program
                     </span>
@@ -87,12 +87,14 @@ const HomePage = () => {
                         <br></br>
                         <br></br>
                         <span className="text-center">Do not fear the unknown. Explore.</span>
+                        <br></br>
+                        <br></br>
                     </div>
                     <Logo2718 />
                 </div>
             </div>
             <GlowButton />
-            <div className="hidden lg:flex relative mt-28 flex-col items-end justify-between px-12 lg:flex-row">
+            <div className="hidden lg:flex relative mb-28 flex-col items-end justify-between pl-12 pr-8 lg:flex-row">
                 <div className="flex-1"></div>
                 <div className="flex-shrink flex-grow-0"></div>
                 <div className="flex flex-1 justify-end">
