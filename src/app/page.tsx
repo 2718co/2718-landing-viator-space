@@ -53,11 +53,11 @@ const HomePage = () => {
                     </div>
                 </div>
                 <Image src="/viator-logo.svg" alt="Viator Logo" height="46" width="432" className="px-8 w-full" />
-                <div className="flex flex-col items-center gap-8 text-xs uppercase text-white">
+                <div className="flex flex-col items-center sm:gap-8 text-xs uppercase text-white">
                     <span className="inline-flex items-baseline">
                         Welcome to the <ViatorInline /> Space program
                     </span>
-                    <div className="block px-4 text-center sm:hidden">
+                    <div className="block px-4 text-center sm:hidden mt-4 sm:mt-auto">
                         <span>
                             The Viator program, also known as project Viator, is the first human spaceflight program
                             carried out by the 2718 Collective. Working to reach the trappist solar system, our plan is
@@ -89,8 +89,8 @@ const HomePage = () => {
                         <br></br>
                         <span className="text-center">Do not fear the unknown. Explore.</span>
                     </div>
+                    <Logo2718 />
                 </div>
-                <Logo2718 />
             </div>
             <GlowButton />
             <div className="hidden sm:flex relative mt-28 flex-col items-end justify-between px-12 lg:flex-row">

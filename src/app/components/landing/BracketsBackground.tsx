@@ -1,5 +1,5 @@
 const BracketsBackground = () => (
-    <div className="relative flex h-screen w-screen flex-col justify-between p-12">
+    <div className="relative flex h-screen w-screen flex-col justify-between p-4 sm:p-12">
         {/* Top Left */}
         <div className="flex w-full justify-between">
             <svg xmlns="http://www.w3.org/2000/svg" width="43" height="62" fill="none" viewBox="0 0 43 62">
