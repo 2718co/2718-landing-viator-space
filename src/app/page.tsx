@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Logo from './components/Logo';
 import CountdownDesktop from './components/landing/CountdownDesktop';
-import CountdownMobile from './components/landing/CountdownMobile';
+import CountdownIpad from './components/landing/CountdownIpad';
 import GlowButton from './components/landing/GlowButton';
 import LandingPageBackground from './components/landing/LandingPageBackground';
 import Logo2718 from './components/landing/Logo2718';
@@ -47,7 +47,7 @@ const HomePage = () => {
                     </div>
                 </div>
                 <Image src="/viator-logo.svg" alt="Viator Logo" height="46" width="432" className="px-8 w-full" />
-                <div className="flex flex-col items-center mb-[15vh] sm:mb-auto sm:gap-8 text-xs uppercase text-white">
+                <div className="flex flex-col items-center mb-[15vh] sm:mb-auto sm:gap-8 sm:mt-8 text-xs uppercase text-white">
                     <span className="inline-flex items-baseline">
                         Welcome to the <ViatorInline /> Space program
                     </span>
@@ -84,11 +84,11 @@ const HomePage = () => {
                         <span className="text-center">Do not fear the unknown. Explore.</span>
                     </div>
                     <Logo2718 />
-                    {/* <CountdownMobile /> */}
+                    <CountdownIpad />
                 </div>
             </div>
             <GlowButton />
-            <div className="hidden sm:flex relative mt-28 flex-col items-end justify-between px-12 lg:flex-row">
+            <div className="hidden lg:flex relative mt-28 flex-col items-end justify-between px-12 lg:flex-row">
                 <div className="flex-1"></div>
                 <div className="flex-shrink flex-grow-0"></div>
                 <div className="flex flex-1 justify-end">
