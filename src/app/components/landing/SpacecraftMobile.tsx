@@ -5,8 +5,20 @@ import { useEffect, useRef } from 'react';
 import type * as THREE from 'three';
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader';
 
-const X_MVMT_FACTOR = 0.001;
-const Y_MVMT_FACTOR = 0.002;
+interface DeviceOrientationEventStatic {
+    new (type: string, eventInitDict?: DeviceOrientationEventInit): DeviceOrientationEvent;
+    requestPermission(): Promise<PermissionState>;
+}
+
+declare global {
+    interface Window {
+        DeviceOrientationEvent: DeviceOrientationEventStatic;
+    }
+}
+const X_MVMT_FACTOR_MOUSE = 0.001;
+const Y_MVMT_FACTOR_MOUSE = 0.002;
+const X_MVMT_FACTOR_ORIENTATION = 0.03;
+const Y_MVMT_FACTOR_ORIENTATION = 0.03;
 
 const SpacecraftMobile = ({ ...props }) => {
     const mesh = useRef<THREE.Group>(null);
@@ -29,20 +41,52 @@ const SpacecraftMobile = ({ ...props }) => {
     const handleMouseMove = (ev: MouseEvent) => {
         set({
             position: {
-                x: position.x + -1 * X_MVMT_FACTOR * (ev.clientX - window.screen.width * 0.5),
-                y: position.y + 1 * Y_MVMT_FACTOR * (ev.clientY - window.screen.height * 0.5),
+                x: position.x + -1 * X_MVMT_FACTOR_MOUSE * (ev.clientX - window.screen.width * 0.5),
+                y: position.y + 1 * Y_MVMT_FACTOR_MOUSE * (ev.clientY - window.screen.height * 0.5),
                 z: position.z
             }
         });
     };
 
+    const handleDeviceOrientation = (ev: DeviceOrientationEvent) => {
+        if (ev.beta !== null && ev.gamma !== null) {
+            set({
+                position: {
+                    x: position.x + ev.gamma * X_MVMT_FACTOR_ORIENTATION, // gamma is the left-to-right tilt
+                    y: position.y + ev.beta * Y_MVMT_FACTOR_ORIENTATION, // beta is the front-to-back tilt
+                    z: position.z
+                }
+            });
+        }
+    };
+
     useEffect(() => {
+        const initOrientationEvent = () => {
+            window.addEventListener('deviceorientation', handleDeviceOrientation);
+        };
+
+        if (
+            typeof DeviceOrientationEvent !== 'undefined' &&
+            typeof (DeviceOrientationEvent as unknown as DeviceOrientationEventStatic).requestPermission === 'function'
+        ) {
+            (DeviceOrientationEvent as unknown as DeviceOrientationEventStatic)
+                .requestPermission()
+                .then((permissionState) => {
+                    if (permissionState === 'granted') {
+                        initOrientationEvent();
+                    }
+                })
+                .catch(console.error);
+        } else {
+            initOrientationEvent();
+        }
+
         window.addEventListener('mousemove', handleMouseMove);
 
         return () => {
+            window.removeEventListener('deviceorientation', handleDeviceOrientation);
             window.removeEventListener('mousemove', handleMouseMove);
         };
-        // Do not include handleMouseMove there, otherwise it would not work
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
