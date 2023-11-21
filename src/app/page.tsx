@@ -94,11 +94,13 @@ const HomePage = () => {
                 </div>
             </div>
             <GlowButton />
-            <div className="hidden lg:flex relative mb-28 flex-col items-end justify-between pl-12 pr-8 lg:flex-row">
-                <div className="flex-1"></div>
-                <div className="flex-shrink flex-grow-0"></div>
-                <div className="flex flex-1 justify-end">
-                    <CountdownDesktop />
+            <div className="fixed bottom-11 lg:bottom-[56px] right-[5vw] sm:right-[1%] sm:left-[1%] z-10">
+                <div className="hidden lg:flex relative flex-col items-end justify-between pl-12 pr-8 lg:flex-row">
+                    <div className="flex-1"></div>
+                    <div className="flex-shrink flex-grow-0"></div>
+                    <div className="flex flex-1 justify-end">
+                        <CountdownDesktop />
+                    </div>
                 </div>
             </div>
         </main>
